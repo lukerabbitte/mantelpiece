@@ -1,29 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --foreground-color: #0c0c0c;
+  --background-color: #FEF3C7;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --foreground-color: #f3f3f3;
+    --background-color: #0c0c0c;
   }
+} */
+
+/* https://stackoverflow.com/questions/18548465/prevent-scrollbar-from-adding-up-to-the-width-of-page-on-chrome */
+/* Chosen as best way of not letting scrollbar mess with width calculations */
+html {
+  overflow-y: scroll;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: var(--foreground-color);
+  background: var(--background-color);
 }
 
 @layer utilities {
