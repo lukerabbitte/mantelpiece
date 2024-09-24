@@ -27,7 +27,7 @@ export const dummyArticles = [
         image: "https://media.journoportfolio.com/users/393410/images/c1f062c9-7a9c-4c2c-be98-8206c82857f0_max-600.jpg",
         title: "Album Review: Taylor Swift, The Tortured Poets Department",
         publication: "Hot Press",
-        date: "May 10, 2024"
+        date: "May 31, 2024"
     },
     {
         image: "https://media.journoportfolio.com/users/393410/images/c04b6ee9-dfc6-411f-8734-47e4a202442e_max-600.jpg",
@@ -36,3 +36,6 @@ export const dummyArticles = [
         date: "May 20, 2024"
     }
 ];
+
+// Odd bug exists where we have to first render one of these colors as the chosen background or foreground color before it shows up correctly
+export const dummyColorPalette = ["#d1b3c4", "#DCCCA3", "#90AA86"];

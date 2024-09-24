@@ -5,14 +5,14 @@ import BadgesHolder from '@/lib/components/BadgesHolder';
 import ColorHoverText from './ColorHoverText';
 import { makeDateReadable } from '@/utils/makeDateReadable';
 
-const ArticleCard = ({ article, colorPalette }) => {
+const ArticleStrip = ({ article, colorPalette }) => {
     const articleBadges = [
         { icon: FaNewspaper, text: article.publication }
     ];
 
     return (
-        <div className="h-full bg-neutral-800 rounded-xl cursor-pointer scale-100 hover:scale-[1.01] duration-200 ease-in-out">
-            <div className="relative w-full min-h-72 flex-grow">
+        <div className="flex flex-row h-full bg-neutral-800 rounded-xl gap-2 cursor-pointer scale-100 hover:scale-[1.01] duration-200 ease-in-out">
+            <div className="relative flex-shrink-0 w-1/4 min-w-28 min-h-16">
                 <Image
                     src={article.image}
                     fill
@@ -22,22 +22,20 @@ const ArticleCard = ({ article, colorPalette }) => {
                     className="rounded-xl"
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black rounded-xl"></div>
-                <div className="flex flex-col gap-2 p-2 w-full absolute bottom-0">
-                    <div className="">
-                        <div className="text-neutral-200 line-clamp-3">
-                            <ColorHoverText text={article.title} colorPalette={colorPalette} />
-                        </div>
-                        <div className="flex flex-row gap-2 align-middle text-neutral-400 text-sm">
-                            <p>{makeDateReadable(article.date)}</p>
-                        </div>
-                    </div>
-                    <div className="w-full">
-                        <BadgesHolder badges={articleBadges} colorPalette={colorPalette} />
-                    </div>
+            </div>
+            <div className="flex flex-col p-2">
+                <div className="text-neutral-200 line-clamp-3">
+                    <ColorHoverText text={article.title} colorPalette={colorPalette} />
+                </div>
+                <div className="flex flex-row gap-2 align-middle text-neutral-400 text-sm">
+                    <p>{makeDateReadable(article.date)}</p>
+                </div>
+                <div className="w-full mt-auto pt-1">
+                    <BadgesHolder badges={articleBadges} colorPalette={colorPalette} />
                 </div>
             </div>
         </div>
     );
 };
 
-export default ArticleCard;
+export default ArticleStrip;

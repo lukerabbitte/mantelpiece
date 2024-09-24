@@ -1,17 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --foreground-color: #0c0c0c;
-  --background-color: #FEF3C7;
+  --foreground-color: #f1ecec;
+  --background-color: #191917;
 }
 
 /* @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-color: #f3f3f3;
+    --foreground-color: #f3f3f3;  
     --background-color: #0c0c0c;
   }
 } */
