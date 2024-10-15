@@ -1,20 +1,13 @@
 import React from 'react';
-import Image from 'next/image';
+import ThemeToggle from '@/lib/components/ThemeToggle';
 
 const Navbar = () => {
-    return (
-        <div className="flex justify-between items-center p-4">
-            <div className="relative">
-                <Image
-                    src="/images/caroline-kelly-wordmark.png"
-                    alt="Caroline Kelly Wordmark"
-                    width={300}
-                    height={200}
-                    className="rounded-xl"
-                />
-            </div>
-        </div>
-    );
+  return (
+    <div className="flex flex-row justify-between items-center p-4">
+        <h2>Caroline Kelly</h2>
+        <ThemeToggle />
+    </div>
+  );
 };
 
 export default Navbar;

@@ -38,4 +38,8 @@ export const dummyArticles = [
 ];
 
 // Odd bug exists where we have to first render one of these colors as the chosen background or foreground color before it shows up correctly
-export const dummyColorPalette = ["#d1b3c4", "#DCCCA3", "#90AA86"];
+//export const dummyColorPalette = ["#d1b3c4", "#DCCCA3", "#90AA86"];
+
+
+export const dummyColorPalette = ["#061121", "#241b0a", "#2e0505"];
+export const dummyColorPaletteDark = ["#ccdfff", "#f7e1b5", "#f7adad"];

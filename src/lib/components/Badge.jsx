@@ -1,7 +1,9 @@
 import React from 'react';
 import { getRandomColorIndex } from '@/utils/getRandomColorIndex';
+import { useColorPalette } from '@/lib/components/ThemeProvider';
 
 const Badge = ({ icon: Icon, text, colorPalette }) => {
+
     const getGradient = () => {
         if (!colorPalette || colorPalette.length === 0) {
             return 'initial';
@@ -19,8 +21,8 @@ const Badge = ({ icon: Icon, text, colorPalette }) => {
 
     return (
         <div
-            className="flex items-center text-neutral-900 text-xs font-black uppercase rounded-lg px-2 py-1"
-            style={{ background: gradient }}
+            className="flex items-center text-foreground text-xs font-black uppercase rounded-lg px-2 py-1 transition-all duration-300 ease-in-out hover:animate-gradientMove"
+            style={{ background: gradient, backgroundSize: '200% 200%' }}
         >
             {Icon && <Icon className="mr-2" />}
             <span className="whitespace-nowrap overflow-hidden text-ellipsis">

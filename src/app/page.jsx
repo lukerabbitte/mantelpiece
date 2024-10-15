@@ -1,11 +1,11 @@
-import { dummyArticles, dummyColorPalette } from '@/dummy/dummy';
+import { dummyArticles } from '@/dummy/dummy';
 import Tray from "@/lib/components/Tray";
 import '@/app/globals.css';
 
 export default function Home() {
   return (
     <main className="flex flex-col">
-        <Tray articles={dummyArticles} colorPalette={dummyColorPalette} />
+        <Tray articles={dummyArticles}/>
     </main>
   );
 }
