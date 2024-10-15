@@ -9,7 +9,7 @@ import ArticleStrip from "@/lib/components/ArticleStrip";
 const Tray = ({ articles }) => {
     const [cardViewingMode, setCardViewingMode] = useState("vertical"); // small horizontal card or larger vertical card
 
-    const colorPalette = ["17301c","379392","4fb0c6","4f86c6","744fc6"];
+    const colorPalette = ["#379392","#4fb0c6","#4f86c6","#744fc6"];
 
     const toggleCardViewingModeChange = (checked) => {
         setCardViewingMode(checked ? "horizontal" : "vertical");
