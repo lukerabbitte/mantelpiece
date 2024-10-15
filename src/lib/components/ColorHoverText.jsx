@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { getRandomColorIndex } from '@/utils/getRandomColorIndex';
-import { useColorPalette } from '@/lib/components/ThemeProvider';
 
 const ColorHoverText = ({ text, colorPalette }) => {
     const [animateEachLetter, setAnimateEachLetter] = useState(false);

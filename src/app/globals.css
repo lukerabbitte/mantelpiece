@@ -5,7 +5,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 /* https://stackoverflow.com/questions/18548465/prevent-scrollbar-from-adding-up-to-the-width-of-page-on-chrome */
 /* Chosen as best way of not letting scrollbar mess with width calculations */
 html {
@@ -14,67 +13,70 @@ html {
 
 @layer base {
   :root {
-    --background: 60 100% 97%;
-    --foreground: 60 2% 8%;
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
-    --primary: 351, 70%, 60%;
-    --primary-foreground: 50, 95%, 82%;
-    --secondary: 140, 80%, 70%;
-    --secondary-foreground: 140, 15%, 7%
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
-    --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 0 0% 3.9%;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
+    --background: #fffdfa;
+    --foreground: #1a1a1a;
+    --card: #cce7cc;
+    --card-foreground: #2d2d2d;
+    --popover: #ffffff;
+    --popover-foreground: #0a0a0a;
+    --primary: #f77883;
+    --primary-foreground: #141414;
+    --secondary: #3b3b3b;
+    --secondary-foreground: #1a1a1a;
+    --muted: #f5f5f5;
+    --muted-foreground: #737373;
+    --accent: #f5f5f5;
+    --accent-foreground: #1a1a1a;
+    --destructive: #e63946;
+    --destructive-foreground: #ffffff;
+    --border: #e5e5e5;
+    --input: #e5e5e5;
+    --ring: #0a0a0a;
+    --chart-1: #e76f51;
+    --chart-2: #2a9d8f;
+    --chart-3: #264653;
+    --chart-4: #f4a261;
+    --chart-5: #e9c46a;
     --radius: 0.5rem;
-    --warning: 38 92% 50%;
-    --warning-foreground: 48 96% 89%;
+    --warning: #ffba08;
+    --warning-foreground: #f2f2f2;
   }
+
   .dark {
-    --background: 60 2% 8%;
-    --foreground: 60 100% 97%;
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
-    --warning: 48 96% 89%;
-    --warning-foreground: 38 92% 50%;
+    --background: #0a0a0a;
+    --foreground: #f5f5f5;
+    --card: #3e4d3e;
+    --card-foreground: #f2dddd;
+    --popover: #0a0a0a;
+    --popover-foreground: #f5f5f5;
+    --primary: #eb5460;
+    --primary-foreground: #141414;
+    --secondary: #b3b3b3;
+    --secondary-foreground: #1a1a1a;
+    --muted: #262626;
+    --muted-foreground: #a3a3a3;
+    --accent: #262626;
+    --accent-foreground: #f5f5f5;
+    --destructive: #993333;
+    --destructive-foreground: #f5f5f5;
+    --border: #262626;
+    --input: #262626;
+    --ring: #d9d9d9;
+    --chart-1: #0077b6;
+    --chart-2: #0096c7;
+    --chart-3: #00b4d8;
+    --chart-4: #48cae4;
+    --chart-5: #90e0ef;
+    --warning: #f2f2f2;
+    --warning-foreground: #ffba08;
   }
 }
+
 @layer base {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }

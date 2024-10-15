@@ -21,7 +21,7 @@ const Badge = ({ icon: Icon, text, colorPalette }) => {
 
     return (
         <div
-            className="flex items-center text-foreground text-xs font-black uppercase rounded-lg px-2 py-1 transition-all duration-300 ease-in-out hover:animate-gradientMove"
+            className="flex items-center bg-primary text-primary-foreground text-xs font-black uppercase rounded-lg px-2 py-1 transition-all duration-300 ease-in-out hover:animate-gradientMove"
             style={{ background: gradient, backgroundSize: '200% 200%' }}
         >
             {Icon && <Icon className="mr-2" />}

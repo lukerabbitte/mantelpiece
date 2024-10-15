@@ -23,10 +23,10 @@ const ArticleStrip = ({ article, colorPalette }) => {
                 />
             </div>
             <div className="flex flex-col p-2">
-                <div className="text-foreground line-clamp-3">
+                <div className="text-card-foreground line-clamp-3">
                     <ColorHoverText text={article.title} colorPalette={colorPalette} />
                 </div>
-                <div className="flex flex-row gap-2 align-middle text-muted text-sm">
+                <div className="flex flex-row gap-2 align-middle text-card-foreground text-sm">
                     <p>{makeDateReadable(article.date)}</p>
                 </div>
                 <div className="w-full mt-auto pt-1">

@@ -25,16 +25,16 @@ const ArticleCard = ({ article, colorPalette }) => {
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black rounded-xl"></div>
                 <div className="flex flex-col gap-2 p-2 w-full absolute bottom-0">
                     <div className="">
-                        <div className="text-foreground line-clamp-3">
+                        <div className="text-neutral-100 line-clamp-3">
                             <ColorHoverText text={article.title} colorPalette={colorPalette} />
                         </div>
-                        <div className="flex flex-row gap-2 align-middle text-muted text-sm">
+                        <div className="flex flex-row gap-2 align-middle text-neutral-200 text-sm">
                             <p>{makeDateReadable(article.date)}</p>
                         </div>
                     </div>
-                    <div className="w-full">
+                    {/* <div className="w-full">
                         <BadgesHolder badges={articleBadges} colorPalette={colorPalette} />
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>
