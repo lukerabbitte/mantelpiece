@@ -1,5 +1,5 @@
 import React from 'react';
-import Badge from '@/lib/components/Badge';
+import Badge from '@/components/Badge';
 
 const BadgesHolder = ({ badges, colorPalette }) => {
     return (

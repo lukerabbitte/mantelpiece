@@ -1,7 +1,7 @@
 import React from 'react';
-import Navbar from '@/lib/components/Navbar';
+import Navbar from '@/components/Navbar';
 import '@/app/globals.css';
-import { ThemeProvider } from '@/lib/components/ThemeProvider';
+import { ThemeProvider } from '@/components/ThemeProvider';
 
 export const metadata = {
   title: "Mantelpiece",
@@ -14,7 +14,7 @@ const RootLayout = ({ children }) => {
       <body className="min-h-screen flex flex-col">
         <ThemeProvider
           attribute="class"
-          defaultTheme="light"
+          defaultTheme="system"
         >
           <Navbar />
           <main className="flex-grow p-4">

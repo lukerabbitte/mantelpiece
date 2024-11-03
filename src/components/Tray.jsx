@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import { FaTh, FaBars, FaMoon, FaSun } from "react-icons/fa";
-import Toggle from "@/lib/components/Toggle";
-import ArticleCard from "@/lib/components/ArticleCard";
-import ArticleStrip from "@/lib/components/ArticleStrip";
+import { FaTh, FaBars } from "react-icons/fa";
+import Toggle from "@/components/Toggle";
+import ArticleCard from "@/components/ArticleCard";
+import ArticleStrip from "@/components/ArticleStrip";
 
 const Tray = ({ articles }) => {
     const [cardViewingMode, setCardViewingMode] = useState("vertical"); // small horizontal card or larger vertical card

@@ -1,6 +1,6 @@
 import React from 'react';
 import { getRandomColorIndex } from '@/utils/getRandomColorIndex';
-import { useColorPalette } from '@/lib/components/ThemeProvider';
+import { useColorPalette } from '@/components/ThemeProvider';
 
 const Badge = ({ icon: Icon, text, colorPalette }) => {
 

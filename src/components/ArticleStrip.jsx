@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { FaNewspaper, FaCalendarAlt } from 'react-icons/fa';
-import BadgesHolder from '@/lib/components/BadgesHolder';
+import BadgesHolder from '@/components/BadgesHolder';
 import ColorHoverText from './ColorHoverText';
 import { makeDateReadable } from '@/utils/makeDateReadable';
 
@@ -18,13 +18,13 @@ const ArticleStrip = ({ article, colorPalette }) => {
                     fill
                     sizes="100vw, (min-width: 480px) 100vw, (min-width: 640px) 50vw, (min-width: 768px) 50vw, (min-width: 1024px) 33vw, (min-width: 1280px) 25vw, (min-width: 1536px) 20vw"
                     alt="Image of article"
-                    style={{ objectFit: 'cover' }}
                     className="rounded-xl"
                 />
             </div>
             <div className="flex flex-col p-2">
                 <div className="text-card-foreground line-clamp-3">
-                    <ColorHoverText text={article.title} colorPalette={colorPalette} />
+                    {/* <ColorHoverText text={article.title} colorPalette={colorPalette} /> */}
+                    {article.title}
                 </div>
                 <div className="flex flex-row gap-2 align-middle text-card-foreground text-sm">
                     <p>{makeDateReadable(article.date)}</p>
