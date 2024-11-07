@@ -47,6 +47,54 @@ export const dummyArticles = [
     publication: "Hot Press",
     date: "May 20, 2024",
   },
+  {
+    id: 6,
+    image:
+      "https://media.journoportfolio.com/users/393410/images/c04b6ee9-dfc6-411f-8734-47e4a202442e_max-600.jpg",
+    title: "Album Review: Lizzy McAlpine, Older",
+    publication: "Hot Press",
+    date: "May 20, 2024",
+  },
+  {
+    id: 6,
+    image:
+      "https://media.journoportfolio.com/users/393410/images/c04b6ee9-dfc6-411f-8734-47e4a202442e_max-600.jpg",
+    title: "Album Review: Lizzy McAlpine, Older",
+    publication: "Hot Press",
+    date: "May 20, 2024",
+  },
+  {
+    id: 6,
+    image:
+      "https://media.journoportfolio.com/users/393410/images/c04b6ee9-dfc6-411f-8734-47e4a202442e_max-600.jpg",
+    title: "Album Review: Lizzy McAlpine, Older",
+    publication: "Hot Press",
+    date: "May 20, 2024",
+  },
+  {
+    id: 6,
+    image:
+      "https://media.journoportfolio.com/users/393410/images/c04b6ee9-dfc6-411f-8734-47e4a202442e_max-600.jpg",
+    title: "Album Review: Lizzy McAlpine, Older",
+    publication: "Hot Press",
+    date: "May 20, 2024",
+  },
+  {
+    id: 6,
+    image:
+      "https://media.journoportfolio.com/users/393410/images/c04b6ee9-dfc6-411f-8734-47e4a202442e_max-600.jpg",
+    title: "Album Review: Lizzy McAlpine, Older",
+    publication: "Hot Press",
+    date: "May 20, 2024",
+  },
+  {
+    id: 6,
+    image:
+      "https://media.journoportfolio.com/users/393410/images/c04b6ee9-dfc6-411f-8734-47e4a202442e_max-600.jpg",
+    title: "Album Review: Lizzy McAlpine, Older",
+    publication: "Hot Press",
+    date: "May 20, 2024",
+  },
 ];
 
 // Odd bug exists where we have to first render one of these colors as the chosen background or foreground color before it shows up correctly

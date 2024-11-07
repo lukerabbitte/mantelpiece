@@ -19,8 +19,8 @@ html {
     --card-foreground: #2d2d2d;
     --popover: #ffffff;
     --popover-foreground: #0a0a0a;
-    --primary: #f77883;
-    --primary-foreground: #141414;
+    --primary: #70141c;
+    --primary-foreground: #f4ecec;
     --secondary: #3b3b3b;
     --secondary-foreground: #1a1a1a;
     --muted: #f5f5f5;
@@ -37,7 +37,7 @@ html {
     --chart-3: #264653;
     --chart-4: #f4a261;
     --chart-5: #e9c46a;
-    --radius: 0.5rem;
+    --radius: 4rem;
     --warning: #ffba08;
     --warning-foreground: #f2f2f2;
   }

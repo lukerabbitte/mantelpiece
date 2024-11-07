@@ -7,8 +7,10 @@ import {
   ChevronRightIcon,
   DotFilledIcon,
 } from "@radix-ui/react-icons"
+import clsx from "clsx";
+import { twMerge } from "tailwind-merge";
 
-import { cn } from "@/lib/utils"
+const cn = (...inputs) => twMerge(clsx(inputs));
 
 const DropdownMenu = DropdownMenuPrimitive.Root
 
