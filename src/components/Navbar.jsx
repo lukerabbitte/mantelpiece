@@ -28,17 +28,13 @@ const Navbar = () => {
       <div className="flex flex-row gap-4">
         <Button asChild variant={buttonVariant} xs>
           <Link href="/">
-            <p className="font-black">
-              Home
-            </p>
+            <p className="font-black tracking-wide">Home</p>
           </Link>
         </Button>
 
         <Button asChild variant={buttonVariant}>
           <Link href="/posts">
-            <p className="font-black">
-              Posts
-            </p>
+            <p className="font-black tracking-wide">Posts</p>
           </Link>
         </Button>
       </div>
