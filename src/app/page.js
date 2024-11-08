@@ -59,31 +59,10 @@ export default function Home() {
           <div className="absolute inset-0 bg-klimt-pattern filter blur-lg"></div>
         </div>
         <div className="faster-moving-text z-30">
-          <div className="flex flex-row p-4 mt-6 items-center rounded-md w-1/2 h-36 backdrop-blur-xl border-2 border-muted-foreground">
-            <p className="text-4xl text-yellow-50">Check out my articles <a href="/posts">here</a>?</p>
-          </div>
+          <h1 className="text-4xl text-yellow-50">
+            A writer in Dublin.
+          </h1>
         </div>
-        <div className="faster-moving-text z-30">
-          <div className="flex flex-row p-4 ml-auto items-center rounded-md w-1/2 h-36 backdrop-blur-xl border-2 border-muted-foreground">
-            <p className="text-4xl text-yellow-50">Sure thing babe ❤️</p>
-          </div>
-        </div>
-        <h1 className="text-4xl text-yellow-50">
-          Dublin-based journalist gifted in the art of telling things how they
-          are
-        </h1>
-        <h1 className="text-4xl text-yellow-50">
-          Dublin-based journalist gifted in the art of telling things how they
-          are
-        </h1>
-        <h1 className="text-4xl text-yellow-50">
-          Dublin-based journalist gifted in the art of telling things how they
-          are
-        </h1>
-        <h1 className="text-4xl text-yellow-50">
-          Dublin-based journalist gifted in the art of telling things how they
-          are
-        </h1>
       </div>
     </main>
   );

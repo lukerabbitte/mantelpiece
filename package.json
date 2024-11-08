@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 5400",
+    "dev": "next dev -p 5400 --experimental-https",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -19,7 +19,7 @@
     "clsx": "^2.1.1",
     "framer-motion": "^11.11.11",
     "lucide-react": "^0.447.0",
-    "next": "14.2.7",
+    "next": "^15.0.2",
     "next-themes": "^0.3.0",
     "react": "^18",
     "react-dom": "^18",
