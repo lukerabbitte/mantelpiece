@@ -19,21 +19,10 @@ export default function Home() {
       });
     };
 
-    const handleFasterMovingText = (fasterMovingText, maxOffset) => {
-      fasterMovingText.forEach((text) => {
-        const offset = Math.min(window.scrollY * 1.05, maxOffset);
-        text.style.transform = `translateY(-${offset}px)`;
-      });
-    };
-
     const handleScroll = () => {
       const letters = document.querySelectorAll(".parallax-letter");
-      const fasterMovingText = document.querySelectorAll(".faster-moving-text");
-      const klimtBg = document.querySelector(".bg-klimt-pattern");
-      const maxOffset = klimtBg.offsetHeight;
 
       handleLetters(letters);
-      handleFasterMovingText(fasterMovingText, maxOffset);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -44,8 +33,8 @@ export default function Home() {
 
   return (
     <main className="flex flex-col h-screen">
-      <div className="flex flex-col gap-4">
-        <h1 className="text-8xl font-bold p-2 h-3/4 lg:h-96 ml-auto break-words place-content-end -tracking-tighter">
+      <div className="relative min-h-[600vh]">
+        <h1 className="text-4xl md:text-8xl border-4 border-red-900 font-bold break-words place-content-end -tracking-tighter fixed bottom-0 w-full">
           {"Caroline Kelly".split("").map((char, index) => (
             <span
               key={index}
@@ -55,13 +44,15 @@ export default function Home() {
             </span>
           ))}
         </h1>
-        <div className="relative w-full h-96 p-4 items-center place-self-start place-content-center top-0 z-0">
-          <div className="absolute inset-0 bg-klimt-pattern filter blur-lg"></div>
-        </div>
-        <div className="faster-moving-text z-30">
-          <h1 className="text-4xl text-yellow-50">
-            A writer in Dublin.
-          </h1>
+      </div>
+      <div>
+        {/* <div>
+          <div className="w-full bg-klimt-pattern filter bg-fixed rounded-md blur-md h-96 z-0"></div>
+        </div> */}
+        <div>
+          <p className="text-6xl">
+            HELLO
+          </p>
         </div>
       </div>
     </main>
