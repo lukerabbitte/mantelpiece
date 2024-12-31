@@ -18,8 +18,6 @@ const fetchArticles = async () => {
 const UserPosts = async () => {
     const articles = await fetchArticles();
 
-    console.log("articles", articles);
-
     return (
         <div>
             <Tray articles={articles} />

@@ -6,7 +6,7 @@ import { makeDateReadable } from '@/utils/makeDateReadable';
 
 const ArticleStrip = ({ article }) => {
     const articleBadges = [
-        { icon: FaNewspaper, text: article.publication }
+        { icon: FaNewspaper, text: article.publisher }
     ];
 
     return (

@@ -3,17 +3,16 @@
 import React from "react";
 import Link from "next/link";
 import ArticleStrip from "@/components/ArticleStrip";
-import { addRequestMeta } from "next/dist/server/request-meta";
 
 const Tray = ({ articles }) => {
     return (
         <div>
             {!articles ? (
                 <div>
-                    <p>Loading...</p>
+                    <p className="text-center text-lg">Loading...</p>
                 </div>
             ) : (
-                <div className="flex flex-col gap-4">
+                <div className="grid gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
                     {articles.map((article) => (
                         <Link key={article.id} href={`/posts/${article.id}`}>
                             <ArticleStrip article={article} />
@@ -24,6 +23,5 @@ const Tray = ({ articles }) => {
         </div>
     );
 };
-addRequestMeta;
 
 export default Tray;
