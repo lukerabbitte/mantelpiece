@@ -10,7 +10,7 @@ const ArticleStrip = ({ article }) => {
     ];
 
     return (
-        <div className="flex flex-row h-36 bg-card rounded-xl gap-2 cursor-pointer scale-100 hover:scale-[1.002] duration-200 ease-in-out">
+        <div className="flex flex-row min-h-48 md:min-h-24 bg-card rounded-xl gap-2 cursor-pointer">
             <div className="relative flex-shrink-0 w-1/4 min-w-28 min-h-16">
                 <Image
                     src={article.image}
@@ -23,12 +23,12 @@ const ArticleStrip = ({ article }) => {
                     <BadgesHolder badges={articleBadges} />
                 </div>
             </div>
-            <div className="flex flex-col p-2">
-                <div className="text-card-foreground font-bold line-clamp-3">{article.title}</div>
-                <div className="flex flex-row gap-2 align-middle text-card-foreground text-sm">
+            <div className="flex flex-col p-2 h-full">
+                <h1 className="text-card-foreground font-bold">{article.title}</h1>
+                {/* <div className="flex flex-row gap-2 align-middle text-card-foreground text-sm">
                     <p>{makeDateReadable(article.date)}</p>
-                </div>
-                <div className="w-full mt-auto line-clamp-1 xs:line-clamp-2 lg:line-clamp-3">
+                </div> */}
+                <div className="w-full text-card-foreground">
                     <p>{article.excerpt}</p>
                 </div>
             </div>

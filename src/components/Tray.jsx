@@ -12,9 +12,9 @@ const Tray = ({ articles }) => {
                     <p className="text-center text-lg">Loading...</p>
                 </div>
             ) : (
-                <div className="grid gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
+                <div className="grid gap-4 grid-cols-1">
                     {articles.map((article) => (
-                        <Link key={article.id} href={`/posts/${article.id}`}>
+                        <Link key={article.slug} href={`/posts/${article.slug}`}>
                             <ArticleStrip article={article} />
                         </Link>
                     ))}
