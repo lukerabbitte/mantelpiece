@@ -54,6 +54,8 @@ const FloatingText = ({ text }) => {
         setInitialPositions();
 
         // Start listening to scroll, set random positions as we scroll down and revert to base positions when we return to top
+        
+        // TODO it would be nice to detect start of scroll event and trigger the updates every 20ms while scrolling is true.
         const handleScroll = debounce(() => {
             const outerTop = outerTextHolderRef.current.getBoundingClientRect().top;
             const innerTop = innerTextHolderRef.current.getBoundingClientRect().top;
@@ -65,16 +67,10 @@ const FloatingText = ({ text }) => {
             }
         }, 20);
 
-        const handleResize = debounce(() => {
-            setInitialPositions();  // need to come back and make this actually work for tablet resizes - calculate new client box width and then space the letters accordingly upon reaching the top bounding box again.
-        }, 200);
-
         window.addEventListener("scroll", handleScroll);
-        window.addEventListener("resize", handleResize);
 
         return () => {
             window.removeEventListener("scroll", handleScroll);
-            window.removeEventListener("resize", handleResize);
         };
     }, []);
 

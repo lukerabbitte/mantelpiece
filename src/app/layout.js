@@ -10,20 +10,15 @@ export const metadata = {
 
 const RootLayout = ({ children }) => {
   return (
-    <html lang="en">
-      <body className="min-h-screen flex flex-col">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-        >
-          <Navbar />
-          <main className="flex-grow p-4">
-            {children}
-          </main>
-          {/* <Footer /> */}
-        </ThemeProvider>
-      </body>
-    </html>
+      <html lang="en" suppressHydrationWarning>
+          <body className="min-h-screen flex flex-col">
+              <ThemeProvider attribute="class" defaultTheme="system">
+                  <Navbar />
+                  <main className="flex-grow p-4">{children}</main>
+                  {/* <Footer /> */}
+              </ThemeProvider>
+          </body>
+      </html>
   );
 }
 

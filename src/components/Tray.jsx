@@ -3,21 +3,27 @@
 import React from "react";
 import Link from "next/link";
 import ArticleStrip from "@/components/ArticleStrip";
+import { addRequestMeta } from "next/dist/server/request-meta";
 
 const Tray = ({ articles }) => {
-    const colorPalette = ["#379392", "#4fb0c6", "#4f86c6", "#744fc6"];
-
     return (
-        <div className="flex flex-col gap-4">
-            <div className="flex flex-col">
-                {articles.map((article) => (
-                    <Link href={`/posts/${article.id}`}>
-                        <ArticleStrip key={article.id} article={article} colorPalette={colorPalette} />
-                    </Link>
-                ))}
-            </div>
+        <div>
+            {!articles ? (
+                <div>
+                    <p>Loading...</p>
+                </div>
+            ) : (
+                <div className="flex flex-col gap-4">
+                    {articles.map((article) => (
+                        <Link key={article.id} href={`/posts/${article.id}`}>
+                            <ArticleStrip article={article} />
+                        </Link>
+                    ))}
+                </div>
+            )}
         </div>
     );
 };
+addRequestMeta;
 
 export default Tray;

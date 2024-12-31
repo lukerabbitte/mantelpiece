@@ -26,7 +26,7 @@ const Navbar = () => {
   return (
     <div className="sticky top-0 z-50 flex flex-row justify-between items-center p-4">
       <div className="flex flex-row gap-4">
-        <Button asChild variant={buttonVariant} xs>
+        <Button asChild variant={buttonVariant}>
           <Link href="/">
             <p className="font-black tracking-wide">Home</p>
           </Link>
