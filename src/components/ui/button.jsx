@@ -20,13 +20,13 @@ const buttonVariants = cva(
                 ghost: "hover:bg-accent hover:text-accent-foreground",
                 link: "text-primary underline-offset-4 hover:underline",
                 blurred:
-                    "bg-transparent text-foreground backdrop-blur-sm hover:scale-105 hover:bg-primary hover:text-primary-foreground transition-all duration-500 ease-in-out",
+                    "bg-slate-500/20 backdrop-blur-sm text-foreground hover:scale-105 hover:bg-primary hover:text-primary-foreground transition-all duration-500 ease-in-out",
             },
             size: {
                 default: "h-9 px-4 py-2",
                 sm: "h-8 rounded-md px-3 text-xs",
                 lg: "h-10 rounded-md px-8",
-                evenPad: "h-9 p-2 w-9"
+                evenPad: "h-9 p-2 w-9",
             },
         },
         defaultVariants: {
