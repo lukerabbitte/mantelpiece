@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export function useMDXComponents(components) {
     return {
         h1: ({ children }) => <h1 className="text-red-600">{children}</h1>,

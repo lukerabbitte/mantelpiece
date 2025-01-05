@@ -41,7 +41,7 @@ export default async function ArticlePage({ params }) {
                 />
             </div>
 
-            <div className="grid grid-cols-2">
+            <div className="grid grid-cols-[3fr_1fr]">
                 <h1 className=" text-primary text-lg font-bold">{article.title}</h1>
                 <button className="flex flex-row justify-end">
                     <FaEdit className="text-primary" />
