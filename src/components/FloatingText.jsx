@@ -38,8 +38,8 @@ const FloatingText = ({ text }) => {
             textLettersRef.current.forEach((letter) => {
                 const letterHeight = letter?.offsetHeight;
                 const letterWidth = letter?.offsetWidth;
-                const innerTextHolderHeight = innerTextHolderRef.current.offsetHeight;
-                const innerTextHolderWidth = innerTextHolderRef.current.offsetWidth;
+                const innerTextHolderHeight = innerTextHolderRef.current?.offsetHeight;
+                const innerTextHolderWidth = innerTextHolderRef.current?.offsetWidth;
 
                 const adjustedTop = Math.random() * (innerTextHolderHeight - letterHeight);
                 const adjustedLeft = Math.random() * (innerTextHolderWidth - letterWidth);
