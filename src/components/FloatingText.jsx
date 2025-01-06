@@ -3,6 +3,18 @@
 import { useEffect, useRef } from "react";
 import { debounce } from "@/utils/debounce";
 
+// Corresponding levels to simulate distance from each letter changing as we scroll
+const DISTANCE_LEVELS = [
+    { blur: 0, size: 1, opacity: 1 },
+    { blur: 0.03, size: 0.95, opacity: 0.9 },
+    { blur: 0.06, size: 0.92, opacity: 0.8 },
+    { blur: 0.09, size: 0.87, opacity: 0.7 },
+    { blur: 0.12, size: 0.82, opacity: 0.6 },
+    { blur: 0.15, size: 0.75, opacity: 0.5 },
+    { blur: 0.18, size: 0.58, opacity: 0.4 },
+    { blur: 0.2, size: 0.5, opacity: 0.2 },
+];
+
 const FloatingText = ({ text }) => {
     const outerTextHolderRef = useRef(null);
     const innerTextHolderRef = useRef(null);
@@ -32,9 +44,17 @@ const FloatingText = ({ text }) => {
                 const adjustedTop = Math.random() * (innerTextHolderHeight - letterHeight);
                 const adjustedLeft = Math.random() * (innerTextHolderWidth - letterWidth);
 
+                const randomLevel =
+                    DISTANCE_LEVELS[Math.floor(Math.random() * DISTANCE_LEVELS.length)];
+
                 letter.style.position = "absolute";
                 letter.style.top = `${adjustedTop}px`;
                 letter.style.left = `${adjustedLeft}px`;
+                letter.style.transition = "none";
+
+                letter.style.filter = `blur(${randomLevel.blur}px)`;
+                letter.style.transform = `scale(${randomLevel.size})`;
+                letter.style.opacity = randomLevel.opacity;
             });
         };
 
@@ -45,8 +65,11 @@ const FloatingText = ({ text }) => {
                 letter.style.position = "absolute";
                 letter.style.top = `${top}px`;
                 letter.style.left = `${left}px`;
-                letter.style.transform = "translate(0, 0)";
-                letter.style.transition = "all 0.5s ease-in-out";
+                letter.style.transition = "all 0.15s ease-in-out";
+
+                letter.style.transform = "translate(0, 0) scale(1)";
+                letter.style.filter = "none";
+                letter.style.opacity = "1";
             });
         };
 
@@ -54,18 +77,18 @@ const FloatingText = ({ text }) => {
         setInitialPositions();
 
         // Start listening to scroll, set random positions as we scroll down and revert to base positions when we return to top
-        
+
         // TODO it would be nice to detect start of scroll event and trigger the updates every 20ms while scrolling is true.
         const handleScroll = debounce(() => {
             const outerTop = outerTextHolderRef.current.getBoundingClientRect().top;
             const innerTop = innerTextHolderRef.current.getBoundingClientRect().top;
 
-            if (innerTop === outerTop) {
+            if (outerTop >= innerTop) {
                 setBasePositions();
             } else {
                 setRandomPositions();
             }
-        }, 20);
+        }, 2);
 
         window.addEventListener("scroll", handleScroll);
 
@@ -76,13 +99,13 @@ const FloatingText = ({ text }) => {
 
     return (
         <div ref={outerTextHolderRef} className="relative h-[600vh] w-full">
-            <div ref={innerTextHolderRef} className="sticky top-0 h-screen transition-all duration-500 ease-in-out">
+            <div ref={innerTextHolderRef} className="sticky top-0 h-screen">
                 <div className="h-full flex font-black text-4xl md:text-8xl justify-center pt-32">
                     {text.split("").map((char, index) => (
                         <span
                             key={index}
                             ref={(el) => (textLettersRef.current[index] = el)}
-                            className="transition-all duration-500 ease-in-out"
+                            className=""
                         >
                             {char === " " ? "\u00A0" : char}
                         </span>

@@ -27,7 +27,7 @@ const Navbar = () => {
     return (
         <div className="sticky top-0 z-50 flex flex-row justify-between items-center p-4">
             <div className="flex flex-row gap-4">
-                <Button asChild variant={buttonVariant} size="evenPad">
+                <Button asChild variant={buttonVariant} size="evenPad" title="Home">
                     <Link href="/">
                         <div className="bg-primary-foreground rounded-md flex justify-center items-center">
                             <FaHome className="text-foreground p-[0.4em] w-6 h-6" />
@@ -35,7 +35,7 @@ const Navbar = () => {
                     </Link>
                 </Button>
 
-                <Button asChild variant={buttonVariant} size="evenPad">
+                <Button asChild variant={buttonVariant} size="evenPad" title="Articles">
                     <Link href="/posts">
                         <div className="bg-primary-foreground rounded-md flex justify-center items-center">
                             <FaList className="text-foreground p-[0.4em] w-6 h-6" />
