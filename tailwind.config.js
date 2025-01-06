@@ -1,32 +1,28 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    purge: {
-      options: {
-        safelist: ['dark:bg-red-500/20', 'dark:bg-red-500/100'], // Ensure these classes are not purged
-      },
-    },
     darkMode: ["selector", "class"],
     content: ["./src/components/**/*.{js,ts,jsx,tsx,mdx}", "./src/app/**/*.{js,ts,jsx,tsx,mdx}"],
     theme: {
         extend: {
             fontFamily: {
                 sans: [
-                    "Source Sans Pro",
+                    "Rosario",
                     "Inter",
                     "system-ui",
                     "-apple-system",
                     "BlinkMacSystemFont",
-                    "Segoe UI",
+                    '"Segoe UI"',
                     "Roboto",
-                    "Helvetica Neue",
+                    '"Helvetica Neue"',
                     "Arial",
-                    "Noto Sans",
+                    '"Noto Sans"',
                     "sans-serif",
-                    "Apple Color Emoji",
-                    "Segoe UI Emoji",
-                    "Segoe UI Symbol",
-                    "Noto Color Emoji",
+                    '"Apple Color Emoji"',
+                    '"Segoe UI Emoji"',
+                    '"Segoe UI Symbol"',
+                    '"Noto Color Emoji"',
                 ],
+                highlight: ["Inter", "system-ui", "sans-serif"],
             },
             backgroundImage: {
                 "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
@@ -35,6 +31,7 @@ module.exports = {
                 "klimt-pattern": "url('/images/klimt-min.jpg')",
             },
             screens: {
+                xxs: "340px",
                 xs: "480px",
                 "3xl": "1920px",
             },
@@ -114,8 +111,8 @@ module.exports = {
                     4: "var(--chart-4)",
                     5: "var(--chart-5)",
                 },
-                toggle: {
-                    500: "var(--toggle-500)",
+                klimt: {
+                    500: "#DA667D",
                 },
             },
             borderRadius: {
