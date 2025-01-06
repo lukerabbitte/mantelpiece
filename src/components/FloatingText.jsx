@@ -98,9 +98,9 @@ const FloatingText = ({ text }) => {
     }, []);
 
     return (
-        <div ref={outerTextHolderRef} className="relative h-[300vh] lg:h-[450vh] w-full">
+        <div ref={outerTextHolderRef} className="relative h-[1600vh] lg:h-[300vh] w-full">
             <div ref={innerTextHolderRef} className="sticky top-0 h-screen">
-                <div className="h-full flex font-bold text-4xl xxs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl justify-center pt-32">
+                <div className="h-full flex font-bold text-4xl xxs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl justify-center">
                     {text.split("").map((char, index) => (
                         <span
                             key={index}
