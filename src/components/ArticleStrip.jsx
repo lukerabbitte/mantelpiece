@@ -18,6 +18,7 @@ const ArticleStrip = ({ article }) => {
                     sizes="100vw, (min-width: 480px) 100vw, (min-width: 640px) 50vw, (min-width: 768px) 50vw, (min-width: 1024px) 33vw, (min-width: 1280px) 25vw, (min-width: 1536px) 20vw"
                     alt="Image of article"
                     className="rounded-xl object-cover"
+                    priority={true}
                 />
                 <div className="absolute">
                     <BadgesHolder badges={articleBadges} />

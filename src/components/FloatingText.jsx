@@ -24,8 +24,8 @@ const FloatingText = ({ text }) => {
     useEffect(() => {
         const setInitialPositions = () => {
             textLettersRef.current.forEach((letter, index) => {
-                const originalLeft = letter.offsetLeft;
-                const originalTop = letter.offsetTop;
+                const originalLeft = letter?.offsetLeft;
+                const originalTop = letter?.offsetTop;
 
                 initialLetterPositions.current[index] = {
                     left: originalLeft,
@@ -36,8 +36,8 @@ const FloatingText = ({ text }) => {
 
         const setRandomPositions = () => {
             textLettersRef.current.forEach((letter) => {
-                const letterHeight = letter.offsetHeight;
-                const letterWidth = letter.offsetWidth;
+                const letterHeight = letter?.offsetHeight;
+                const letterWidth = letter?.offsetWidth;
                 const innerTextHolderHeight = innerTextHolderRef.current.offsetHeight;
                 const innerTextHolderWidth = innerTextHolderRef.current.offsetWidth;
 
@@ -80,8 +80,8 @@ const FloatingText = ({ text }) => {
 
         // TODO it would be nice to detect start of scroll event and trigger the updates every 20ms while scrolling is true.
         const handleScroll = debounce(() => {
-            const outerTop = outerTextHolderRef.current.getBoundingClientRect().top;
-            const innerTop = innerTextHolderRef.current.getBoundingClientRect().top;
+            const outerTop = outerTextHolderRef.current?.getBoundingClientRect().top;
+            const innerTop = innerTextHolderRef.current?.getBoundingClientRect().top;
 
             if (outerTop >= innerTop) {
                 setBasePositions();
@@ -98,7 +98,7 @@ const FloatingText = ({ text }) => {
     }, []);
 
     return (
-        <div ref={outerTextHolderRef} className="relative h-[1600vh] lg:h-[300vh] w-full">
+        <div ref={outerTextHolderRef} className="relative h-[1600vh] sm:h-[500vh] md:h-[300vh] w-full">
             <div ref={innerTextHolderRef} className="sticky top-0 h-screen">
                 <div className="h-full flex font-bold text-4xl xxs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl justify-center">
                     {text.split("").map((char, index) => (
