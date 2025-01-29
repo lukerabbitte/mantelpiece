@@ -27,7 +27,7 @@ module.exports = {
             backgroundImage: {
                 "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
                 "gradient-conic":
-                    "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+                    "conic-gradient(from 0deg at 50% 50%, var(--tw-gradient-stops))",
                 "klimt-pattern": "url('/images/klimt-min.jpg')",
             },
             screens: {

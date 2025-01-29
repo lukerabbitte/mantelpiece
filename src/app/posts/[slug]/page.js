@@ -39,21 +39,28 @@ export default async function ArticlePage({ params }) {
                         fill
                         sizes="100vw"
                         alt="Image of article"
-                        className="rounded-xl object-cover xs:object-cover"
+                        className="rounded-t-xl object-cover xs:object-cover"
                     />
                 </div>
 
-                <div className="flex flex-col gap-4 py-4 rounded-b-xl">
-                    <div className="flex flex-row gap-4 justify-between">
-                        <div className="flex flex-col">
-                            <h1 className="text-primary text-2xl font-black">{article.title}</h1>
+                <div className="relative rounded-b-xl">
+                    <div className="absolute top-0 w-full h-32 bg-card bg-gradient-to-b from-card to-background -z-10"></div>
+                    <div className="flex flex-col gap-4 p-4">
+                        <div className="flex flex-row gap-4 justify-between">
+                            <div className="flex flex-col">
+                                <h1 className="text-primary text-2xl font-black">
+                                    {article.title}
+                                </h1>
+                            </div>
+                            <div className="text-primary place-content-center">
+                                <NiceDate articleTimestampz={article.written_at} />
+                            </div>
                         </div>
-                        <div className="text-primary place-content-center">
-                            <NiceDate articleTimestampz={article.written_at} />
-                        </div>
-                    </div>
 
-                    <p className="flex flex-row text-right font-bold">{article.excerpt}</p>
+                        <p className="flex flex-row text-card-foreground text-right font-bold">
+                            {article.excerpt}
+                        </p>
+                    </div>
                 </div>
             </div>
 
