@@ -50,7 +50,7 @@ const FloatingText = ({ text }) => {
                 letter.style.position = "absolute";
                 letter.style.top = `${adjustedTop}px`;
                 letter.style.left = `${adjustedLeft}px`;
-                letter.style.transition = "none";
+                letter.style.transition = "all 0.15s ease-in-out";
 
                 letter.style.filter = `blur(${randomLevel.blur}px)`;
                 letter.style.transform = `scale(${randomLevel.size})`;
@@ -67,8 +67,8 @@ const FloatingText = ({ text }) => {
                 letter.style.left = `${left}px`;
                 letter.style.transition = "all 0.15s ease-in-out";
 
-                letter.style.transform = "translate(0, 0) scale(1)";
                 letter.style.filter = "none";
+                letter.style.transform = "translate(0, 0) scale(1)";
                 letter.style.opacity = "1";
             });
         };
@@ -78,8 +78,8 @@ const FloatingText = ({ text }) => {
 
         // Start listening to scroll, set random positions as we scroll down and revert to base positions when we return to top
 
-        // TODO it would be nice to detect start of scroll event and trigger the updates every 20ms while scrolling is true.
-        const handleScroll = debounce(() => {
+        // TODO --- it would be nice to detect the interval of scroll event being fired and scroll event ending and trigger the updates every 5ms during this interval of scrolling being true.
+        const handleScroll = () => {
             const outerTop = outerTextHolderRef.current?.getBoundingClientRect().top;
             const innerTop = innerTextHolderRef.current?.getBoundingClientRect().top;
 
@@ -88,7 +88,7 @@ const FloatingText = ({ text }) => {
             } else {
                 setRandomPositions();
             }
-        }, 2);
+        };
 
         window.addEventListener("scroll", handleScroll);
 
@@ -98,7 +98,10 @@ const FloatingText = ({ text }) => {
     }, []);
 
     return (
-        <div ref={outerTextHolderRef} className="relative h-[1600vh] sm:h-[500vh] md:h-[300vh] w-full">
+        <div
+            ref={outerTextHolderRef}
+            className="relative h-[1600vh] sm:h-[500vh] md:h-[300vh] w-full"
+        >
             <div ref={innerTextHolderRef} className="sticky top-0 h-screen">
                 <div className="h-full flex font-bold text-4xl xxs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl justify-center">
                     {text.split("").map((char, index) => (
