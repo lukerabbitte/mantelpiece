@@ -33,7 +33,7 @@ export default async function ArticlePage({ params }) {
     return (
         <div className="flex flex-col items-center w-full gap-4">
             <div className="w-full max-w-full sm:max-w-prose">
-                <div className="relative w-full justify-center max-w:64 md:max-w:32 min-h-96 sm:min-h-80 xl:min-h-80">
+                <div className="relative w-full justify-center max-w:64 md:max-w:32 min-h-72 sm:min-h-80 xl:min-h-80">
                     <Image
                         src={article.image}
                         fill

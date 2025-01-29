@@ -13,16 +13,18 @@ const ThemeToggle = ({ blurUponScroll }) => {
     };
 
     return (
-        <Toggle
-            id="theme-toggle"
-            name="theme-toggle"
-            checked={theme === "dark"}
-            onChange={handleChange}
-            icon1={FaSun}
-            icon2={FaMoon}
-            small={false}
-            blurUponScroll
-        />
+        <div className="transition-all duration-400 hover:opacity-90 hover:scale-105">
+            <Toggle
+                id="theme-toggle"
+                name="theme-toggle"
+                checked={theme === "dark"}
+                onChange={handleChange}
+                icon1={FaSun}
+                icon2={FaMoon}
+                small={false}
+                blurUponScroll
+            />
+        </div>
     );
 };
 
