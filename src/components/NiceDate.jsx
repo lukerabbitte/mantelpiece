@@ -12,7 +12,7 @@ const NiceDate = ({ articleTimestampz }) => {
 
     return (
         <time dateTime={articleDate.toISOString()} className="relative">
-            <div className="flex flex-col items-center justify-center p-6 aspect-square rounded-full bg-primary bg-gradient-to-t from-card to-background text-foreground text-xs">
+            <div className="flex flex-col items-center justify-center p-6 aspect-square rounded-full bg-primary text-primary-foreground">
                 <div className="relative">
                     <abbr className="relative font-bold" aria-label="Month">
                         {articleMonth}
@@ -20,7 +20,7 @@ const NiceDate = ({ articleTimestampz }) => {
                     <span className="absolute bottom-5 right-5" aria-label="Day">
                         {articleDay}
                     </span>
-                    <span className="absolute top-4 left-5" aria-label="Year">
+                    <span className="absolute top-4 left-4" aria-label="Year">
                         {articleYear}
                     </span>
                 </div>

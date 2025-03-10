@@ -31,7 +31,7 @@ const Navbar = () => {
     };
 
     return (
-        <div className="sticky top-0 z-50 flex flex-row justify-between items-center p-4">
+        <div className="sticky top-0 z-50 flex flex-row justify-between items-center px-4 py-2">
             <div className="flex flex-row gap-4">
                 <Button
                     asChild
@@ -42,7 +42,7 @@ const Navbar = () => {
                 >
                     <Link href="/">
                         <div className="bg-primary-foreground rounded-md flex justify-center items-center">
-                            <FaHome className="text-foreground p-[0.6em] w-9 h-9" />
+                            <FaHome className="text-foreground p-[0.5em] w-7 h-7" />
                         </div>
                     </Link>
                 </Button>
@@ -56,7 +56,7 @@ const Navbar = () => {
                 >
                     <Link href="/posts">
                         <div className="bg-primary-foreground rounded-md flex justify-center items-center">
-                            <FaList className="text-foreground p-[0.7em] w-9 h-9" />
+                            <FaList className="text-foreground p-[0.5em] w-7 h-7" />
                         </div>
                     </Link>
                 </Button>

@@ -17,7 +17,7 @@ const RootLayout = ({ children }) => {
                   <main className="flex-grow p-4">{children}</main>
                   {/* <Footer /> */}
               </ThemeProvider>
-          </body>
+          </body> 
       </html>
   );
 }

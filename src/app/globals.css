@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Rosario:ital,wght@0,300..700;1,300..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Rosario:ital,wght@0,300..700;1,300..700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,78 +6,76 @@
 /* https://stackoverflow.com/questions/18548465/prevent-scrollbar-from-adding-up-to-the-width-of-page-on-chrome */
 /* Chosen as best way of not letting scrollbar mess with width calculations */
 html {
-  overflow-y: scroll;
+    overflow-y: scroll;
 }
 
 @layer base {
-  :root {
-    --background: #fffdfa;
-    --foreground: #1a1a1a;
-    --card: #d9ead9;
-    --card-foreground: #2d2d2d;
-    --popover: #ffffff;
-    --popover-foreground: #0a0a0a;
-    --primary: #70141c;
-    --primary-foreground: #f4ecec;
-    --secondary: #3b3b3b;
-    --secondary-foreground: #1a1a1a;
-    --muted: #f5f5f5;
-    --muted-foreground: #737373;
-    --accent: #9cd19c;
-    --accent-foreground: #1a1a1a;
-    --destructive: #e63946;
-    --destructive-foreground: #ffffff;
-    --border: #e5e5e5;
-    --input: #e5e5e5;
-    --ring: #0a0a0a;
-    --chart-1: #e76f51;
-    --chart-2: #2a9d8f;
-    --chart-3: #264653;
-    --chart-4: #f4a261;
-    --chart-5: #e9c46a;
-    --radius: 4rem;
-    --warning: #ffba08;
-    --warning-foreground: #f2f2f2;
-  }
+    :root {
+        --background: #fffdfa;
+        --foreground: #1a1a1a;
+        --card: #d9ead9;
+        --card-foreground: #2d2d2d;
+        --popover: #ffffff;
+        --popover-foreground: #0a0a0a;
+        --primary: #70141c;
+        --primary-foreground: #f4ecec;
+        --secondary: #3b3b3b;
+        --secondary-foreground: #f4ecec;
+        --muted: #f5f5f5;
+        --muted-foreground: #737373;
+        --accent: #9cd19c;
+        --accent-foreground: #1a1a1a;
+        --destructive: #e63946;
+        --destructive-foreground: #ffffff;
+        --border: #e5e5e5;
+        --input: #e5e5e5;
+        --ring: #0a0a0a;
+        --chart-1: #e76f51;
+        --chart-2: #2a9d8f;
+        --chart-3: #264653;
+        --chart-4: #f4a261;
+        --chart-5: #e9c46a;
+        --radius: 4rem;
+        --warning: #ffba08;
+        --warning-foreground: #f2f2f2;
+    }
 
-  .dark {
-    --background: #0a0a0a;
-    --foreground: #f5f5f5;
-    --card: #28242b;
-    --card-foreground: #f2dddd;
-    --popover: #0a0a0a;
-    --popover-foreground: #f5f5f5;
-    --primary: #ff97a0;
-    --primary-foreground: #141414;
-    --secondary: #b3b3b3;
-    --secondary-foreground: #1a1a1a;
-    --muted: #262626;
-    --muted-foreground: #a3a3a3;
-    --accent: #6a3096;
-    --accent-foreground: #f5f5f5;
-    --destructive: #993333;
-    --destructive-foreground: #f5f5f5;
-    --border: #262626;
-    --input: #262626;
-    --ring: #d9d9d9;
-    --chart-1: #0077b6;
-    --chart-2: #0096c7;
-    --chart-3: #00b4d8;
-    --chart-4: #48cae4;
-    --chart-5: #90e0ef;
-    --warning: #f2f2f2;
-    --warning-foreground: #ffba08;
-  }
+    .dark {
+        --background: #0a0a0a;
+        --foreground: #f5f5f5;
+        --card: #28242b;
+        --card-foreground: #f2dddd;
+        --popover: #0a0a0a;
+        --popover-foreground: #f5f5f5;
+        --primary: #ff97a0;
+        --primary-foreground: #141414;
+        --secondary: #b3b3b3;
+        --secondary-foreground: #141414;
+        --muted: #262626;
+        --muted-foreground: #a3a3a3;
+        --accent: #6a3096;
+        --accent-foreground: #f5f5f5;
+        --destructive: #993333;
+        --destructive-foreground: #f5f5f5;
+        --border: #262626;
+        --input: #262626;
+        --ring: #d9d9d9;
+        --chart-1: #0077b6;
+        --chart-2: #0096c7;
+        --chart-3: #00b4d8;
+        --chart-4: #48cae4;
+        --chart-5: #90e0ef;
+        --warning: #f2f2f2;
+        --warning-foreground: #ffba08;
+    }
 }
 
-
-
 @layer base {
-  * {
-    @apply border-border;
-  }
+    * {
+        @apply border-border;
+    }
 
-  body {
-    @apply bg-background text-foreground;
-  }
+    body {
+        @apply bg-background text-foreground;
+    }
 }
