@@ -4,9 +4,9 @@ const Badge = ({ icon: Icon, text }) => {
 
     return (
         <div
-            className="flex items-center bg-primary opacity-95 text-primary-foreground text-xs font-black uppercase rounded-lg px-2 py-1 transition-all duration-300 ease-in-out"
+            className="flex flex-row gap-1 items-center bg-primary opacity-95 text-primary-foreground text-xs font-black uppercase rounded-lg px-1.5 py-0.5 transition-all duration-300 ease-in-out"
         >
-            {Icon && <Icon className="mr-2" />}
+            {Icon && <Icon/>}
             <span className="whitespace-nowrap overflow-hidden text-ellipsis">
                 {text}
             </span>

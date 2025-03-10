@@ -6,19 +6,21 @@ import ArticleStrip from "@/components/ArticleStrip";
 
 const Tray = ({ articles }) => {
     return (
-        <div>
+        <div className="w-full flex flex-col items-center">
             {!articles ? (
                 <div>
                     <p className="text-center text-lg">Loading...</p>
                 </div>
             ) : (
-                <div className="grid gap-4 grid-cols-1">
+                <ul className="w-full grid gap-4 grid-cols-3">
                     {articles.map((article) => (
-                        <Link key={article.slug} href={`/posts/${article.slug}`}>
-                            <ArticleStrip article={article} />
-                        </Link>
+                        <li key={article.slug}>
+                            <Link key={article.slug} href={`/posts/${article.slug}`}>
+                                <ArticleStrip article={article} />
+                            </Link>
+                        </li>
                     ))}
-                </div>
+                </ul>
             )}
         </div>
     );

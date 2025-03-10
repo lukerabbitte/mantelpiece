@@ -38,10 +38,10 @@ const Navbar = () => {
                     variant={getButtonVariant("/")}
                     size="evenPad"
                     title="Home"
-                    className="transition-all duration-400 hover:opacity-90 hover:scale-105"
+                    className="transition-all duration-400 hover:opacity-90 hover:scale-105 rounded-full"
                 >
                     <Link href="/">
-                        <div className="bg-primary-foreground rounded-md flex justify-center items-center">
+                        <div className="bg-primary-foreground rounded-full flex justify-center items-center">
                             <FaHome className="text-foreground p-[0.5em] w-7 h-7" />
                         </div>
                     </Link>
@@ -52,10 +52,10 @@ const Navbar = () => {
                     variant={getButtonVariant("/posts")}
                     size="evenPad"
                     title="Articles"
-                    className="transition-all duration-400 hover:opacity-90 hover:scale-105"
+                    className="transition-all duration-400 hover:opacity-90 hover:scale-105 rounded-full"
                 >
                     <Link href="/posts">
-                        <div className="bg-primary-foreground rounded-md flex justify-center items-center">
+                        <div className="bg-primary-foreground rounded-full flex justify-center items-center">
                             <FaList className="text-foreground p-[0.5em] w-7 h-7" />
                         </div>
                     </Link>

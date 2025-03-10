@@ -10,7 +10,7 @@ const CtaCard = ({ text }) => {
         <Link href="/posts">
             <div className="relative p-2 flex flex-col items-center justify-center w-full h-64 sm:h-80 md:h-56 xl:h-80 mx-auto rounded-xl overflow-hidden">
                 <Image
-                    src="/images/klimt-min.jpg"
+                    src="/images/carosketch.jpg"
                     alt="Klimt background"
                     fill
                     className="object-cover z-0"
