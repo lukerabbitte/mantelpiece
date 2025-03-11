@@ -33,19 +33,19 @@ export default async function ArticlePage({ params }) {
 
     return (
         <div className="flex flex-col items-center w-full gap-4">
-            <div className="w-full max-w-full sm:max-w-[50ch]">
+            <div className="max-w-[90%] sm:max-w-[50ch] bg-slate-400/20 rounded-xl">
                 <div className="relative w-full justify-center max-w:64 md:max-w:32 min-h-72 sm:min-h-80 xl:min-h-80">
                     <Image
                         src={article.image}
                         fill
                         sizes="100vw"
                         alt="Image of article"
-                        className="rounded-xl object-cover xs:object-cover"
+                        className="rounded-t-xl object-cover xs:object-cover"
                     />
                 </div>
 
-                <div className="relative rounded-b-xl">
-                    <div className="flex flex-col gap-4 py-4">
+                <div className="relative rounded-b-xl p-4">
+                    <div className="flex flex-col gap-4">
                         <div className="flex flex-row gap-4 justify-between">
                             <div className="flex flex-col">
                                 <h1 className="text-primary text-2xl font-black">
@@ -69,11 +69,11 @@ export default async function ArticlePage({ params }) {
                 <FaEdit className="text-primary" />
             </button> */}
 
-            {/* <MDXLayout source={article.content} /> */}
+            <MDXLayout source={article.content} />
 
-            <div className="w-full max-w-full sm:max-w-prose">
+            {/* <div className="w-full max-w-full sm:max-w-prose">
                 <MarkdownEditor />
-            </div>
+            </div> */}
         </div>
     );
 }
