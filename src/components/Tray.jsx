@@ -1,8 +1,8 @@
 "use client";
 
-import React from "react";
-import Link from "next/link";
+import React, { useState, useEffect } from "react";
 import ArticleStrip from "@/components/ArticleStrip";
+import { Masonry } from "masonic";
 
 const Tray = ({ articles }) => {
     return (
@@ -12,15 +12,12 @@ const Tray = ({ articles }) => {
                     <p className="text-center text-lg">Loading...</p>
                 </div>
             ) : (
-                <ul className="w-full grid gap-4 grid-cols-3">
-                    {articles.map((article) => (
-                        <li key={article.slug}>
-                            <Link key={article.slug} href={`/posts/${article.slug}`}>
-                                <ArticleStrip article={article} />
-                            </Link>
-                        </li>
-                    ))}
-                </ul>
+                <Masonry
+                    items={articles}
+                    columnGutter={16}
+                    columnWidth={300}
+                    render={ArticleStrip}
+                />
             )}
         </div>
     );

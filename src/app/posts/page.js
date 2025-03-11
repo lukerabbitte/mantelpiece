@@ -16,7 +16,9 @@ const fetchArticles = async () => {
 };
 
 const UserPosts = async () => {
-    const articles = await fetchArticles();
+    const fetchedArticles = await fetchArticles();
+
+    const articles = [].concat(...Array(5).fill(fetchedArticles));
 
     return (
         <div>
