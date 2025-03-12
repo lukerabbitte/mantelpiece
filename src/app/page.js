@@ -10,7 +10,7 @@ export default function Home() {
         <main className="flex flex-col gap-4">
             <FloatingText text="Caroline Kelly" />
             <BioText />
-            <CtaCard text="Articles" />
+            <CtaCard text="Articles" imageSrc="/images/carosketch.jpg" />
         </main>
     );
 }

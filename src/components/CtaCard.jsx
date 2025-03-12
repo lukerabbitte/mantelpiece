@@ -5,12 +5,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { FaArrowRight } from "react-icons/fa";
 
-const CtaCard = ({ text }) => {
+const CtaCard = ({ text, imageSrc }) => {
     return (
         <Link href="/posts">
             <div className="relative p-2 flex flex-col items-center justify-center w-full h-64 sm:h-80 md:h-56 xl:h-80 mx-auto rounded-xl overflow-hidden">
                 <Image
-                    src="/images/carosketch.jpg"
+                    src={imageSrc}
                     alt="Klimt background"
                     fill
                     className="object-cover z-0"

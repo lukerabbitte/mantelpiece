@@ -13,7 +13,7 @@ html {
     :root {
         --background: #fffdfa;
         --foreground: #1a1a1a;
-        --card: #d9ead9;
+        --card: #e9c3c5;
         --card-foreground: #2d2d2d;
         --popover: #ffffff;
         --popover-foreground: #0a0a0a;
@@ -21,7 +21,7 @@ html {
         --primary-foreground: #f4ecec;
         --secondary: #3b3b3b;
         --secondary-foreground: #f4ecec;
-        --muted: #f5f5f5;
+        --muted: #d3c5c5;
         --muted-foreground: #737373;
         --accent: #9cd19c;
         --accent-foreground: #1a1a1a;
@@ -42,8 +42,8 @@ html {
     .dark {
         --background: #0a0a0a;
         --foreground: #f5f5f5;
-        --card: #28242b;
-        --card-foreground: #f2dddd;
+        --card: #574343;
+        --card-foreground: #fef8f8;
         --popover: #0a0a0a;
         --popover-foreground: #f5f5f5;
         --primary: #ff97a0;

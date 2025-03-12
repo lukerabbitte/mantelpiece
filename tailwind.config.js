@@ -26,14 +26,19 @@ module.exports = {
             },
             backgroundImage: {
                 "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-                "gradient-conic":
-                    "conic-gradient(from 0deg at 50% 50%, var(--tw-gradient-stops))",
+                "gradient-conic": "conic-gradient(from 0deg at 50% 50%, var(--tw-gradient-stops))",
                 "klimt-pattern": "url('/images/klimt-min.jpg')",
             },
             screens: {
                 xxs: "340px",
                 xs: "480px",
                 "3xl": "1920px",
+            },
+            height: {
+                screenMinusNavbarAndFooter: "calc(100vh - 7.5rem)",
+            },
+            minHeight: {
+                screenMinusNavbarAndFooter: "calc(100vh - 7.5rem)",
             },
             keyframes: {
                 fadeIn: {
