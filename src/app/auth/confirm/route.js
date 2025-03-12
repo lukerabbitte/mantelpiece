@@ -8,9 +8,8 @@ export async function GET(request) {
     const { searchParams } = new URL(request.url);
     const token_hash = searchParams.get("token_hash");
     const type = searchParams.get("type");
-    const next = searchParams.get("next") ?? "/";
 
-    console.log("Extracted query parameters:", { token_hash, type, next });
+    console.log("Extracted query parameters:", { token_hash, type });
 
     if (token_hash && type) {
         console.log("Valid token_hash and type found. Verifying OTP...");
@@ -23,13 +22,14 @@ export async function GET(request) {
 
         if (error) {
             console.error("OTP verification failed:", error);
+            redirect("/user?error=OTP%20Verification%20Failed");
         } else {
-            console.log("OTP verification successful. Redirecting to:", next);
-            return NextResponse.redirect("/user");
+            console.log("OTP verification successful. Redirecting to: ", "/");
+            redirect("/?success=Successfully%20Confirmed%20Email");
         }
     } else {
         console.warn("Missing token_hash or type. Redirecting to error page.");
     }
 
-    return NextResponse.redirect("/error");
+    redirect("/user");
 }

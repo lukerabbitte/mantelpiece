@@ -13,10 +13,7 @@ const UserAccount = ({ signout }) => {
 
             if (result.success) {
                 toast.success(result.message);
-                // Small delay to ensure toast is visible before redirect
-                setTimeout(() => {
-                    router.push("/?from=signout");
-                }, 400);
+                router.push("/?from=signout");
             } else {
                 toast.error(result.error);
             }

@@ -9,8 +9,6 @@ const UserPage = async () => {
     const supabase = await createClient();
     const { data, error } = await supabase.auth.getUser();
 
-    console.log("data from user page", data);
-
     return (
         <div className="w-full h-full">
             {data.user ? (

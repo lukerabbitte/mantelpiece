@@ -38,10 +38,7 @@ const LoginForm = ({ login, signup }) => {
 
             if (result.success) {
                 toast.success(result.message);
-                // Small delay to ensure toast is visible before redirect
-                setTimeout(() => {
-                    router.push("/");
-                }, 400);
+                router.push("/?from=login");
             } else {
                 toast.error(result.error);
             }
@@ -57,10 +54,7 @@ const LoginForm = ({ login, signup }) => {
 
             if (result.success) {
                 toast.success(result.message);
-                // Small delay to ensure toast is visible before redirect
-                setTimeout(() => {
-                    router.push("/");
-                }, 400);
+                router.push("/?from=signup");
             } else {
                 toast.error(result.error);
             }

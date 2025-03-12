@@ -11,6 +11,9 @@ export const updateSession = async (request) => {
     const isPublicPath =
         path === "/user" ||
         path === "/" ||
+        path === "/?from=signup" ||
+        path === "/?from=login" ||
+        path === "/?from=signout" ||
         path.startsWith("/posts") ||
         path.startsWith("/auth/confirm") ||
         path.startsWith("/auth/callback");
@@ -48,24 +51,21 @@ export const updateSession = async (request) => {
         data: { user },
     } = await supabase.auth.getUser();
 
-    console.log("Middleware path:", path);
-    console.log("Is public path:", isPublicPath);
-    console.log("User exists:", !!user);
-    console.log("User:", user);
-
     if (!user && !isPublicPath) {
         // Check if we're coming from a signout
         const fromSignout = request.nextUrl.searchParams.get("from") === "signout";
+        const fromLogin = request.nextUrl.searchParams.get("from") === "login";
+        const fromSignup = request.nextUrl.searchParams.get("from") === "signup";
 
-        if (fromSignout) {
+        if (fromSignout || fromLogin || fromSignup) {
             // User explicitly signed out, let them go to home page
             const homeUrl = request.nextUrl.clone();
-            homeUrl.pathname = "/";
+            homeUrl.pathname = "/private";
             // Remove the 'from' parameter
             homeUrl.searchParams.delete("from");
             return NextResponse.redirect(homeUrl);
         }
-        
+
         // no user, potentially respond by redirecting the user to the user page
         const url = request.nextUrl.clone();
         url.pathname = "/user";
