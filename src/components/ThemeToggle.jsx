@@ -13,7 +13,7 @@ const ThemeToggle = ({ blurUponScroll }) => {
     };
 
     return (
-        <div className="transition-all duration-400 hover:opacity-90 hover:scale-105">
+        <div className="flex flex-row items-center transition-all duration-400 hover:opacity-90 hover:scale-105">
             <Toggle
                 id="theme-toggle"
                 name="theme-toggle"
