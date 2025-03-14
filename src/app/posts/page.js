@@ -1,20 +1,20 @@
-import { supabase } from "@/utils/initSupabase";
 import Tray from "@/components/Tray";
 import React from "react";
-
-const fetchArticles = async () => {
-    const { data: articles, error } = await supabase.from("article").select();
-
-    if (error) {
-        console.error("Error fetching posts:", error);
-        return [];
-    }
-
-    return articles;
-};
+import { fetchArticles } from "@/utils/article/fetchArticles";
+import EmptyState from "@/app/posts/EmptyState";
+import MotionHeading from "@/components/MotionHeading";
 
 const UserPosts = async () => {
-    const fetchedArticles = await fetchArticles();
+    const { data: fetchedArticles, error, isEmpty } = await fetchArticles();
+
+    if (error) {
+        throw typeof error === "string" ? new Error(error) : error; // This will be caught by the nearest error.js
+    }
+
+    // Empty state handling to return a nice UI instead of an empty tray
+    if (isEmpty || !fetchedArticles || fetchedArticles.length === 0) {
+        return <EmptyState />;
+    }
 
     // TODO remove this once we populate with enough actual articles
     const newArticles = Array(4)
@@ -22,14 +22,17 @@ const UserPosts = async () => {
         .flatMap((_, i) =>
             fetchedArticles.map((article) => ({
                 ...article,
-                slug: `${article.slug}-${i}`, // Ensure uniqueness
+                id: `${article.id}-${i}`, // Ensure unique ID
+                hash_id: `${article.hash_id}-${i}`, // Ensure unique hash_id
+                slug: `${article.slug}-${i}`,
             }))
         );
 
     const articles = [...fetchedArticles, ...newArticles];
 
     return (
-        <div>
+        <div className="flex flex-col gap-16 items-center">
+            <MotionHeading heading={"Articles"} />
             <Tray articles={articles} />
         </div>
     );
