@@ -7,7 +7,7 @@ const NotFound = () => {
         <div className="flex flex-col items-center justify-center p-4 gap-4 min-h-screenMinusNavbarAndFooter">
             <div className="flex flex-col items-center gap-2">
                 <h1 className="text-xl font-bold flex flex-row items-center gap-2">
-                    Post Not Found{" "}
+                    WHOOPS{" "}
                     <span className="inline-flex">
                         <FaExclamationTriangle />
                     </span>

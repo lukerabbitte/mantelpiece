@@ -5,8 +5,15 @@ import { notFound, redirect } from "next/navigation";
 import { getArticleByHashId } from "@/utils/article/getArticleByHashId";
 
 const ArticlePage = async ({ params }) => {
-    const { attemptedHashId, wildcardSlug } = params;
+    const attemptedHashId = params.postId;
+    const wildcardSlug = params.slug[0];
 
+    console.log("params: ", params);
+
+    console.log("attemptedHashId", attemptedHashId);
+    console.log("wildcardSlug", wildcardSlug);
+
+    // http://localhost:5400/posts/[postId]/[[...slug]]
     if (!attemptedHashId) {
         notFound();
     }
