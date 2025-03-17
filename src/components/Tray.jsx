@@ -4,7 +4,6 @@ import React, { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import ArticleStrip from "@/components/ArticleStrip";
 import { debounce } from "@/utils/debounce";
-import * as motion from "motion/react-client";
 
 const getNumCols = (width) => {
     if (width < 768) return 1;
@@ -63,22 +62,13 @@ const Tray = ({ articles }) => {
             {columns.map((col, colIndex) => (
                 <div key={colIndex} className="flex flex-col gap-4 w-full md:w-1/2 lg:w-1/3">
                     {col.map((article) => (
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{
-                                duration: 0.4,
-                                scale: { type: "spring", visualDuration: 0.4, bounce: 0.1 },
-                            }}
+                        <Link
+                            key={article.id}
+                            href={`/posts/${article.hash_id}/${article.slug}`}
+                            scroll
                         >
-                            <Link
-                                key={article.id}
-                                href={`/posts/${article.hash_id}/${article.slug}`}
-                                scroll
-                            >
-                                <ArticleStrip article={article} />
-                            </Link>
-                        </motion.div>
+                            <ArticleStrip article={article} />
+                        </Link>
                     ))}
                 </div>
             ))}
