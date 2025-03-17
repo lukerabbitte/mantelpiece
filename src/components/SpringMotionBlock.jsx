@@ -1,6 +1,6 @@
 import * as motion from "motion/react-client";
 
-const MotionHeading = ({ heading }) => {
+const SpringMotionBlock = ({ children }) => {
     return (
         <motion.div
             initial={{ opacity: 0, scale: 0 }}
@@ -10,9 +10,9 @@ const MotionHeading = ({ heading }) => {
                 scale: { type: "spring", visualDuration: 0.4, bounce: 0.1 },
             }}
         >
-            <h1 className="text-5xl font-bold">{heading}</h1>
+            {children}
         </motion.div>
     );
 };
 
-export default MotionHeading;
+export default SpringMotionBlock;

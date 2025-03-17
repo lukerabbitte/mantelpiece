@@ -15,6 +15,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import CtaButton from "@/components/CtaButton";
 
 const formSchema = z.object({
     email: z.string().email({ message: "Must be a valid email." }),
@@ -38,7 +39,7 @@ const LoginForm = ({ login, signup }) => {
 
             if (result.success) {
                 toast.success(result.message);
-                router.push("/?from=login");
+                router.push("/?from=login");    // Go instead to the user/[username] route
             } else {
                 toast.error(result.error);
             }
@@ -65,7 +66,7 @@ const LoginForm = ({ login, signup }) => {
     };
 
     return (
-        <div className="w-3/4 sm:w-1/2 lg:w-1/3 bg-primary rounded-xl">
+        <div className="w-full sm:w-1/2 lg:w-1/3 p-4 bg-card rounded-xl">
             <Form {...form}>
                 <form
                     onSubmit={form.handleSubmit(onSubmit)}

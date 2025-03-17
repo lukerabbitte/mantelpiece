@@ -7,7 +7,7 @@ import { Toaster } from "@/components/ui/sonner";
 
 export const metadata = {
     title: "Mantelpiece",
-    description: "Description of peace",
+    description: "Mantelpiece is a platform for journalism portfolios",
 };
 
 const RootLayout = ({ children }) => {

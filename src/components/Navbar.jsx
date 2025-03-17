@@ -65,17 +65,18 @@ const Navbar = () => {
             <div className="flex flex-row items-center justify-center gap-4">
                 <Button
                     asChild
-                    variant={getButtonVariant("/user")}
+                    variant={getButtonVariant("/login")}
                     size="evenPad"
                     title="User"
                     className="transition-all duration-400 hover:opacity-90 hover:scale-105 rounded-full"
                 >
-                    <Link href="/user">
+                    <Link href="/login">
                         <div className="bg-primary-foreground rounded-full flex justify-center items-center">
                             <FaUser className="text-foreground p-2 w-7 h-7" />
                         </div>
                     </Link>
                 </Button>
+
                 <ThemeToggle blurUponScroll />
             </div>
         </div>

@@ -1,4 +1,4 @@
-import ArticleManager from "@/components/ArticleManager";
+import ArticleManager from "@/components/UserArticles";
 
 const DashboardPage = () => {
 

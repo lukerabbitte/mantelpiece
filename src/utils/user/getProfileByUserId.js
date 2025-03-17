@@ -1,25 +1,25 @@
 import { createClient } from "@/utils/supabase/server";
 
 /**
- * Fetch a single article by hash ID
- * @param {string} hashId - The unique hash ID of the article
+ * Fetch a user profile by their user ID
+ * @param {string} userId - The unique user ID
  * @returns {Promise<{data: Object|null, error: Error|null, status: number}>}
  */
-export const getArticleByHashId = async (hashId) => {
+export const getProfileByUserId = async (userId) => {
     try {
-        if (!hashId) {
+        if (!userId) {
             return {
                 data: null,
-                error: "Missing article identifier",
+                error: "Missing user identifier",
                 status: 400,
             };
         }
 
         const supabase = await createClient();
         const { data, error, status } = await supabase
-            .from("article")
+            .from("profile")
             .select("*")
-            .eq("hash_id", hashId)
+            .eq("id", userId)
             .single();
 
         if (error) {
@@ -27,22 +27,22 @@ export const getArticleByHashId = async (hashId) => {
                 // This is the "no rows returned" error code from PostgREST
                 return {
                     data: null,
-                    error: "Article not found",
+                    error: "Profile not found",
                     status: 404,
                 };
             }
 
-            console.error(`Error fetching article with hash ${hashId}:`, error);
+            console.error(`Error fetching profile for user ${userId}:`, error);
             return {
                 data: null,
-                error: error.message || "Failed to fetch article",
+                error: error.message || "Failed to fetch profile",
                 status,
             };
         }
 
         return { data, error: null, status };
     } catch (err) {
-        console.error(`Unexpected error fetching article with hash ${hashId}:`, err);
+        console.error(`Unexpected error fetching profile for user ${userId}:`, err);
         return {
             data: null,
             error: "An unexpected error occurred",

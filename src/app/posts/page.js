@@ -2,7 +2,7 @@ import Tray from "@/components/Tray";
 import React from "react";
 import { fetchArticles } from "@/utils/article/fetchArticles";
 import EmptyState from "@/app/posts/EmptyState";
-import MotionHeading from "@/components/MotionHeading";
+import SpringMotionBlock from "@/components/SpringMotionBlock";
 
 const UserPosts = async () => {
     const { data: fetchedArticles, error, isEmpty } = await fetchArticles();
@@ -32,7 +32,9 @@ const UserPosts = async () => {
 
     return (
         <div className="flex flex-col gap-16 items-center">
-            <MotionHeading heading={"Articles"} />
+            <SpringMotionBlock>
+                <h1 className="text-5xl text-balance font-bold">Articles</h1>
+            </SpringMotionBlock>
             <Tray articles={articles} />
         </div>
     );

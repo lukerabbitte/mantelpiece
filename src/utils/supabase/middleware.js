@@ -1,5 +1,6 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse } from "next/server";
+import { getProfileByUserId } from "@/utils/user/getProfileByUserId";
 
 export const updateSession = async (request) => {
     let supabaseResponse = NextResponse.next({
@@ -9,11 +10,12 @@ export const updateSession = async (request) => {
     const path = request.nextUrl.pathname;
 
     const isPublicPath =
-        path === "/user" ||
         path === "/" ||
         path === "/?from=signup" ||
         path === "/?from=login" ||
         path === "/?from=signout" ||
+        path === "/login" ||
+        path.startsWith("/user") ||
         path.startsWith("/posts") ||
         path.startsWith("/auth/confirm") ||
         path.startsWith("/auth/callback");
@@ -51,6 +53,24 @@ export const updateSession = async (request) => {
         data: { user },
     } = await supabase.auth.getUser();
 
+    // Handle redirect for logged in users trying to access login page
+    if (user && path === "/login") {
+        const profile = await getProfileByUserId(user.id);
+        const username = profile.data.username;
+
+        if (username) {
+            // Redirect to user's profile page
+            const profileUrl = request.nextUrl.clone();
+            profileUrl.pathname = `/user/${username}`;
+            return NextResponse.redirect(profileUrl);
+        } else {
+            // If username not found, redirect to home as fallback
+            const homeUrl = request.nextUrl.clone();
+            homeUrl.pathname = "/";
+            return NextResponse.redirect(homeUrl);
+        }
+    }
+
     if (!user && !isPublicPath) {
         // Check if we're coming from a signout
         const fromSignout = request.nextUrl.searchParams.get("from") === "signout";
@@ -66,9 +86,9 @@ export const updateSession = async (request) => {
             return NextResponse.redirect(homeUrl);
         }
 
-        // no user, potentially respond by redirecting the user to the user page
+        // No user, potentially respond by redirecting the user to the login page
         const url = request.nextUrl.clone();
-        url.pathname = "/user";
+        url.pathname = "/login";
         return NextResponse.redirect(url);
     }
 

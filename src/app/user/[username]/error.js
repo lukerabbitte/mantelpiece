@@ -6,7 +6,7 @@ import { FaExclamationTriangle } from "react-icons/fa";
 
 const Error = ({ error, reset }) => {
     useEffect(() => {
-        console.error("Individual post error:", error);
+        console.error("Profile information error:", error);
     }, [error]);
 
     return (
@@ -21,11 +21,11 @@ const Error = ({ error, reset }) => {
                         <FaExclamationTriangle />
                     </span>
                 </h1>
-                <p className="text-balance max-w-prose text-center text-muted-foreground line-clamp-3">
-                    There was an error with loading this particular post.
+                <p className="text-balance text-center text-muted-foreground max-w-prose line-clamp-3">
+                    There was an error with loading the profile information for this user account.
                 </p>
             </div>
-            <CtaButton text="View All Posts" href="/posts" />
+            <CtaButton text="Go Home" href="/" />
         </div>
     );
 };
