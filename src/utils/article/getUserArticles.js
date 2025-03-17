@@ -1,5 +1,9 @@
 import { createClient } from "@/utils/supabase/server";
 
+
+// At the moment this function has tentative support for sorting and pagination, although these are not
+// necessary in frontend yet
+
 /**
  * Fetch all articles authored by a specific user
  * @param {string} userId - The unique user ID
@@ -22,17 +26,13 @@ export const getUserArticles = async (userId, options = {}) => {
             offset = 0,
             orderBy = "created_at",
             ascending = false,
-            status = "published",
+            // Remove status parameter or replace with a column that exists
         } = options;
 
         const supabase = await createClient();
 
-        let query = supabase.from("article").select("*", { count: "exact" }).eq("id", userId);
-
-        // Add optional status filter if provided
-        if (status) {
-            query = query.eq("status", status);
-        }
+        // Fix: Use user_id instead of id to filter by user
+        let query = supabase.from("article").select("*", { count: "exact" }).eq("author", userId);
 
         // Add sorting and pagination
         query = query.order(orderBy, { ascending }).range(offset, offset + limit - 1);
