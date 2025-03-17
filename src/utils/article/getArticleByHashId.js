@@ -6,6 +6,7 @@ import { createClient } from "@/utils/supabase/server";
  * @returns {Promise<{data: Object|null, error: Error|null, status: number}>}
  */
 export const getArticleByHashId = async (hashId) => {
+    console.log("did we even enter hash id function");
     try {
         if (!hashId) {
             return {
@@ -21,6 +22,8 @@ export const getArticleByHashId = async (hashId) => {
             .select("*")
             .eq("hash_id", hashId)
             .single();
+
+        console.log("data", data);
 
         if (error) {
             if (error.code === "PGRST116") {

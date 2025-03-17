@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import Link from "next/link";
 
+// TODO update to show more consistent error state
 const Error = ({ error, reset }) => {
     useEffect(() => {
         console.error("Posts page error:", error);
