@@ -35,10 +35,10 @@ module.exports = {
                 "3xl": "1920px",
             },
             height: {
-                screenMinusNavbarAndFooter: "calc(100vh - 7.5rem)",
+                screenMinusNavbarAndFooter: "calc(100vh - 9.5rem)",
             },
             minHeight: {
-                screenMinusNavbarAndFooter: "calc(100vh - 7.5rem)",
+                screenMinusNavbarAndFooter: "calc(100vh - 9.5rem)",
             },
             keyframes: {
                 fadeIn: {
