@@ -108,8 +108,7 @@ const UserArticles = ({ articles = [], isOwnProfile }) => {
                     <AlertDialogHeader>
                         <AlertDialogTitle>Are you sure?</AlertDialogTitle>
                         <AlertDialogDescription>
-                            This will permanently delete "{articleToDelete?.title}". This action
-                            cannot be undone.
+                            {`This will permanently delete "${articleToDelete?.title}". This action cannot be undone.`}
                         </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>
