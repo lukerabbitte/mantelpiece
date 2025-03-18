@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 /* This is a bit stupid. Should surely just be style wrapper on the ShadCN Button component */
-const CtaButton = ({ text, href, handleClick, disabled, className = "", size = "default" }) => {
+const CtaButton = ({ text, href, handleClick, disabled, className = "", size = "medium" }) => {
     const sizeClasses = {
         medium: {
             outer: "p-[0.6em]",

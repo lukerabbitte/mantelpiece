@@ -25,7 +25,7 @@ export default function Home() {
 
         if (searchParams.has("success")) {
             const successMessage = decodeURIComponent(searchParams.get("success"));
-            successMessage && toast.success(successMessage); // Toast message not working for some reason, WTF
+            successMessage && toast.success(successMessage);
 
             const newSearchParams = new URLSearchParams(searchParams.toString());
             newSearchParams.delete("success");

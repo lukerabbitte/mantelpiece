@@ -40,7 +40,7 @@ const ArticlePage = async ({ params }) => {
     // TODO how to add suitable canonical metadata to post pages?
     return (
         <div className="flex flex-col items-center w-full gap-4">
-            <div className="max-w-[90%] sm:max-w-[50ch] bg-slate-400/20 rounded-xl">
+            <div className="max-w-[65ch] bg-card rounded-xl">
                 <div className="relative w-full justify-center max-w:64 md:max-w:32 h-72 sm:h-80">
                     <Image
                         src={article.image}
