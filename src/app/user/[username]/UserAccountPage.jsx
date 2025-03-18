@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import UserArticles from "@/components/UserArticles";
 import CtaButton from "@/components/CtaButton";
 import { useState } from "react";
+import UserAvatarCard from "@/components/UserAvatarCard";
 
 const UserAccountPage = ({ profile, articles, handleSignout, isOwnProfile }) => {
     const router = useRouter();
@@ -30,10 +31,12 @@ const UserAccountPage = ({ profile, articles, handleSignout, isOwnProfile }) => 
     };
 
     return (
-        <div className="min-h-screen-minus-navbar-and-footer text-center flex flex-col gap-4 items-center justify-between">
-            <h1 className="text-3xl font-bold">
-                {profile.display_name || profile.username}'s Profile
-            </h1>
+        <div className="w-full min-h-screen-minus-navbar-and-footer text-center flex flex-col gap-8 items-center justify-between">
+            <UserAvatarCard
+                avatarImage={profile.avatar_url}
+                displayName={profile.display_name || profile.username}
+                bio={profile.bio}
+            />
 
             <UserArticles articles={articles} isOwnProfile={isOwnProfile} />
 
@@ -42,6 +45,7 @@ const UserAccountPage = ({ profile, articles, handleSignout, isOwnProfile }) => 
                     text={isSigningOut ? "Signing out..." : "Sign Out"}
                     handleClick={handleSignoutClick}
                     disabled={isSigningOut}
+                    size={"medium"}
                 />
             )}
         </div>

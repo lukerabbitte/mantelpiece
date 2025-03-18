@@ -27,7 +27,17 @@ const Navbar = () => {
     }, []);
 
     const getButtonVariant = (path) => {
-        return pathname === path ? "default" : buttonVariant;
+        // Exact match
+        if (pathname === path) {
+            return "default";
+        }
+
+        // Special case for user paths: match /user/* to the /user button
+        if (path === "/user" && pathname.startsWith("/user/")) {
+            return "default";
+        }
+
+        return buttonVariant;
     };
 
     return (
@@ -65,7 +75,7 @@ const Navbar = () => {
             <div className="flex flex-row items-center justify-center gap-4">
                 <Button
                     asChild
-                    variant={getButtonVariant("/login")}
+                    variant={getButtonVariant("/user")}
                     size="evenPad"
                     title="User"
                     className="transition-all duration-400 hover:opacity-90 hover:scale-105 rounded-full"
