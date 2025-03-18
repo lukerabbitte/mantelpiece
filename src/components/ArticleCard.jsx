@@ -4,9 +4,9 @@ import { FaNewspaper } from "react-icons/fa";
 import Badge from "@/components/Badge";
 import { makeDateReadable } from "@/utils/makeDateReadable";
 
-const ArticleStrip = ({ article }) => {
+const ArticleCard = ({ article }) => {
     return (
-        <div className="flex flex-row h-full bg-card rounded-xl gap-2 cursor-pointer hover:scale-[100.5%] transition-transform duration-300">
+        <div className="flex flex-col h-full bg-accent rounded-xl gap-2 cursor-pointer hover:scale-[100.5%] transition-transform duration-300">
             <div className="relative flex-shrink-0 w-1/3 sm:w-1/4 min-w-28 min-h-16">
                 <Image
                     src={article.image}
@@ -19,10 +19,10 @@ const ArticleStrip = ({ article }) => {
             </div>
             <div className="flex flex-col justify-between items-start gap-2 p-2 h-full w-full">
                 <div className="flex flex-col gap-1">
-                    <h1 className="text-[clamp(18px,2vw,22px)] leading-tight text-balance text-primary font-bold">
+                    <h1 className="text-[clamp(18px,2vw,22px)] leading-tight text-balance text-foreground font-bold">
                         {article.title}
                     </h1>
-                    <div className="w-full text-card-foreground">
+                    <div className="w-full text-foreground">
                         <p className="text-[clamp(16px,1vw,22px)] line-clamp-2">
                             {article.excerpt}
                         </p>
@@ -39,4 +39,4 @@ const ArticleStrip = ({ article }) => {
     );
 };
 
-export default ArticleStrip;
+export default ArticleCard;
