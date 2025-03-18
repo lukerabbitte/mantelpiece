@@ -1,4 +1,5 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
+import Image from "next/image";
 
 const MDXLayout = (props) => {
     const components = {
@@ -69,10 +70,9 @@ const MDXLayout = (props) => {
             </a>
         ),
         img: (props) => (
-            <img
+            <Image
                 {...props}
                 className="max-w-full h-auto my-4 rounded-md"
-                loading="lazy"
                 alt={props.alt || "Image"}
             />
         ),
