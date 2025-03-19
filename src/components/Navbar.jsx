@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import { usePathname } from "next/navigation";
 import { FaHome, FaList, FaUser } from "react-icons/fa";
 import ThemeToggle from "@/components/ThemeToggle";
@@ -87,7 +87,7 @@ const Navbar = () => {
                     </Link>
                 </Button>
 
-                <ThemeToggle blurUponScroll />
+                <ThemeToggle blurUponScroll={true} />
             </div>
         </div>
     );

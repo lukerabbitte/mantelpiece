@@ -13,7 +13,7 @@ const ArticleStrip = ({ article }) => {
         <div
             onMouseEnter={() => setShowArrow(true)}
             onMouseLeave={() => setShowArrow(false)}
-            className="flex flex-row h-full bg-card rounded-xl gap-2 cursor-pointer hover:opacity-90 transition-all duration-400"
+            className="flex flex-row h-full bg-card rounded-xl gap-2 cursor-pointer transition-all duration-400"
         >
             <div className="relative flex-shrink-0 w-1/3 sm:w-1/4 min-w-28 min-h-16">
                 <Image
@@ -29,7 +29,7 @@ const ArticleStrip = ({ article }) => {
                 <div className="flex flex-col gap-1">
                     <h1 className="text-[clamp(18px,2vw,22px)] leading-tight text-balance text-primary font-bold">
                         {article.title}
-                        <span class="inline-block ml-2 text-sm w-4">
+                        <span className="inline-block ml-2 text-sm w-4">
                             <SpringMotionBlock
                                 isVisible={showArrow}
                                 id={"article-strip-right-arrow-on-hover"}

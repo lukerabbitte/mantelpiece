@@ -1,11 +1,10 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import { useState } from "react";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { deleteArticle } from "@/utils/serverActions/deleteArticle";
 import { toast } from "sonner";
-import { useRouter } from "next/navigation";
 import {
     AlertDialog,
     AlertDialogAction,
@@ -19,7 +18,6 @@ import {
 import { Button } from "@/components/ui/button";
 
 const UserArticles = ({ articles = [], isOwnProfile }) => {
-    const router = useRouter();
     const [isDeleting, setIsDeleting] = useState(false);
     const [articleToDelete, setArticleToDelete] = useState(null);
     const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);

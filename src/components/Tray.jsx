@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import ArticleStrip from "@/components/ArticleStrip";
 import ArticleCard from "@/components/ArticleCard";
 

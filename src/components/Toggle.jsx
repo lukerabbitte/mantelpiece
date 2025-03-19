@@ -1,16 +1,10 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback, useId } from "react";
 
-const Toggle = ({
-    id,
-    name,
-    checked,
-    onChange,
-    icon1: Icon1,
-    icon2: Icon2,
-    small,
-    blurUponScroll,
-}) => {
+const Toggle = ({ name, checked, onChange, icon1: Icon1, icon2: Icon2, small, blurUponScroll }) => {
+    const id = useId();
+    const toggleId = `toggle-${id}`;
+
     const [toggleBlurred, setToggleBlurred] = useState(false);
 
     useEffect(() => {
@@ -31,12 +25,14 @@ const Toggle = ({
     }, [blurUponScroll]);
 
     // Actuate toggle if spacebar pressed
-    const handleKeyPress = (e) => {
-        if (e.keyCode !== 32) return;
-
-        e.preventDefault();
-        onChange(!checked);
-    };
+    const handleKeyPress = useCallback(
+        (e) => {
+            if (e.keyCode !== 32) return;
+            e.preventDefault();
+            onChange(!checked);
+        },
+        [checked, onChange]
+    );
 
     return (
         <div className={`relative inline-block ${small ? "w-10" : "w-16"}`}>
@@ -44,16 +40,16 @@ const Toggle = ({
                 type="checkbox"
                 name={name}
                 className="hidden"
-                id={id}
+                id={toggleId}
                 checked={checked}
                 onChange={(e) => onChange(e.target.checked)}
             />
-            {id && (
+            {toggleId && (
                 <label
                     className="block overflow-hidden cursor-pointer rounded-full border-0"
                     tabIndex={1}
                     onKeyDown={handleKeyPress}
-                    htmlFor={id}
+                    htmlFor={toggleId}
                 >
                     <span
                         className={`flex items-center justify-around w-[200%]

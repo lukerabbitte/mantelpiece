@@ -11,7 +11,7 @@ const ArticleCard = ({ article }) => {
     const [showArrow, setShowArrow] = useState(false);
 
     return (
-        <div className="relative flex flex-col h-full bg-accent rounded-xl gap-2 cursor-pointer hover:opacity-90 transition-all duration-400 overflow-hidden">
+        <div className="relative flex flex-col h-full bg-accent rounded-xl gap-2 cursor-pointer transition-all duration-400 overflow-hidden">
             <div className="relative w-full h-full">
                 <Image
                     src={article.image}
@@ -23,9 +23,8 @@ const ArticleCard = ({ article }) => {
                 />
             </div>
             <div className="absolute top-0 left-0 m-2">
-                <div className="p-2 rounded-xl w-fit backdrop-blur-sm text-foreground text-xs">
-                    <div className="flex flex-row items-center gap-2 p-2 rounded-lg bg-primary-foreground">
-                        <span>Pinned</span>
+                <div className="p-2 rounded-full w-fit backdrop-blur-sm text-foreground text-xs">
+                    <div className="flex flex-row items-center gap-2 p-2 rounded-full bg-primary-foreground">
                         <span className="inline-block place-self-center text-center">
                             <FaThumbtack />
                         </span>
@@ -40,7 +39,7 @@ const ArticleCard = ({ article }) => {
                 <div className="flex flex-col gap-1 bg-card p-2 rounded-xl">
                     <h1 className="text-[clamp(18px,2vw,22px)] leading-tight text-balance text-primary font-bold">
                         {article.title}
-                        <span class="inline-block ml-2 text-sm w-4">
+                        <span className="inline-block ml-2 text-sm w-4">
                             <SpringMotionBlock
                                 isVisible={showArrow}
                                 id={"article-strip-right-arrow-on-hover"}
