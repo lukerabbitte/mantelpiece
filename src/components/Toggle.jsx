@@ -62,7 +62,7 @@ const Toggle = ({
                           transition-all duration-1000 ease-in-out`}
                     >
                         <span
-                            className={`flex items-center justify-start w-1/2 text-xs text-white box-border transition-all duration-500 ease-in-out
+                            className={`flex items-center justify-start w-1/2 text-xs text-white box-border transition-all duration-400 ease-in-out
                               ${small ? "h-5" : "h-10"}
                               ${
                                   toggleBlurred
@@ -71,7 +71,7 @@ const Toggle = ({
                               }`}
                         />
                         <span
-                            className={`flex items-center justify-end w-1/2 text-xs text-white box-border transition-all duration-500 ease-in-out
+                            className={`flex items-center justify-end w-1/2 text-xs text-white box-border transition-all duration-400 ease-in-out
                               ${small ? "h-5" : "h-10"}
                               ${
                                   toggleBlurred
@@ -86,7 +86,7 @@ const Toggle = ({
                             checked ? "right-0" : small ? "right-5" : "right-6"
                         } ${
                             small ? "w-4 h-4 m-0.5" : "w-7 h-7 m-1.5"
-                        } bg-primary-foreground rounded-full transition-all duration-500 ease-in-out`}
+                        } bg-primary-foreground rounded-full transition-all duration-400 ease-in-out`}
                     >
                         <div
                             className={`block absolute top-1.5 right-1.5 max-w-full max-h-full text-foreground`}

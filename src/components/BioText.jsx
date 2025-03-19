@@ -3,9 +3,7 @@ const BioText = () => {
         <div>
             <div className="text-2xl xl:text-4xl flex flex-col gap-4">
                 <p>I am an author at Hot Press.</p>
-                <p>
-                    Find a selection of my articles <a href="/posts" className="font-bold underline">here</a>.
-                </p>
+                <p>Find a selection of my articles here.</p>
             </div>
         </div>
     );

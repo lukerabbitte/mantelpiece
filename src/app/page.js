@@ -40,12 +40,6 @@ export default function Home() {
         <div className="flex flex-col gap-4">
             <FloatingText text="Caroline Kelly" />
             <BioText />
-            <CtaCard
-                text="Articles"
-                href="/posts"
-                imageSrc="/images/carosketch.jpg"
-                imageAlt="Sketched background image for the view all articles CTA"
-            />
         </div>
     );
 }

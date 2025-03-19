@@ -27,11 +27,10 @@ const UserPosts = async () => {
             }))
         );
 
-    const articles = [...fetchedArticles, ...newArticles];
+    const articles = fetchedArticles;
 
     return (
         <div className="flex flex-col gap-16 items-center">
-            <h1 className="text-5xl text-balance font-bold">Articles</h1>
             <Tray articles={articles} />
         </div>
     );
