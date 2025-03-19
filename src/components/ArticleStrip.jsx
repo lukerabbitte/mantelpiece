@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { FaNewspaper } from "react-icons/fa";
+import { FaArrowRight } from "react-icons/fa";
 import Badge from "@/components/Badge";
 import { makeDateReadable } from "@/utils/makeDateReadable";
+import SpringMotionBlock from "@/components/SpringMotionBlock";
 
 const ArticleStrip = ({ article }) => {
+    const [showArrow, setShowArrow] = useState(false);
+
     return (
-        <div className="flex flex-row h-full bg-card rounded-xl gap-2 cursor-pointer hover:scale-[100.5%] transition-transform duration-300">
+        <div
+            onMouseEnter={() => setShowArrow(true)}
+            onMouseLeave={() => setShowArrow(false)}
+            className="flex flex-row h-full bg-card rounded-xl gap-2 cursor-pointer hover:opacity-90 transition-all duration-400"
+        >
             <div className="relative flex-shrink-0 w-1/3 sm:w-1/4 min-w-28 min-h-16">
                 <Image
                     src={article.image}
@@ -21,6 +29,14 @@ const ArticleStrip = ({ article }) => {
                 <div className="flex flex-col gap-1">
                     <h1 className="text-[clamp(18px,2vw,22px)] leading-tight text-balance text-primary font-bold">
                         {article.title}
+                        <span class="inline-block ml-2 text-sm w-4">
+                            <SpringMotionBlock
+                                isVisible={showArrow}
+                                id={"article-strip-right-arrow-on-hover"}
+                            >
+                                <FaArrowRight />
+                            </SpringMotionBlock>
+                        </span>
                     </h1>
                     <div className="w-full text-card-foreground">
                         <p className="text-[clamp(16px,1vw,22px)] line-clamp-2">
