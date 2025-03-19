@@ -1,16 +1,7 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
 import Image from "next/image";
-import { motion, useSpring, useScroll } from "motion/react";
 
 const MDXLayout = (props) => {
-    const { scrollYProgress } = useScroll();
-
-    const scaleX = useSpring(scrollYProgress, {
-        stiffness: 100,
-        damping: 30,
-        restDelta: 0.001,
-    });
-
     const components = {
         h1: (props) => (
             <h1 {...props} className="text-lg font-semibold mt-4 mb-2">
@@ -90,28 +81,11 @@ const MDXLayout = (props) => {
     };
 
     return (
-        <motion.div
-            id="scroll-indicator"
-            style={{
-                scaleX,
-                position: "fixed",
-                top: 0,
-                left: 0,
-                right: 0,
-                height: 10,
-                originX: 0,
-                backgroundColor: "#ff0088",
-            }}
-        >
-            <div className="max-w-prose mx-auto sm:px-4">
-                <article className="prose prose-sm sm:prose lg:prose-lg dark:prose-invert prose-headings:text-foreground prose-p:text-foreground">
-                    <MDXRemote
-                        {...props}
-                        components={{ ...components, ...(props.components || {}) }}
-                    />
-                </article>
-            </div>
-        </motion.div>
+        <div className="max-w-prose mx-auto sm:px-4">
+            <article className="prose prose-sm sm:prose lg:prose-lg dark:prose-invert prose-headings:text-foreground prose-p:text-foreground">
+                <MDXRemote {...props} components={{ ...components, ...(props.components || {}) }} />
+            </article>
+        </div>
     );
 };
 

@@ -11,11 +11,7 @@ const ArticleCard = ({ article }) => {
     const [showArrow, setShowArrow] = useState(false);
 
     return (
-        <div
-            onMouseEnter={() => setShowArrow(true)}
-            onMouseLeave={() => setShowArrow(false)}
-            className="relative flex flex-col h-full bg-accent rounded-xl gap-2 cursor-pointer hover:opacity-90 transition-all duration-400 overflow-hidden"
-        >
+        <div className="relative flex flex-col h-full bg-accent rounded-xl gap-2 cursor-pointer hover:opacity-90 transition-all duration-400 overflow-hidden">
             <div className="relative w-full h-full">
                 <Image
                     src={article.image}
@@ -27,7 +23,7 @@ const ArticleCard = ({ article }) => {
                 />
             </div>
             <div className="absolute top-0 left-0 m-2">
-                <div className="p-2 rounded-xl w-fit backdrop-blur-3xl text-foreground text-xs">
+                <div className="p-2 rounded-xl w-fit backdrop-blur-sm text-foreground text-xs">
                     <div className="flex flex-row items-center gap-2 p-2 rounded-lg bg-primary-foreground">
                         <span>Pinned</span>
                         <span className="inline-block place-self-center text-center">
@@ -36,7 +32,11 @@ const ArticleCard = ({ article }) => {
                     </div>
                 </div>
             </div>
-            <div className="absolute bottom-0 mx-4 mb-4 backdrop-blur-3xl flex flex-col justify-between items-start gap-2 p-2 rounded-xl h-fit w-fit">
+            <div
+                onMouseEnter={() => setShowArrow(true)}
+                onMouseLeave={() => setShowArrow(false)}
+                className="absolute bottom-0 mx-4 mb-4 backdrop-blur-sm flex flex-col justify-between items-start gap-2 p-2 rounded-xl h-fit w-fit"
+            >
                 <div className="flex flex-col gap-1 bg-card p-2 rounded-xl">
                     <h1 className="text-[clamp(18px,2vw,22px)] leading-tight text-balance text-primary font-bold">
                         {article.title}
