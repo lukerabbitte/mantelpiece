@@ -5,9 +5,14 @@ import { FaArrowRight } from "react-icons/fa";
 import Badge from "@/components/Badge";
 import { makeDateReadable } from "@/utils/makeDateReadable";
 import SpringMotionBlock from "@/components/SpringMotionBlock";
+import { getImageWithFallback } from "@/utils/getImageWithFallback";
 
 const ArticleStrip = ({ article }) => {
     const [showArrow, setShowArrow] = useState(false);
+
+    if (!article) {
+        return <div className="rounded-xl bg-muted h-full animate-pulse"></div>;
+    }
 
     return (
         <div
@@ -17,7 +22,7 @@ const ArticleStrip = ({ article }) => {
         >
             <div className="relative flex-shrink-0 w-1/3 sm:w-1/4 min-w-28 min-h-16">
                 <Image
-                    src={article.image}
+                    src={getImageWithFallback(article.image)}
                     fill
                     sizes="100vw, (min-width: 480px) 100vw, (min-width: 640px) 50vw, (min-width: 768px) 50vw, (min-width: 1024px) 33vw, (min-width: 1280px) 25vw, (min-width: 1536px) 20vw"
                     alt="Image of article"

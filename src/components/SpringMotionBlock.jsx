@@ -1,3 +1,5 @@
+"use client";
+
 import { motion, AnimatePresence } from "motion/react";
 
 const SpringMotionBlock = ({ children, isVisible = true, id = "spring-motion" }) => {
