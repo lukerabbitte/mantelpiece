@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { debounce } from "@/utils/debounce";
+import SpringMotionBlock from "./SpringMotionBlock";
 
 // Corresponding levels to simulate distance from each letter changing as we scroll
 const DISTANCE_LEVELS = [
@@ -15,11 +16,12 @@ const DISTANCE_LEVELS = [
     { blur: 0.2, size: 0.5, opacity: 0.2 },
 ];
 
-const FloatingText = ({ text }) => {
+const FloatingText = ({ text, children }) => {
     const outerTextHolderRef = useRef(null);
     const innerTextHolderRef = useRef(null);
     const textLettersRef = useRef([]);
     const initialLetterPositions = useRef([]);
+    const [showBioText, setShowBioText] = useState(false);
 
     useEffect(() => {
         const setInitialPositions = () => {
@@ -50,7 +52,7 @@ const FloatingText = ({ text }) => {
                 letter.style.position = "absolute";
                 letter.style.top = `${adjustedTop}px`;
                 letter.style.left = `${adjustedLeft}px`;
-                letter.style.transition = "all 0.15s ease-in-out";
+                /* letter.style.transition = "all 0.15s ease-in-out"; */
 
                 letter.style.filter = `blur(${randomLevel.blur}px)`;
                 letter.style.transform = `scale(${randomLevel.size})`;
@@ -65,7 +67,7 @@ const FloatingText = ({ text }) => {
                 letter.style.position = "absolute";
                 letter.style.top = `${top}px`;
                 letter.style.left = `${left}px`;
-                letter.style.transition = "all 0.15s ease-in-out";
+                /* letter.style.transition = "all 0.15s ease-in-out"; */
 
                 letter.style.filter = "none";
                 letter.style.transform = "translate(0, 0) scale(1)";
@@ -85,8 +87,10 @@ const FloatingText = ({ text }) => {
 
             if (outerTop >= innerTop) {
                 setBasePositions();
+                setShowBioText(false);
             } else {
-                setRandomPositions();
+                debounce(setRandomPositions(), 300);
+                setShowBioText(true);
             }
         };
 
@@ -98,10 +102,7 @@ const FloatingText = ({ text }) => {
     }, []);
 
     return (
-        <div
-            ref={outerTextHolderRef}
-            className="relative h-[1600vh] sm:h-[500vh] md:h-[300vh] w-full"
-        >
+        <div ref={outerTextHolderRef} className="relative h-[2000px] w-full">
             <div ref={innerTextHolderRef} className="sticky top-0 h-screen">
                 <div className="h-full flex font-bold text-4xl xxs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl justify-center">
                     {text.split("").map((char, index) => (
@@ -113,6 +114,17 @@ const FloatingText = ({ text }) => {
                             {char === " " ? "\u00A0" : char}
                         </span>
                     ))}
+                </div>
+
+                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full pointer-events-none">
+                    <SpringMotionBlock
+                        isVisible={showBioText}
+                        id="homepage-bio-text-spring-motion-block"
+                    >
+                        <div className="backdrop-blur-xl p-4 rounded-xl shadow-lg w-full max-w-2xl mx-auto pointer-events-auto">
+                            {children}
+                        </div>
+                    </SpringMotionBlock>
                 </div>
             </div>
         </div>

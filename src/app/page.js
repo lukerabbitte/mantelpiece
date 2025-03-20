@@ -38,8 +38,9 @@ export default function Home() {
 
     return (
         <div className="flex flex-col gap-4">
-            <FloatingText text="Caroline Kelly" />
-            <BioText />
+            <FloatingText text="Caroline Kelly">
+                <BioText />
+            </FloatingText>
         </div>
     );
 }
