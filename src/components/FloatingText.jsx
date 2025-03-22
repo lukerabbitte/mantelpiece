@@ -54,13 +54,13 @@ const FloatingText = ({ text, children }) => {
                 letter.style.position = "absolute";
                 letter.style.top = `${adjustedTop}px`;
                 letter.style.left = `${adjustedLeft}px`;
-                letter.style.transition = "all 0.3s ease-out";
+                letter.style.transition = "all 0.1s ease-out";
 
                 letter.style.filter = `blur(${randomLevel.blur}px)`;
                 letter.style.transform = `scale(${randomLevel.size})`;
                 letter.style.opacity = randomLevel.opacity;
             });
-        }, 300);
+        }, 100);
 
         const revertToInitialLetterPositions = () => {
             lettersRef.current.forEach((letter, index) => {
