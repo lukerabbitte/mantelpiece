@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { debounce } from "@/utils/debounce";
 import SpringMotionBlock from "./SpringMotionBlock";
+import { throttle } from "@/utils/throttle";
 
 // Corresponding levels to simulate distance from each letter changing as we scroll
 const DISTANCE_LEVELS = [
@@ -19,25 +20,26 @@ const DISTANCE_LEVELS = [
 const FloatingText = ({ text, children }) => {
     const outerTextHolderRef = useRef(null);
     const innerTextHolderRef = useRef(null);
-    const textLettersRef = useRef([]);
+    const lettersRef = useRef([]);
     const initialLetterPositions = useRef([]);
     const [showBioText, setShowBioText] = useState(false);
 
     useEffect(() => {
-        const setInitialPositions = () => {
-            textLettersRef.current.forEach((letter, index) => {
-                const originalLeft = letter?.offsetLeft;
-                const originalTop = letter?.offsetTop;
+        const saveInitialLetterPositions = () => {
+            lettersRef.current.forEach((letter, index) => {
+                const originalLeftOffset = letter?.offsetLeft;
+                const originalTopOffset = letter?.offsetTop;
 
                 initialLetterPositions.current[index] = {
-                    left: originalLeft,
-                    top: originalTop,
+                    leftOffset: originalLeftOffset,
+                    topOffset: originalTopOffset,
                 };
             });
         };
 
-        const setRandomPositions = () => {
-            textLettersRef.current.forEach((letter) => {
+        const setRandomLetterPositions = throttle(() => {
+            console.log("SETTING RANDOM");
+            lettersRef.current.forEach((letter) => {
                 const letterHeight = letter?.offsetHeight;
                 const letterWidth = letter?.offsetWidth;
                 const innerTextHolderHeight = innerTextHolderRef.current?.offsetHeight;
@@ -52,22 +54,22 @@ const FloatingText = ({ text, children }) => {
                 letter.style.position = "absolute";
                 letter.style.top = `${adjustedTop}px`;
                 letter.style.left = `${adjustedLeft}px`;
-                /* letter.style.transition = "all 0.15s ease-in-out"; */
+                letter.style.transition = "all 0.3s ease-out";
 
                 letter.style.filter = `blur(${randomLevel.blur}px)`;
                 letter.style.transform = `scale(${randomLevel.size})`;
                 letter.style.opacity = randomLevel.opacity;
             });
-        };
+        }, 300);
 
-        const setBasePositions = () => {
-            textLettersRef.current.forEach((letter, index) => {
-                const { left, top } = initialLetterPositions.current[index]; // Use the stored original positions to reset
+        const revertToInitialLetterPositions = () => {
+            lettersRef.current.forEach((letter, index) => {
+                const { leftOffset, topOffset } = initialLetterPositions.current[index]; // Use the stored original positions to reset
 
                 letter.style.position = "absolute";
-                letter.style.top = `${top}px`;
-                letter.style.left = `${left}px`;
-                /* letter.style.transition = "all 0.15s ease-in-out"; */
+                letter.style.top = `${topOffset}px`;
+                letter.style.left = `${leftOffset}px`;
+                letter.style.transition = "all 0.3s ease-out";
 
                 letter.style.filter = "none";
                 letter.style.transform = "translate(0, 0) scale(1)";
@@ -75,26 +77,24 @@ const FloatingText = ({ text, children }) => {
             });
         };
 
-        // Call setInitialPositions to track the initial letter positions on page load
-        setInitialPositions();
-
         // Start listening to scroll, set random positions as we scroll down and revert to base positions when we return to top
-
-        // TODO --- it would be nice to detect the interval of scroll event being fired and scroll event ending and trigger the updates every 5ms during this interval of scrolling being true.
         const handleScroll = () => {
             const outerTop = outerTextHolderRef.current?.getBoundingClientRect().top;
             const innerTop = innerTextHolderRef.current?.getBoundingClientRect().top;
 
             if (outerTop >= innerTop) {
-                setBasePositions();
+                revertToInitialLetterPositions();
                 setShowBioText(false);
             } else {
-                debounce(setRandomPositions(), 300);
+                setRandomLetterPositions();
                 setShowBioText(true);
             }
         };
 
-        window.addEventListener("scroll", handleScroll);
+        window.addEventListener("scroll", handleScroll, { passive: true });
+
+        // Call saveInitialLetterPositions to save the base letter positions on page load
+        saveInitialLetterPositions();
 
         return () => {
             window.removeEventListener("scroll", handleScroll);
@@ -108,7 +108,7 @@ const FloatingText = ({ text, children }) => {
                     {text.split("").map((char, index) => (
                         <span
                             key={index}
-                            ref={(el) => (textLettersRef.current[index] = el)}
+                            ref={(el) => (lettersRef.current[index] = el)}
                             className=""
                         >
                             {char === " " ? "\u00A0" : char}
