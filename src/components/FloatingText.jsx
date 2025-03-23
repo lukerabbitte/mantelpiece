@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { debounce } from "@/utils/debounce";
 import SpringMotionBlock from "./SpringMotionBlock";
 import { throttle } from "@/utils/throttle";
 
@@ -16,19 +15,35 @@ const FloatingText = ({ text, children }) => {
     const outerTextHolderRef = useRef(null);
     const innerTextHolderRef = useRef(null);
     const lettersRef = useRef([]);
-    const initialLetterPositions = useRef([]);
+    const helperLettersRef = useRef([]);
+    const baseLetterOffsetPositions = useRef([]);
     const [showBioText, setShowBioText] = useState(false);
 
     useEffect(() => {
-        const saveInitialLetterPositions = () => {
-            lettersRef.current.forEach((letter, index) => {
-                const originalLeftOffset = letter?.offsetLeft;
-                const originalTopOffset = letter?.offsetTop;
+        const saveBaseLetterOffsetPositions = () => {
+            helperLettersRef.current.forEach((letter, index) => {
+                const baseLeftOffset = letter?.offsetLeft;
+                const baseTopOffset = letter?.offsetTop;
 
-                initialLetterPositions.current[index] = {
-                    leftOffset: originalLeftOffset,
-                    topOffset: originalTopOffset,
+                baseLetterOffsetPositions.current[index] = {
+                    leftOffset: baseLeftOffset,
+                    topOffset: baseTopOffset,
                 };
+            });
+        };
+
+        const restoreBaseLetterOffsetPositions = () => {
+            lettersRef.current.forEach((letter, index) => {
+                const { leftOffset, topOffset } = baseLetterOffsetPositions.current[index];
+
+                letter.style.position = "absolute";
+                letter.style.top = `${topOffset}px`;
+                letter.style.left = `${leftOffset}px`;
+                letter.style.transition = "all 0.3s ease-out";
+
+                letter.style.filter = "none";
+                letter.style.transform = "translate(0, 0) scale(1)";
+                letter.style.opacity = "1";
             });
         };
 
@@ -56,28 +71,13 @@ const FloatingText = ({ text, children }) => {
             });
         }, 300);
 
-        const revertToInitialLetterPositions = () => {
-            lettersRef.current.forEach((letter, index) => {
-                const { leftOffset, topOffset } = initialLetterPositions.current[index]; // Use the stored original positions to reset
-
-                letter.style.position = "absolute";
-                letter.style.top = `${topOffset}px`;
-                letter.style.left = `${leftOffset}px`;
-                letter.style.transition = "all 0.3s ease-out";
-
-                letter.style.filter = "none";
-                letter.style.transform = "translate(0, 0) scale(1)";
-                letter.style.opacity = "1";
-            });
-        };
-
-        // Start listening to scroll, set random positions as we scroll down and revert to base positions when we return to top
+        // Set random positions as we scroll down and restore base positions when we return to top
         const handleScroll = () => {
             const outerTop = outerTextHolderRef.current?.getBoundingClientRect().top;
             const innerTop = innerTextHolderRef.current?.getBoundingClientRect().top;
 
             if (outerTop >= innerTop) {
-                revertToInitialLetterPositions();
+                restoreBaseLetterOffsetPositions();
                 setShowBioText(false);
             } else {
                 setRandomLetterPositions();
@@ -85,27 +85,31 @@ const FloatingText = ({ text, children }) => {
             }
         };
 
-        window.addEventListener("scroll", handleScroll, { passive: true });
+        const handleResize = () => {
+            saveBaseLetterOffsetPositions();
+            restoreBaseLetterOffsetPositions();
+        };
 
-        // Call saveInitialLetterPositions to save the base letter positions on page load
-        saveInitialLetterPositions();
-
-        // Call handle scroll upon page mount
+        saveBaseLetterOffsetPositions();
         handleScroll();
+
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        window.addEventListener("resize", handleResize);
 
         return () => {
             window.removeEventListener("scroll", handleScroll);
+            window.removeEventListener("resize", handleResize);
         };
     }, []);
 
     return (
-        <div ref={outerTextHolderRef} className="relative h-[125vh] w-full">
+        <div ref={outerTextHolderRef} className="relative h-[120vh] w-full">
             <div ref={innerTextHolderRef} className="sticky top-0 h-screen">
                 <div className="h-full flex font-bold text-4xl xxs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl justify-center">
                     {text.split("").map((char, index) => (
                         <span
                             key={index}
-                            ref={(el) => (lettersRef.current[index] = el)}
+                            ref={(charElement) => (lettersRef.current[index] = charElement)}
                             className=""
                         >
                             {char === " " ? "\u00A0" : char}
@@ -123,6 +127,19 @@ const FloatingText = ({ text, children }) => {
                         </div>
                     </SpringMotionBlock>
                 </div>
+            </div>
+
+            {/* This is an invisible div with the sole purpose of storing the correct letter offsets for later restoration */}
+            <div className="absolute top-0 h-full w-full flex font-bold text-4xl xxs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl justify-center invisible">
+                {text.split("").map((char, index) => (
+                    <span
+                        key={index}
+                        ref={(charElement) => (helperLettersRef.current[index] = charElement)}
+                        className=""
+                    >
+                        {char === " " ? "\u00A0" : char}
+                    </span>
+                ))}
             </div>
         </div>
     );
