@@ -126,7 +126,7 @@ const FloatingText = ({ text, children }) => {
 
         const handleResize = () => {
             saveBaseLetterOffsetPositions();
-            restoreBaseLetterOffsetPositions();
+            restoreBaseLetterOffsetPositions(); // TODO this is being called on mobile on address bar show/hide, and it shouldn't
         };
 
         saveBaseLetterOffsetPositions();
