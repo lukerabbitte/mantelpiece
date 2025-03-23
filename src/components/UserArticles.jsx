@@ -55,7 +55,7 @@ const UserArticles = ({ articles = [], isOwnProfile }) => {
 
     return (
         <>
-            <ul className="w-full h-full flex flex-col items-center">
+            <ul className="h-full flex flex-col items-center">
                 <div className="border-b-2 w-full max-w-prose"></div>
                 {articles.map((article) => (
                     <li
@@ -75,6 +75,7 @@ const UserArticles = ({ articles = [], isOwnProfile }) => {
                                 <Button
                                     asChild
                                     size="evenPad"
+                                    disabled={isDeleting}
                                     title="Edit Article"
                                     className="transition-all duration-400 hover:opacity-90 hover:scale-105 rounded-full"
                                 >
@@ -87,6 +88,7 @@ const UserArticles = ({ articles = [], isOwnProfile }) => {
                                 <Button
                                     size="evenPad"
                                     title="Delete Article"
+                                    disabled={isDeleting}
                                     onClick={() => handleDeleteClick(article)}
                                     className="transition-all duration-400 hover:opacity-90 hover:scale-105 rounded-full"
                                 >
@@ -101,8 +103,8 @@ const UserArticles = ({ articles = [], isOwnProfile }) => {
             </ul>
 
             {/* Delete Confirmation Dialog */}
-            <AlertDialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
-                <AlertDialogContent>
+            <AlertDialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen} className="">
+                <AlertDialogContent className="border-red-500 border-4 w-full">
                     <AlertDialogHeader>
                         <AlertDialogTitle>Are you sure?</AlertDialogTitle>
                         <AlertDialogDescription>

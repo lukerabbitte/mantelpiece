@@ -44,7 +44,7 @@ const ArticlePage = async ({ params }) => {
             <ArticleScrollBar />
 
             <div className="max-w-[65ch] bg-card rounded-xl">
-                <div className="relative w-full justify-center max-w:64 md:max-w:32 h-72 sm:h-80">
+                <div className="relative w-full justify-center max-w:64 md:max-w:32">
                     <Image
                         src={article.image}
                         alt={article.title}

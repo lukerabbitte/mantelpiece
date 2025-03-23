@@ -119,6 +119,11 @@ module.exports = {
                 klimt: {
                     500: "#DA667D",
                 },
+                category: {
+                    1: "var(--category-1)",
+                    2: "var(--category-2)",
+                    3: "var(--category-3)",
+                },
             },
         },
     },

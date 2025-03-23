@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import { FaNewspaper } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
-import Badge from "@/components/Badge";
+import CategoryBadge from "@/components/CategoryBadge";
 import { makeDateReadable } from "@/utils/makeDateReadable";
-import SpringMotionBlock from "@/components/SpringMotionBlock";
+import SwipeInMotionBlock from "@/components/SwipeInMotionBlock";
 import { getImageWithFallback } from "@/utils/getImageWithFallback";
 
 const ArticleStrip = ({ article }) => {
@@ -35,12 +34,9 @@ const ArticleStrip = ({ article }) => {
                     <h1 className="text-[clamp(18px,2vw,22px)] leading-tight text-balance text-primary font-bold">
                         {article.title}
                         <span className="inline-block ml-2 text-sm w-4">
-                            <SpringMotionBlock
-                                isVisible={showArrow}
-                                id={"article-strip-right-arrow-on-hover"}
-                            >
+                            <SwipeInMotionBlock isVisible={showArrow}>
                                 <FaArrowRight />
-                            </SpringMotionBlock>
+                            </SwipeInMotionBlock>
                         </span>
                     </h1>
                     <div className="w-full text-card-foreground">
@@ -49,11 +45,11 @@ const ArticleStrip = ({ article }) => {
                         </p>
                     </div>
                 </div>
-                <div className="flex flex-row items-center place-self-end gap-2 bg-muted rounded-xl p-1.5">
+                <div className="flex flex-row items-center place-self-end gap-2 rounded-xl p-1.5">
                     <div className="flex flex-row gap-2 align-middle text-card-foreground text-[clamp(10px,0.8vw,16px)]">
                         <p>{makeDateReadable(article.written_at)}</p>
                     </div>
-                    <Badge icon={FaNewspaper} text={article.publisher} />
+                    <CategoryBadge category={article.category} />
                 </div>
             </div>
         </div>

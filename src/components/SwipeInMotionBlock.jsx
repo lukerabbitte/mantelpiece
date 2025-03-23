@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from "motion/react";
 import { useId } from "react";
 
-const SpringMotionBlock = ({ children, isVisible = true }) => {
+const SwipeInMotionBlock = ({ children, isVisible = true }) => {
     const id = useId();
 
     return (
@@ -11,9 +11,9 @@ const SpringMotionBlock = ({ children, isVisible = true }) => {
             {isVisible && (
                 <motion.div
                     key={id}
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0 }}
+                    initial={{ opacity: 0, scale: 0, x: -10 }}
+                    animate={{ opacity: 1, scale: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 5 }}
                     transition={{
                         duration: 0.2,
                         scale: { type: "spring", visualDuration: 0.1, bounce: 0.1 },
@@ -26,4 +26,4 @@ const SpringMotionBlock = ({ children, isVisible = true }) => {
     );
 };
 
-export default SpringMotionBlock;
+export default SwipeInMotionBlock;

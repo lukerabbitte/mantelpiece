@@ -37,6 +37,9 @@ html {
         --chart-5: #e9c46a;
         --warning: #ffba08;
         --warning-foreground: #f2f2f2;
+        --category-1: #c6b4e4;
+        --category-2: #b4d8df;
+        --category-3: #d5e5d5;
     }
 
     .dark {

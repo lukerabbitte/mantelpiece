@@ -16,7 +16,7 @@ const UserPosts = async () => {
     }
 
     // TODO remove this once we populate with enough actual articles
-    const newArticles = Array(4)
+    const newArticles = Array(20)
         .fill(null)
         .flatMap((_, i) =>
             fetchedArticles.map((article) => ({
@@ -27,7 +27,7 @@ const UserPosts = async () => {
             }))
         );
 
-    const articles = fetchedArticles;
+    const articles = newArticles;
 
     return (
         <div className="flex flex-col gap-16 items-center">
