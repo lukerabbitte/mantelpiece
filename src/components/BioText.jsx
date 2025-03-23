@@ -1,10 +1,13 @@
 const BioText = () => {
     return (
-        <div>
-            <div className="text-2xl xl:text-4xl flex flex-col gap-4">
-                <p>I am an author at Hot Press.</p>
-                <p>Find a selection of my articles here.</p>
-            </div>
+        <div className="text-md xl:text-lg flex flex-col gap-4">
+            <p>
+                Caroline Kelly is a journalist and contributing writer at Hot Press Magazine,
+                focusing on music and culture. Formerly, she was the Features Editor at The
+                University Observer from 2022-2024. She grew up in Virginia and received her
+                undergraduate degree at University College Dublin. Her work has also appeared in
+                Extra.ie. She lives in Dublin.
+            </p>
         </div>
     );
 };

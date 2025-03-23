@@ -6,16 +6,11 @@ import SpringMotionBlock from "./SpringMotionBlock";
 import { throttle } from "@/utils/throttle";
 
 // Corresponding levels to simulate distance from each letter changing as we scroll
-const DISTANCE_LEVELS = [
-    { blur: 0, size: 1, opacity: 1 },
-    { blur: 0.03, size: 0.95, opacity: 0.9 },
-    { blur: 0.06, size: 0.92, opacity: 0.8 },
-    { blur: 0.09, size: 0.87, opacity: 0.7 },
-    { blur: 0.12, size: 0.82, opacity: 0.6 },
-    { blur: 0.15, size: 0.75, opacity: 0.5 },
-    { blur: 0.18, size: 0.58, opacity: 0.4 },
-    { blur: 0.2, size: 0.5, opacity: 0.2 },
-];
+const DISTANCE_LEVELS = [...Array(8)].map((_, i) => ({
+    blur: 4 + i * 2,
+    size: 1 - i * 0.09,
+    opacity: 0.6 - i * 0.05,
+}));
 
 const FloatingText = ({ text, children }) => {
     const outerTextHolderRef = useRef(null);
@@ -38,7 +33,6 @@ const FloatingText = ({ text, children }) => {
         };
 
         const setRandomLetterPositions = throttle(() => {
-            console.log("SETTING RANDOM");
             lettersRef.current.forEach((letter) => {
                 const letterHeight = letter?.offsetHeight;
                 const letterWidth = letter?.offsetWidth;
@@ -54,13 +48,13 @@ const FloatingText = ({ text, children }) => {
                 letter.style.position = "absolute";
                 letter.style.top = `${adjustedTop}px`;
                 letter.style.left = `${adjustedLeft}px`;
-                letter.style.transition = "all 0.1s ease-out";
+                letter.style.transition = "all 0.3s ease-out";
 
                 letter.style.filter = `blur(${randomLevel.blur}px)`;
                 letter.style.transform = `scale(${randomLevel.size})`;
                 letter.style.opacity = randomLevel.opacity;
             });
-        }, 100);
+        }, 300);
 
         const revertToInitialLetterPositions = () => {
             lettersRef.current.forEach((letter, index) => {
@@ -96,13 +90,16 @@ const FloatingText = ({ text, children }) => {
         // Call saveInitialLetterPositions to save the base letter positions on page load
         saveInitialLetterPositions();
 
+        // Call handle scroll upon page mount
+        handleScroll();
+
         return () => {
             window.removeEventListener("scroll", handleScroll);
         };
     }, []);
 
     return (
-        <div ref={outerTextHolderRef} className="relative h-[2000px] w-full">
+        <div ref={outerTextHolderRef} className="relative h-[125vh] w-full">
             <div ref={innerTextHolderRef} className="sticky top-0 h-screen">
                 <div className="h-full flex font-bold text-4xl xxs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl justify-center">
                     {text.split("").map((char, index) => (
