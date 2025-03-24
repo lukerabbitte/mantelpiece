@@ -3,12 +3,14 @@
 import "@/app/globals.css";
 import FloatingText from "@/components/FloatingText";
 import BioText from "@/components/BioText";
-import { useEffect } from "react";
+/* import { useEffect } from "react";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
-import { toast } from "sonner";
+import { toast } from "sonner"; */
 
-export default function Home() {
-    const router = useRouter();
+const Home = () => {
+    // We used to cleanup search params here, but removed for now to avoid need for client logic here
+
+    /* const router = useRouter();
     const searchParams = useSearchParams();
     const pathname = usePathname();
 
@@ -33,7 +35,7 @@ export default function Home() {
 
             router.replace(cleanUrl, { scroll: false });
         }
-    }, [searchParams, router, pathname]);
+    }, [searchParams, router, pathname]); */
 
     return (
         <div className="flex flex-col gap-4">
@@ -42,4 +44,6 @@ export default function Home() {
             </FloatingText>
         </div>
     );
-}
+};
+
+export default Home;
