@@ -3,8 +3,6 @@ import React from "react";
 import { fetchArticles } from "@/utils/article/fetchArticles";
 import EmptyState from "@/app/posts/EmptyState";
 
-export const revalidate = 300;
-
 const UserPosts = async () => {
     const { data: fetchedArticles, error, isEmpty } = await fetchArticles();
 
