@@ -85,10 +85,10 @@ html {
         --warning: #f2f2f2;
         --warning-foreground: #ffba08;
 
-        --gradient-start: #1a1818;
-        --gradient-mid: #241f1f;
-        --gradient-mid2: #362a2a;
-        --gradient-end: #443434;
+        --gradient-start: #242121;
+        --gradient-mid: #312a2a;
+        --gradient-mid2: #4c3939;
+        --gradient-end: #563e3e;
 
         .bg-radial-gradient {
             background: radial-gradient(

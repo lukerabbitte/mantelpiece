@@ -22,141 +22,93 @@ const FloatingText = ({ text, children }) => {
 
     const [showBioText, setShowBioText] = useState(false);
 
-    useEffect(() => {
-        const saveBaseLetterOffsetPositions = () => {
-            if (!helperLettersRef.current || !helperLettersRef.current.length) {
-                console.warn("Helper letter references not available for saving positions");
-                return;
-            }
+    const saveBaseLetterOffsetPositions = () => {
+        if (!helperLettersRef.current || !helperLettersRef.current.length) return;
 
-            helperLettersRef.current.forEach((letter, index) => {
-                if (!letter) return;
+        helperLettersRef.current.forEach((letter, index) => {
+            if (!letter) return;
+            baseLetterOffsetPositions.current[index] = {
+                leftOffset: letter.offsetLeft,
+                topOffset: letter.offsetTop,
+            };
+        });
+    };
 
-                const baseLeftOffset = letter.offsetLeft;
-                const baseTopOffset = letter.offsetTop;
+    const restoreBaseLetterOffsetPositions = () => {
+        if (!lettersRef.current || !baseLetterOffsetPositions.current) return;
 
-                baseLetterOffsetPositions.current[index] = {
-                    leftOffset: baseLeftOffset,
-                    topOffset: baseTopOffset,
-                };
-            });
-        };
+        lettersRef.current.forEach((letter, index) => {
+            if (!letter || !baseLetterOffsetPositions.current[index]) return;
 
-        const restoreBaseLetterOffsetPositions = () => {
-            if (!lettersRef.current || !baseLetterOffsetPositions.current) {
-                console.warn("Letter references or base positions not available for restoration");
-                return;
-            }
+            const { leftOffset, topOffset } = baseLetterOffsetPositions.current[index];
 
-            lettersRef.current.forEach((letter, index) => {
-                if (!letter || !baseLetterOffsetPositions.current[index]) return;
+            letter.style.position = "absolute";
+            letter.style.top = `${topOffset}px`;
+            letter.style.left = `${leftOffset}px`;
+            letter.style.transition = "all 0.3s ease-out";
 
-                const { leftOffset, topOffset } = baseLetterOffsetPositions.current[index];
+            letter.style.filter = "none";
+            letter.style.transform = "translate(0, 0) scale(1)";
+            letter.style.opacity = "1";
+        });
+    };
 
-                if (typeof leftOffset !== "number" || typeof topOffset !== "number") return;
+    const setRandomLetterPositions = throttle(() => {
+        const innerTextHolder = innerTextHolderRef.current;
+        const letters = lettersRef.current;
 
-                letter.style.position = "absolute";
-                letter.style.top = `${topOffset}px`;
-                letter.style.left = `${leftOffset}px`;
-                letter.style.transition = "all 0.3s ease-out";
+        if (!innerTextHolder || !letters?.length) return;
 
-                letter.style.filter = "none";
-                letter.style.transform = "translate(0, 0) scale(1)";
-                letter.style.opacity = "1";
-            });
-        };
+        const { offsetHeight: innerTextHolderHeight, offsetWidth: innerTextHolderWidth } =
+            innerTextHolder;
 
-        const setRandomLetterPositions = throttle(() => {
-            const innerTextHolder = innerTextHolderRef.current;
-            const letters = lettersRef.current;
+        if (innerTextHolderHeight <= 0 || innerTextHolderWidth <= 0) return;
 
-            if (!innerTextHolder || !letters || !letters.length) {
-                console.warn("Text holder or letter references not available for randomization");
-                return;
-            }
+        letters.forEach((letter) => {
+            if (!letter) return;
 
-            const innerTextHolderHeight = innerTextHolder.offsetHeight || 0;
-            const innerTextHolderWidth = innerTextHolder.offsetWidth || 0;
+            const maxTop = Math.max(0, innerTextHolderHeight - letter.offsetHeight);
+            const maxLeft = Math.max(0, innerTextHolderWidth - letter.offsetWidth);
 
-            if (innerTextHolderHeight <= 0 || innerTextHolderWidth <= 0) {
-                console.warn("Text holder has invalid dimensions for letter positioning");
-                return;
-            }
+            const adjustedTop = Math.random() * maxTop;
+            const adjustedLeft = Math.random() * maxLeft;
+            const randomLevel = DISTANCE_LEVELS[Math.floor(Math.random() * DISTANCE_LEVELS.length)];
 
-            letters.forEach((letter) => {
-                if (!letter) return;
+            letter.style.position = "absolute";
+            letter.style.top = `${adjustedTop}px`;
+            letter.style.left = `${adjustedLeft}px`;
+            letter.style.transition = "all 0.3s ease-out";
 
-                const letterHeight = letter.offsetHeight || 0;
-                const letterWidth = letter.offsetWidth || 0;
+            letter.style.filter = `blur(${randomLevel.blur}px)`;
+            letter.style.transform = `scale(${randomLevel.size})`;
+            letter.style.opacity = `${randomLevel.opacity}`;
+        });
+    }, 300);
 
-                const maxTop = Math.max(0, innerTextHolderHeight - letterHeight);
-                const maxLeft = Math.max(0, innerTextHolderWidth - letterWidth);
+    const handleScroll = useCallback(() => {
+        const outerTop = outerTextHolderRef.current?.getBoundingClientRect().top;
+        const innerTop = innerTextHolderRef.current?.getBoundingClientRect().top;
 
-                const adjustedTop = Math.random() * maxTop;
-                const adjustedLeft = Math.random() * maxLeft;
-
-                const randomLevelIndex = Math.min(
-                    Math.floor(Math.random() * DISTANCE_LEVELS.length),
-                    DISTANCE_LEVELS.length - 1
-                );
-                const randomLevel = DISTANCE_LEVELS[randomLevelIndex] || DISTANCE_LEVELS[0];
-
-                letter.style.position = "absolute";
-                letter.style.top = `${adjustedTop}px`;
-                letter.style.left = `${adjustedLeft}px`;
-                letter.style.transition = "all 0.3s ease-out";
-
-                letter.style.filter = `blur(${randomLevel.blur}px)`;
-                letter.style.transform = `scale(${randomLevel.size})`;
-                letter.style.opacity = `${randomLevel.opacity}`;
-            });
-        }, 300);
-
-        // Set random positions as we scroll down and restore base positions when we return to top
-        const handleScroll = () => {
-            const outerTop = outerTextHolderRef.current?.getBoundingClientRect().top;
-            const innerTop = innerTextHolderRef.current?.getBoundingClientRect().top;
-
-            if (outerTop >= innerTop) {
-                restoreBaseLetterOffsetPositions();
-                setShowBioText(false);
-            } else {
-                setRandomLetterPositions();
-                setShowBioText(true);
-            }
-        };
-
-        const widthDimensionWasNotResized = (prevWidth, currentWidth) => {
-            return Math.abs(currentWidth - prevWidth) < 5;
-        };
-
-        const handleResize = () => {
-            const currentWidth = window.innerWidth;
-            const prevWidth = prevScreenWidthRef.current;
-
-            if (widthDimensionWasNotResized(prevWidth, currentWidth)) {
-                return;
-            }
-
-            prevScreenWidthRef.current = currentWidth;
-
-            saveBaseLetterOffsetPositions();
+        if (outerTop >= innerTop) {
             restoreBaseLetterOffsetPositions();
-        };
-
-        saveBaseLetterOffsetPositions();
-        handleScroll();
-
-        window.addEventListener("scroll", handleScroll);
-        window.addEventListener("resize", handleResize);
-
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-            window.removeEventListener("resize", handleResize);
-        };
+            setShowBioText(false);
+        } else {
+            setRandomLetterPositions();
+            setShowBioText(true);
+        }
     }, []);
 
-    const handleAboutButtonClick = () => {
+    const handleResize = useCallback(() => {
+        const currentWidth = window.innerWidth;
+        if (Math.abs(currentWidth - prevScreenWidthRef.current) < 5) return;
+
+        prevScreenWidthRef.current = currentWidth;
+
+        saveBaseLetterOffsetPositions();
+        restoreBaseLetterOffsetPositions();
+    }, []);
+
+    const handleAboutButtonClick = useCallback(() => {
         if (typeof window === "undefined" || !window) {
             return;
         }
@@ -171,7 +123,20 @@ const FloatingText = ({ text, children }) => {
             top: targetScrollPosition,
             behavior: "smooth",
         });
-    };
+    }, []);
+
+    useEffect(() => {
+        saveBaseLetterOffsetPositions();
+        handleScroll();
+
+        window.addEventListener("scroll", handleScroll);
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+            window.removeEventListener("resize", handleResize);
+        };
+    }, [handleScroll, handleResize]);
 
     return (
         <div ref={outerTextHolderRef} className="relative h-[200vh] w-full">
