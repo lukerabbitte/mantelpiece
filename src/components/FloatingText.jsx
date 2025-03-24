@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import SpringMotionBlock from "./SpringMotionBlock";
 import { throttle } from "@/utils/throttle";
 import CtaButton from "@/components/CtaButton";
