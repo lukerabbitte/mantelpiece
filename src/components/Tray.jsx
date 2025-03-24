@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Link } from "next-view-transitions";
+import Link from "next/link";
 import ArticleCard from "@/components/ArticleCard";
 
 const Tray = ({ articles }) => {
@@ -14,7 +14,7 @@ const Tray = ({ articles }) => {
             {pinnedArticles.length > 0 &&
                 pinnedArticles.map((article) => (
                     <Link
-                        className="h-96"
+                        className="h-[30rem]"
                         key={article.id || article.hash_id}
                         href={`/posts/${article.hash_id}/${article.slug}`}
                     >

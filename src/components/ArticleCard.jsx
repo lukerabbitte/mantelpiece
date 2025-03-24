@@ -9,7 +9,6 @@ import { FaArrowRight, FaThumbtack } from "react-icons/fa";
 
 const ArticleCard = ({ article }) => {
     const [showArrow, setShowArrow] = useState(false);
-    const [imageLoaded, setImageLoaded] = useState(false);
 
     if (!article) {
         return <div className="rounded-xl bg-muted h-full animate-pulse"></div>;
@@ -21,27 +20,20 @@ const ArticleCard = ({ article }) => {
             onMouseEnter={() => setShowArrow(true)}
             onMouseLeave={() => setShowArrow(false)}
         >
-            <div className="relative h-full mx-4 mt-4 overflow-hidden rounded-t-xl">
-                <div
-                    className={`transition-opacity duration-400 ease-out ${
-                        imageLoaded ? "opacity-100" : "opacity-0"
-                    }`}
-                >
-                    <Image
-                        src={getImageWithFallback(article.image)}
-                        fill
-                        sizes="100vw, (min-width: 480px) 100vw, (min-width: 640px) 50vw, (min-width: 768px) 50vw, (min-width: 1024px) 33vw, (min-width: 1280px) 25vw, (min-width: 1536px) 20vw"
-                        alt={article.title || "Article image"}
-                        className="object-cover object-top rounded-lg"
-                        onLoad={() => setImageLoaded(true)}
-                    />
-                </div>
+            <div className="relative h-full mx-4 mt-4 overflow-hidden rounded-md">
+                <Image
+                    src={getImageWithFallback(article.image)}
+                    fill
+                    sizes="100vw, (min-width: 480px) 100vw, (min-width: 640px) 50vw, (min-width: 768px) 50vw, (min-width: 1024px) 33vw, (min-width: 1280px) 25vw, (min-width: 1536px) 20vw"
+                    alt={article.title || "Article image"}
+                    className="object-cover object-top"
+                />
             </div>
 
             {article.pinned && (
-                <div className="absolute top-0 left-0 m-2">
-                    <div className="p-2 rounded-full w-fit backdrop-blur-sm text-foreground text-xs">
-                        <div className="flex flex-row items-center gap-2 p-2 rounded-full bg-primary-foreground">
+                <div className="absolute top-0 left-0 m-4">
+                    <div className="p-2 rounded-full w-fit backdrop-blur-sm text-accent-foreground text-xs">
+                        <div className="flex flex-row items-center gap-2 p-2 rounded-full bg-accent">
                             <span className="inline-block place-self-center text-center">
                                 <FaThumbtack />
                             </span>
@@ -51,7 +43,7 @@ const ArticleCard = ({ article }) => {
             )}
 
             <div className="w-full flex flex-col gap-1 pt-2 px-4 pb-4 rounded-b-xl">
-                <h1 className="text-[clamp(18px,2vw,22px)] leading-tight text-balance text-primary font-bold">
+                <h1 className="text-[clamp(18px,2vw,22px)] leading-tight text-primary font-bold">
                     {article.title}
                     <span className="inline-block ml-2 text-sm w-4">
                         <SwipeInMotionBlock isVisible={showArrow}>

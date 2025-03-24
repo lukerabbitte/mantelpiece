@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Link } from "next-view-transitions";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FaHome, FaList, FaUser } from "react-icons/fa";
 import ThemeToggle from "@/components/ThemeToggle";

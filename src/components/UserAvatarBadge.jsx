@@ -6,7 +6,7 @@ const UserAvatarBadge = ({ avatarImage, displayName }) => {
         <div className="flex flex-row items-center gap-2">
             <span className="lg:font-medium text-balance">{displayName}</span>
             <Avatar>
-                <AvatarImage src={avatarImage} className="w-full h-full rounded-full" />
+                <AvatarImage src={avatarImage} alt={displayName} className="w-full h-full rounded-full" />
 
                 <AvatarFallback>
                     <div className="w-full h-full rounded-full bg-muted"></div>

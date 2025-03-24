@@ -72,8 +72,10 @@ const ArticleMDXContent = (props) => {
         img: (props) => (
             <Image
                 {...props}
-                className="max-w-full h-auto my-4 rounded-md"
+                className="max-w-full h-auto my-4 rounded-md place-self-center"
                 alt={props.alt || "Image"}
+                width={400}
+                height={300}
             />
         ),
         hr: (props) => <hr {...props} className="my-8 border-t border-border" />,
@@ -81,7 +83,7 @@ const ArticleMDXContent = (props) => {
     };
 
     return (
-        <div className="max-w-prose mx-auto sm:px-4">
+        <div className="max-w-[75ch] mx-auto">
             <article className="prose prose-sm sm:prose lg:prose-lg dark:prose-invert prose-headings:text-foreground prose-p:text-foreground">
                 <MDXRemote {...props} components={{ ...components, ...(props.components || {}) }} />
             </article>

@@ -23,7 +23,7 @@ html {
         --secondary-foreground: #f4ecec;
         --muted: #ccbdbd;
         --muted-foreground: #737373;
-        --accent: #f3e7cd;
+        --accent: #f7db9e;
         --accent-foreground: #1a1a1a;
         --destructive: #e63946;
         --destructive-foreground: #ffffff;
@@ -70,8 +70,8 @@ html {
         --secondary-foreground: #141414;
         --muted: #383232;
         --muted-foreground: #a3a3a3;
-        --accent: #5e4f66;
-        --accent-foreground: #f5f5f5;
+        --accent: #f0c66b;
+        --accent-foreground: #1a1a1a;
         --destructive: #993333;
         --destructive-foreground: #f5f5f5;
         --border: #262626;
@@ -85,10 +85,10 @@ html {
         --warning: #f2f2f2;
         --warning-foreground: #ffba08;
 
-        --gradient-start: #4c3737;
-        --gradient-mid: #433333;
-        --gradient-mid2: #493939;
-        --gradient-end: #372c2c;
+        --gradient-start: #1a1818;
+        --gradient-mid: #241f1f;
+        --gradient-mid2: #362a2a;
+        --gradient-end: #443434;
 
         .bg-radial-gradient {
             background: radial-gradient(

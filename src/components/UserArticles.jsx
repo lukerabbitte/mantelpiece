@@ -1,6 +1,6 @@
 "use client";
 
-import { Link } from "next-view-transitions";
+import Link from "next/link";
 import { useState } from "react";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { deleteArticle } from "@/utils/serverActions/deleteArticle";

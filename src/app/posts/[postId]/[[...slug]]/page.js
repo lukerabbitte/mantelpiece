@@ -1,13 +1,17 @@
 import { notFound, redirect } from "next/navigation";
 import { getArticleByHashId } from "@/utils/article/getArticleByHashId";
-import ArticleScrollBar from "@/app/posts/[postId]/[[...slug]]/ArticleScrollBar";
-import ArticleMDXContent from "@/app/posts/[postId]/[[...slug]]/ArticleMDXContent";
+import ArticleScrollBar from "./ArticleScrollBar";
+import ArticleMDXContent from "./ArticleMDXContent";
 import NiceDate from "@/components/NiceDate";
 import Image from "next/image";
+import { getImageWithFallback } from "@/utils/getImageWithFallback";
+import UserAvatarBadge from "@/components/UserAvatarBadge";
+import CategoryBadge from "@/components/CategoryBadge";
+import { getProfileByUserId } from "@/utils/user/getProfileByUserId";
 
 const ArticlePage = async ({ params }) => {
-    const attemptedHashId = params.postId;
-    const wildcardSlug = params.slug[0];
+    const attemptedHashId = params.postId ? params.postId : undefined;
+    const wildcardSlug = params.slug ? params.slug[0] : undefined;
 
     if (!attemptedHashId) {
         notFound();
@@ -27,6 +31,9 @@ const ArticlePage = async ({ params }) => {
         notFound();
     }
 
+    const userId = article.author;
+    const { data: profile, error: profileError, profileStatus } = await getProfileByUserId(userId);
+
     // The article path that we expect based on its current slug
     const canonicalPath = `/posts/${article.hash_id}/${article.slug}`;
 
@@ -39,40 +46,60 @@ const ArticlePage = async ({ params }) => {
     }
 
     return (
-        <div className="flex flex-col items-center w-full gap-4">
+        <div className="flex flex-col items-center w-full gap-2">
             {/* Client component for scroll tracking */}
             <ArticleScrollBar />
 
-            <div className="max-w-[65ch] bg-card rounded-xl">
-                <div className="relative w-full justify-center max-w:64 md:max-w:32">
-                    <Image
-                        src={article.image}
-                        alt={article.title}
-                        width={400}
-                        height={300}
-                        priority
-                        className="w-full h-full rounded-t-xl object-cover"
-                    />
-                </div>
+            <div className="max-w-[75ch] space-y-4">
+                <div className="h-full bg-radial-gradient overflow-hidden rounded-xl">
+                    <div className="relative w-full justify-center">
+                        <Image
+                            src={getImageWithFallback(article.image)}
+                            alt={article.title || "Article image"}
+                            width={1200}
+                            height={900}
+                            sizes="(max-width: 768px) 100vw, 75ch"
+                            className="w-full h-auto object-cover object-top"
+                            priority
+                        />
+                    </div>
 
-                <div className="relative rounded-b-xl p-4">
-                    <div className="flex flex-col gap-4">
-                        <div className="flex flex-row gap-4 justify-between">
-                            <div className="flex flex-col">
-                                <h1 className="text-primary text-2xl font-black">
-                                    {article.title}
-                                </h1>
+                    <div className="relative rounded-b-xl p-4">
+                        <div className="flex flex-col gap-4">
+                            <div className="flex flex-row gap-4 justify-between">
+                                <div className="flex flex-col">
+                                    <h1 className="text-primary text-2xl font-black">
+                                        {article.title}
+                                    </h1>
+                                </div>
+                                <div className="text-primary place-content-center">
+                                    <NiceDate articleTimestampz={article.written_at} />
+                                </div>
                             </div>
-                            <div className="text-primary place-content-center">
-                                <NiceDate articleTimestampz={article.written_at} />
+
+                            <p className="flex flex-row text-card-foreground font-bold">
+                                {article.excerpt}
+                            </p>
+
+                            <div className="w-full place-self-center rounded-full flex flex-row gap-4 items-center justify-between">
+                                <div className="max-w-32">
+                                    <CategoryBadge category={article.category} />
+                                </div>
+                                <UserAvatarBadge
+                                    avatarImage={profile.avatar_url}
+                                    displayName={profile.display_name}
+                                />
                             </div>
                         </div>
-
-                        <p className="flex flex-row text-card-foreground text-right font-bold">
-                            {article.excerpt}
-                        </p>
                     </div>
                 </div>
+
+                <p className="place-self-center">
+                    Originally published in{" "}
+                    <a className="text-primary underline" target="_blank" href={article.publisher_url}>
+                        {article.publisher}
+                    </a>
+                </p>
             </div>
 
             {/* MDX Content (Server Component) */}
