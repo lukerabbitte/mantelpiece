@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import SpringMotionBlock from "./SpringMotionBlock";
 import { throttle } from "@/utils/throttle";
+import CtaButton from "@/components/CtaButton";
 
 // Corresponding levels to simulate distance from each letter changing as we scroll
 const DISTANCE_LEVELS = [...Array(8)].map((_, i) => ({
@@ -17,6 +18,8 @@ const FloatingText = ({ text, children }) => {
     const lettersRef = useRef([]);
     const helperLettersRef = useRef([]);
     const baseLetterOffsetPositions = useRef([]);
+    const prevScreenWidthRef = useRef(typeof window !== "undefined" ? window.innerWidth : 0);
+
     const [showBioText, setShowBioText] = useState(false);
 
     useEffect(() => {
@@ -40,7 +43,6 @@ const FloatingText = ({ text, children }) => {
         };
 
         const restoreBaseLetterOffsetPositions = () => {
-            // Ensure letters and base positions exist
             if (!lettersRef.current || !baseLetterOffsetPositions.current) {
                 console.warn("Letter references or base positions not available for restoration");
                 return;
@@ -124,15 +126,28 @@ const FloatingText = ({ text, children }) => {
             }
         };
 
+        const widthDimensionWasNotResized = (prevWidth, currentWidth) => {
+            return Math.abs(currentWidth - prevWidth) < 5;
+        };
+
         const handleResize = () => {
+            const currentWidth = window.innerWidth;
+            const prevWidth = prevScreenWidthRef.current;
+
+            if (widthDimensionWasNotResized(prevWidth, currentWidth)) {
+                return;
+            }
+
+            prevScreenWidthRef.current = currentWidth;
+
             saveBaseLetterOffsetPositions();
-            restoreBaseLetterOffsetPositions(); // TODO this is being called on mobile on address bar show/hide, and it shouldn't
+            restoreBaseLetterOffsetPositions();
         };
 
         saveBaseLetterOffsetPositions();
         handleScroll();
 
-        window.addEventListener("scroll", handleScroll, { passive: true });
+        window.addEventListener("scroll", handleScroll);
         window.addEventListener("resize", handleResize);
 
         return () => {
@@ -141,10 +156,27 @@ const FloatingText = ({ text, children }) => {
         };
     }, []);
 
+    const handleAboutButtonClick = () => {
+        if (typeof window === "undefined" || !window) {
+            return;
+        }
+
+        const innerTextHolderElement = innerTextHolderRef.current;
+        if (!innerTextHolderElement) return;
+
+        const targetScrollPosition =
+            window.scrollY + innerTextHolderElement.getBoundingClientRect().bottom;
+
+        window.scrollTo({
+            top: targetScrollPosition,
+            behavior: "smooth",
+        });
+    };
+
     return (
-        <div ref={outerTextHolderRef} className="relative h-[130vh] w-full">
+        <div ref={outerTextHolderRef} className="relative h-[200vh] w-full">
             <div ref={innerTextHolderRef} className="sticky top-0 h-screen">
-                <div className="h-full flex font-bold text-4xl xxs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl justify-center">
+                <div className="relative h-full flex font-bold text-4xl xxs:text-5xl lg:text-8xl justify-center">
                     {text.split("").map((char, index) => (
                         <span
                             key={index}
@@ -154,6 +186,18 @@ const FloatingText = ({ text, children }) => {
                             {char === " " ? "\u00A0" : char}
                         </span>
                     ))}
+                </div>
+
+                <div className="absolute left-1/2 top-16 lg:top-28 -translate-x-1/2 w-full">
+                    <SpringMotionBlock isVisible={!showBioText}>
+                        <div className="w-full place-items-center pointer-events-auto">
+                            <CtaButton
+                                text="About"
+                                handleClick={handleAboutButtonClick}
+                                arrowDirection="down"
+                            />
+                        </div>
+                    </SpringMotionBlock>
                 </div>
 
                 <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full pointer-events-none">
@@ -166,7 +210,8 @@ const FloatingText = ({ text, children }) => {
             </div>
 
             {/* This is an invisible div with the sole purpose of storing the correct letter offsets for later restoration */}
-            <div className="absolute top-0 h-full w-full flex font-bold text-4xl xxs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl justify-center invisible">
+            {/* This must perfectly match its equivalent above or else letter restoration logic fails */}
+            <div className="absolute top-0 h-full w-full flex font-bold text-4xl xxs:text-5xl lg:text-8xl justify-center invisible">
                 {text.split("").map((char, index) => (
                     <span
                         key={index}

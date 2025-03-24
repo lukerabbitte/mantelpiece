@@ -19,7 +19,7 @@ const RootLayout = ({ children }) => {
                     <ThemeProvider attribute="class" defaultTheme="system">
                         <Navbar />
                         <main className="flex-grow p-4">{children}</main>
-                        {/* <Footer /> */}
+                        <Footer />
                         <Toaster />
                     </ThemeProvider>
                 </body>

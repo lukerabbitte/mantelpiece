@@ -1,13 +1,13 @@
 import Badge from "@/components/Badge";
 
-import { FaNewspaper, FaMicrophone, FaMicroscope } from "react-icons/fa";
+import { FaNewspaper, FaMicrophone, FaStar } from "react-icons/fa";
 
 /* Util */
 const getIcon = (category) => {
     return category.toUpperCase() === "INTERVIEW"
         ? FaMicrophone
         : category.toUpperCase() === "REVIEW"
-        ? FaMicroscope
+        ? FaStar
         : FaNewspaper;
 };
 

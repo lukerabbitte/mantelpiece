@@ -1,4 +1,5 @@
 import CtaButton from "@/components/CtaButton";
+import SocialIconTray from "@/components/SocialIconTray";
 
 const BioText = () => {
     return (
@@ -10,7 +11,10 @@ const BioText = () => {
                 undergraduate degree at University College Dublin. Her work has also appeared in
                 Extra.ie. She lives in Dublin.
             </p>
-            <CtaButton href="/posts" text="Articles" />
+
+            <CtaButton href="/posts" text="Articles" arrowDirection="right"/>
+
+            <SocialIconTray />
         </div>
     );
 };

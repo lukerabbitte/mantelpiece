@@ -3,7 +3,6 @@
 import "@/app/globals.css";
 import FloatingText from "@/components/FloatingText";
 import BioText from "@/components/BioText";
-import CtaCard from "@/components/CtaCard";
 import { useEffect } from "react";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { toast } from "sonner";
