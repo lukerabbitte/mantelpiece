@@ -104,7 +104,7 @@ const UserArticles = ({ articles = [], isOwnProfile }) => {
 
             {/* Delete Confirmation Dialog */}
             <AlertDialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen} className="">
-                <AlertDialogContent className="border-red-500 border-4 w-full">
+                <AlertDialogContent className="w-full">
                     <AlertDialogHeader>
                         <AlertDialogTitle>Are you sure?</AlertDialogTitle>
                         <AlertDialogDescription>

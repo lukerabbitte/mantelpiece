@@ -40,6 +40,21 @@ html {
         --category-1: #c6b4e4;
         --category-2: #b4d8df;
         --category-3: #d5e5d5;
+
+        --gradient-start-light: #ecdbdf;
+        --gradient-mid-light: #ebc1ca;
+        --gradient-mid2-light: #efa9b9;
+        --gradient-end-light: #e892a6;
+
+        .bg-radial-gradient {
+            background: radial-gradient(
+                circle at 50% 85%,
+                var(--gradient-start-light) 10%,
+                var(--gradient-mid-light) 40%,
+                var(--gradient-mid2-light) 70%,
+                var(--gradient-end-light) 100%
+            );
+        }
     }
 
     .dark {
@@ -69,6 +84,21 @@ html {
         --chart-5: #90e0ef;
         --warning: #f2f2f2;
         --warning-foreground: #ffba08;
+
+        --gradient-start: #4c3737;
+        --gradient-mid: #433333;
+        --gradient-mid2: #493939;
+        --gradient-end: #372c2c;
+
+        .bg-radial-gradient {
+            background: radial-gradient(
+                circle at 50% 85%,
+                var(--gradient-start) 10%,
+                var(--gradient-mid) 40%,
+                var(--gradient-mid2) 70%,
+                var(--gradient-end) 100%
+            );
+        }
     }
 }
 

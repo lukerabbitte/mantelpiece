@@ -10,7 +10,7 @@ const Tray = ({ articles }) => {
     const unpinnedArticles = articles.filter((article) => !article.pinned);
 
     return (
-        <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {pinnedArticles.length > 0 &&
                 pinnedArticles.map((article) => (
                     <Link
@@ -24,7 +24,7 @@ const Tray = ({ articles }) => {
 
             {unpinnedArticles.map((article) => (
                 <Link
-                    className="h-96"
+                    className="h-[30rem]"
                     key={article.id || article.hash_id}
                     href={`/posts/${article.hash_id}/${article.slug}`}
                 >

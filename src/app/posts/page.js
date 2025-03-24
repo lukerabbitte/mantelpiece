@@ -27,7 +27,7 @@ const UserPosts = async () => {
             }))
         );
 
-    const articles = newArticles;
+    const articles = fetchedArticles;
 
     return (
         <div className="flex flex-col gap-16 items-center">
