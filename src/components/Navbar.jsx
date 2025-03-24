@@ -73,7 +73,7 @@ const Navbar = () => {
             </div>
 
             <div className="flex flex-row items-center justify-center gap-4">
-                <Button
+                {/* <Button
                     asChild
                     variant={getButtonVariant("/user")}
                     size="evenPad"
@@ -85,7 +85,7 @@ const Navbar = () => {
                             <FaUser className="text-foreground p-2 w-7 h-7" />
                         </div>
                     </Link>
-                </Button>
+                </Button> */}
 
                 <ThemeToggle blurUponScroll={true} />
             </div>
