@@ -25,7 +25,7 @@ const CategoryBadge = ({ category }) => {
         <Badge
             icon={getIcon(category)}
             text={category}
-            className={`${getBadgeColor(category)} text-slate-900`}
+            className={`max-w-32 ${getBadgeColor(category)} text-slate-900`}
         />
     );
 };

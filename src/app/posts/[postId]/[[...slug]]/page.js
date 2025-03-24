@@ -67,7 +67,7 @@ const ArticlePage = async ({ params }) => {
                     <div className="relative rounded-b-xl p-4">
                         <div className="flex flex-col gap-4">
                             <div className="flex flex-row gap-4 justify-between">
-                                <div className="flex flex-col">
+                                <div className="flex flex-col gap-2">
                                     <h1 className="text-primary text-2xl font-black">
                                         {article.title}
                                     </h1>
@@ -77,29 +77,31 @@ const ArticlePage = async ({ params }) => {
                                 </div>
                             </div>
 
-                            <p className="flex flex-row text-card-foreground font-bold">
-                                {article.excerpt}
-                            </p>
-
-                            <div className="w-full place-self-center rounded-full flex flex-row gap-4 items-center justify-between">
-                                <div className="max-w-32">
-                                    <CategoryBadge category={article.category} />
+                            <div className="flex flex-col sm:flex-row gap-2 items-start sm:items-center justify-between">
+                                <div className="flex flex-row gap-2 items-center">
+                                    <p className="text-sm text-muted-foreground text-balance">
+                                        Originally published in{" "}
+                                        <a
+                                            className="text-foreground underline"
+                                            target="_blank"
+                                            href={article.publisher_url}
+                                        >
+                                            {article.publisher}
+                                        </a>
+                                    </p>
                                 </div>
                                 <UserAvatarBadge
                                     avatarImage={profile.avatar_url}
                                     displayName={profile.display_name}
                                 />
                             </div>
+
+                            <p className="flex flex-row text-card-foreground font-bold">
+                                {article.excerpt}
+                            </p>
                         </div>
                     </div>
                 </div>
-
-                <p className="place-self-center">
-                    Originally published in{" "}
-                    <a className="text-primary underline" target="_blank" href={article.publisher_url}>
-                        {article.publisher}
-                    </a>
-                </p>
             </div>
 
             {/* MDX Content (Server Component) */}

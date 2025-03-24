@@ -27,13 +27,14 @@ const ArticleCard = ({ article }) => {
                     sizes="100vw, (min-width: 480px) 100vw, (min-width: 640px) 50vw, (min-width: 768px) 50vw, (min-width: 1024px) 33vw, (min-width: 1280px) 25vw, (min-width: 1536px) 20vw"
                     alt={article.title || "Article image"}
                     className="object-cover object-top"
+                    priority={true}
                 />
             </div>
 
             {article.pinned && (
                 <div className="absolute top-0 left-0 m-4">
-                    <div className="p-2 rounded-full w-fit backdrop-blur-sm text-accent-foreground text-xs">
-                        <div className="flex flex-row items-center gap-2 p-2 rounded-full bg-accent">
+                    <div className="p-2 rounded-full w-fit backdrop-blur-sm text-primary-foreground text-xs">
+                        <div className="flex flex-row items-center gap-2 p-2 rounded-full bg-primary">
                             <span className="inline-block place-self-center text-center">
                                 <FaThumbtack />
                             </span>

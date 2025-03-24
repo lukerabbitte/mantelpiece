@@ -14,9 +14,10 @@ const Tray = ({ articles }) => {
             {pinnedArticles.length > 0 &&
                 pinnedArticles.map((article) => (
                     <Link
-                        className="h-[30rem]"
+                        className="h-[24rem] md:h-[26rem] lg:h-[30rem]"
                         key={article.id || article.hash_id}
                         href={`/posts/${article.hash_id}/${article.slug}`}
+                        prefetch={true}
                     >
                         <ArticleCard article={article} isPinned={true} />
                     </Link>
@@ -24,9 +25,10 @@ const Tray = ({ articles }) => {
 
             {unpinnedArticles.map((article) => (
                 <Link
-                    className="h-[30rem]"
+                    className="h-[24rem] md:h-[26rem] lg:h-[30rem]"
                     key={article.id || article.hash_id}
                     href={`/posts/${article.hash_id}/${article.slug}`}
+                    prefetch={true}
                 >
                     <ArticleCard article={article} />
                 </Link>
