@@ -66,39 +66,41 @@ const ArticlePage = async ({ params }) => {
 
                     <div className="relative rounded-b-xl p-4">
                         <div className="flex flex-col gap-4">
-                            <div className="flex flex-row gap-4 justify-between">
-                                <div className="flex flex-col gap-2">
-                                    <h1 className="text-primary text-2xl font-black">
-                                        {article.title}
-                                    </h1>
+                            <div className="flex flex-col gap-2 lg:gap-4">
+                                <div className="flex flex-row gap-4 justify-between">
+                                    <div className="flex flex-col gap-4">
+                                        <h1 className="text-primary text-2xl font-black">
+                                            {article.title}
+                                        </h1>
+                                    </div>
+                                    <div className="text-primary place-content-center">
+                                        <NiceDate articleTimestampz={article.written_at} />
+                                    </div>
                                 </div>
-                                <div className="text-primary place-content-center">
-                                    <NiceDate articleTimestampz={article.written_at} />
+                                <div className="flex">
+                                    <UserAvatarBadge
+                                        avatarImage={profile.avatar_url}
+                                        displayName={profile.display_name}
+                                    />
                                 </div>
-                            </div>
-
-                            <div className="flex flex-col sm:flex-row gap-2 items-start sm:items-center justify-between">
-                                <div className="flex flex-row gap-2 items-center">
-                                    <p className="text-sm text-muted-foreground text-balance">
-                                        Originally published in{" "}
-                                        <a
-                                            className="text-foreground underline"
-                                            target="_blank"
-                                            href={article.publisher_url}
-                                        >
-                                            {article.publisher}
-                                        </a>
-                                    </p>
-                                </div>
-                                <UserAvatarBadge
-                                    avatarImage={profile.avatar_url}
-                                    displayName={profile.display_name}
-                                />
                             </div>
 
                             <p className="flex flex-row text-card-foreground font-bold">
                                 {article.excerpt}
                             </p>
+
+                            <div className="flex flex-row gap-2 items-center">
+                                <p className="text-sm text-muted-foreground text-balance">
+                                    Originally published in{" "}
+                                    <a
+                                        className="text-foreground underline"
+                                        target="_blank"
+                                        href={article.publisher_url}
+                                    >
+                                        {article.publisher}
+                                    </a>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
