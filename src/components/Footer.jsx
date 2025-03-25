@@ -11,8 +11,8 @@ const Footer = () => {
     }
 
     return (
-        <div className="h-20 flex flex-row items-center justify-center">
-            <footer className="bg-slate-400/20 rounded-xl h-1/2 w-fit flex flex-row items-center justify-center p-4">
+        <div className="h-18 flex flex-row items-end p-4 justify-center">
+            <footer className="bg-slate-400/20 rounded-xl w-fit flex flex-row items-center justify-center py-2 px-4">
                 <SocialIconTray />
             </footer>
         </div>
