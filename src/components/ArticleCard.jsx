@@ -9,6 +9,7 @@ import { FaArrowRight, FaThumbtack } from "react-icons/fa";
 
 const ArticleCard = ({ article }) => {
     const [showArrow, setShowArrow] = useState(false);
+    const [imageLoaded, setImageLoaded] = useState(false);
 
     if (!article) {
         return <div className="rounded-xl bg-muted h-full animate-pulse"></div>;
@@ -16,18 +17,26 @@ const ArticleCard = ({ article }) => {
 
     return (
         <div
-            className="relative flex flex-col h-full bg-radial-gradient rounded-xl cursor-pointer transition-all duration-400 overflow-hidden"
+            className={`relative flex flex-col h-full bg-radial-gradient rounded-xl cursor-pointer transition-all duration-400 overflow-hidden`}
             onMouseEnter={() => setShowArrow(true)}
             onMouseLeave={() => setShowArrow(false)}
         >
             <div className="relative h-full mx-4 mt-4 overflow-hidden rounded-md">
+                {!imageLoaded && (
+                    <div className="absolute inset-0 bg-slate-500/20 animate-pulse flex items-center justify-center">
+                        <span className="sr-only">Loading image...</span>
+                    </div>
+                )}
                 <Image
                     src={getImageWithFallback(article.image)}
                     fill
                     sizes="100vw, (min-width: 480px) 100vw, (min-width: 640px) 50vw, (min-width: 768px) 50vw, (min-width: 1024px) 33vw, (min-width: 1280px) 25vw, (min-width: 1536px) 20vw"
                     alt={article.title || "Article image"}
-                    className="object-cover object-top"
+                    className={`object-cover object-top transition-opacity duration-400 ease-out ${
+                        imageLoaded ? "opacity-100" : "opacity-40"
+                    }`}
                     priority={true}
+                    onLoadingComplete={() => setImageLoaded(true)}
                 />
             </div>
 

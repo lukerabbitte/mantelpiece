@@ -141,7 +141,7 @@ const FloatingText = ({ text, children }) => {
     return (
         <div ref={outerTextHolderRef} className="relative h-[200vh] w-full">
             <div ref={innerTextHolderRef} className="sticky top-0 h-screen">
-                <div className="relative h-full flex font-bold text-4xl xxs:text-5xl lg:text-8xl justify-center">
+                <div className="relative h-full flex font-bold text-4xl xxs:text-5xl lg:text-8xl justify-center max-w-[100%] truncate">
                     {text.split("").map((char, index) => (
                         <span
                             key={index}
@@ -167,7 +167,7 @@ const FloatingText = ({ text, children }) => {
 
                 <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full pointer-events-none">
                     <SpringMotionBlock isVisible={showBioText}>
-                        <div className="backdrop-blur-xl p-4 rounded-xl shadow-lg w-full max-w-2xl mx-auto pointer-events-auto">
+                        <div className="backdrop-blur-lg p-4 rounded-xl shadow-lg w-full max-w-2xl mx-auto pointer-events-auto">
                             {children}
                         </div>
                     </SpringMotionBlock>
@@ -176,7 +176,7 @@ const FloatingText = ({ text, children }) => {
 
             {/* This is an invisible div with the sole purpose of storing the correct letter offsets for later restoration */}
             {/* This must perfectly match its equivalent above or else letter restoration logic fails */}
-            <div className="absolute top-0 h-full w-full flex font-bold text-4xl xxs:text-5xl lg:text-8xl justify-center invisible">
+            <div className="absolute top-0 h-full w-full flex font-bold text-4xl xxs:text-5xl lg:text-8xl justify-center max-w-[100%] truncate invisible">
                 {text.split("").map((char, index) => (
                     <span
                         key={index}
