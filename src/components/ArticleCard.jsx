@@ -32,7 +32,7 @@ const ArticleCard = ({ article }) => {
                     fill
                     sizes="100vw, (min-width: 480px) 100vw, (min-width: 640px) 50vw, (min-width: 768px) 50vw, (min-width: 1024px) 33vw, (min-width: 1280px) 25vw, (min-width: 1536px) 20vw"
                     alt={article.title || "Article image"}
-                    className={`object-cover object-top transition-opacity duration-400 ease-out ${
+                    className={`object-cover transition-opacity duration-400 ease-out ${
                         imageLoaded ? "opacity-100" : "opacity-40"
                     }`}
                     priority={true}
