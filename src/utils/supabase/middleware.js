@@ -80,7 +80,7 @@ export const updateSession = async (request) => {
         if (fromSignout || fromLogin || fromSignup) {
             // User explicitly signed out, let them go to home page
             const homeUrl = request.nextUrl.clone();
-            homeUrl.pathname = "/private";
+            homeUrl.pathname = "/";
             // Remove the 'from' parameter
             homeUrl.searchParams.delete("from");
             return NextResponse.redirect(homeUrl);
