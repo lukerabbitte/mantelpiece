@@ -66,7 +66,7 @@ const ArticlePage = async ({ params }) => {
 
                     <div className="relative rounded-b-xl p-4">
                         <div className="flex flex-col gap-4">
-                            <div className="flex flex-col gap-2 lg:gap-4">
+                            <div className="flex flex-col gap-2">
                                 <div className="flex flex-row gap-4 justify-between">
                                     <div className="flex flex-col gap-4">
                                         <h1 className="text-primary text-2xl font-black">
