@@ -1,7 +1,14 @@
+"use client";
+
+import { useEffect } from "react";
 import CtaButton from "@/components/CtaButton";
 import { FaExclamationTriangle } from "react-icons/fa";
 
-const NotFound = () => {
+const Error = ({ error, reset }) => {
+    useEffect(() => {
+        console.error("Individual article error:", error);
+    }, [error]);
+
     return (
         <div className="flex flex-col items-center justify-center p-4 gap-4 min-h-screen-minus-navbar-and-footer">
             <div className="flex flex-col items-center gap-2">
@@ -9,18 +16,18 @@ const NotFound = () => {
                     <span className="inline-flex">
                         <FaExclamationTriangle />
                     </span>
-                    WHOOPS{" "}
+                    ERROR{" "}
                     <span className="inline-flex">
                         <FaExclamationTriangle />
                     </span>
                 </h1>
                 <p className="text-balance max-w-prose text-center text-muted-foreground line-clamp-3">
-                    Could not find the post you were looking for.
+                    There was an error with loading this particular article.
                 </p>
             </div>
-            <CtaButton text="View All Posts" href="/posts" />
+            <CtaButton text="View All Articles" href="/articles" />
         </div>
     );
 };
 
-export default NotFound;
+export default Error;

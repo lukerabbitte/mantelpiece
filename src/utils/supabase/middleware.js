@@ -16,7 +16,7 @@ export const updateSession = async (request) => {
         path === "/?from=signout" ||
         path === "/login" ||
         path.startsWith("/user") ||
-        path.startsWith("/posts") ||
+        path.startsWith("/articles") ||
         path.startsWith("/auth/confirm") ||
         path.startsWith("/auth/callback");
 

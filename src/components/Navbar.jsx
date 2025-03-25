@@ -59,12 +59,12 @@ const Navbar = () => {
 
                 <Button
                     asChild
-                    variant={getButtonVariant("/posts")}
+                    variant={getButtonVariant("/articles")}
                     size="evenPad"
                     title="Articles"
                     className="transition-all duration-400 hover:opacity-90 hover:scale-105 rounded-full"
                 >
-                    <Link href="/posts">
+                    <Link href="/articles">
                         <div className="bg-primary-foreground rounded-full flex justify-center items-center">
                             <FaList className="text-foreground p-2 w-7 h-7" />
                         </div>

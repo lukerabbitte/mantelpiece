@@ -12,7 +12,7 @@ const BioText = () => {
                 Extra.ie. She lives in Dublin.
             </p>
 
-            <CtaButton href="/posts" text="Articles" arrowDirection="right"/>
+            <CtaButton href="/articles" text="Articles" arrowDirection="right"/>
 
             <SocialIconTray />
         </div>

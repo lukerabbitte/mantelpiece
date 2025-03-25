@@ -16,7 +16,7 @@ const Tray = ({ articles }) => {
                     <Link
                         className="h-[24rem] md:h-[26rem] lg:h-[30rem]"
                         key={article.id || article.hash_id}
-                        href={`/posts/${article.hash_id}/${article.slug}`}
+                        href={`/articles/${article.hash_id}/${article.slug}`}
                         prefetch={true}
                     >
                         <ArticleCard article={article} isPinned={true} />
@@ -27,7 +27,7 @@ const Tray = ({ articles }) => {
                 <Link
                     className="h-[24rem] md:h-[26rem] lg:h-[30rem]"
                     key={article.id || article.hash_id}
-                    href={`/posts/${article.hash_id}/${article.slug}`}
+                    href={`/articles/${article.hash_id}/${article.slug}`}
                     prefetch={true}
                 >
                     <ArticleCard article={article} />

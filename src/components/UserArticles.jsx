@@ -63,7 +63,7 @@ const UserArticles = ({ articles = [], isOwnProfile }) => {
                         className="border-b-2 p-4 w-full max-w-prose flex flex-row justify-between items-center gap-4 text-start text-balance"
                     >
                         <Link
-                            href={`/posts/${article.hash_id}/${article.slug}`}
+                            href={`/articles/${article.hash_id}/${article.slug}`}
                             className="hover:underline"
                             target="_blank"
                         >
@@ -79,7 +79,9 @@ const UserArticles = ({ articles = [], isOwnProfile }) => {
                                     title="Edit Article"
                                     className="transition-all duration-400 hover:opacity-90 hover:scale-105 rounded-full"
                                 >
-                                    <Link href={`/posts/edit/${article.hash_id}/${article.slug}`}>
+                                    <Link
+                                        href={`/articles/edit/${article.hash_id}/${article.slug}`}
+                                    >
                                         <div className="bg-primary-foreground rounded-full flex justify-center items-center">
                                             <FaEdit className="text-foreground p-[0.45rem] w-7 h-7" />
                                         </div>

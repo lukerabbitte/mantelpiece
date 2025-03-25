@@ -34,7 +34,7 @@ export const deleteArticle = async (hashId) => {
 
         // Revalidate related paths to update UI
         revalidatePath("/user", "layout");
-        revalidatePath("/posts", "page");
+        revalidatePath("/articles", "page");
 
         return {
             data: true,

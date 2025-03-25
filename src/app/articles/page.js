@@ -1,9 +1,9 @@
 import Tray from "@/components/Tray";
 import React from "react";
 import { fetchArticles } from "@/utils/article/fetchArticles";
-import EmptyState from "@/app/posts/EmptyState";
+import EmptyState from "@/app/articles/EmptyState";
 
-const UserPosts = async () => {
+const UserArticles = async () => {
     const { data: fetchedArticles, error, isEmpty } = await fetchArticles();
 
     if (error) {
@@ -36,4 +36,4 @@ const UserPosts = async () => {
     );
 };
 
-export default UserPosts;
+export default UserArticles;
