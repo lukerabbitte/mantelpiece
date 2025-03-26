@@ -41,14 +41,20 @@ const ArticleCard = ({ article }) => {
             </div>
 
             {article.pinned && (
-                <div className="absolute top-0 left-0 m-4">
-                    <div className="p-2 rounded-full w-fit backdrop-blur-sm text-primary-foreground text-xs">
-                        <div className="flex flex-row items-center gap-2 p-2 rounded-full bg-primary">
-                            <span className="inline-block place-self-center text-center">
-                                <FaThumbtack />
-                            </span>
-                        </div>
+                <div className="absolute top-0 left-0 m-5">
+                    <div className="flex flex-row items-center gap-2 p-2 rounded-full bg-primary text-primary-foreground text-xs">
+                        <span className="inline-block place-self-center text-center">
+                            <FaThumbtack />
+                        </span>
                     </div>
+                </div>
+            )}
+
+            {article.category && (
+                <div className="absolute top-0 right-0 m-5">
+                    <span className="inline-block place-self-center text-center">
+                        <CategoryBadge category={article.category} />
+                    </span>
                 </div>
             )}
 

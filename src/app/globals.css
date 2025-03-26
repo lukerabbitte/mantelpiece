@@ -37,9 +37,9 @@ html {
         --chart-5: #e9c46a;
         --warning: #ffba08;
         --warning-foreground: #f2f2f2;
-        --category-1: #c6b4e4;
-        --category-2: #b4d8df;
-        --category-3: #d5e5d5;
+        --category-1: #472f6e;
+        --category-2: #306082;
+        --category-3: #294229;
 
         --gradient-start-light: #ecdbdf;
         --gradient-mid-light: #ebc1ca;
@@ -84,6 +84,9 @@ html {
         --chart-5: #90e0ef;
         --warning: #f2f2f2;
         --warning-foreground: #ffba08;
+        --category-1: #cfb6f7;
+        --category-2: #b4d8df;
+        --category-3: #d5e5d5;
 
         --gradient-start: #242121;
         --gradient-mid: #312a2a;

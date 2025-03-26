@@ -89,7 +89,7 @@ const ArticlePage = async ({ params }) => {
                                 {article.excerpt}
                             </p>
 
-                            <div className="flex flex-row gap-2 items-center">
+                            <div className="flex flex-row gap-2 items-end">
                                 <p className="text-sm text-muted-foreground text-balance">
                                     Originally published in{" "}
                                     <a
@@ -100,6 +100,9 @@ const ArticlePage = async ({ params }) => {
                                         {article.publisher}
                                     </a>
                                 </p>
+                                <span className="inline-block text-center">
+                                    <CategoryBadge category={article.category} />
+                                </span>
                             </div>
                         </div>
                     </div>
