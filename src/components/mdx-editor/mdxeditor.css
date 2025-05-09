@@ -85,6 +85,12 @@ This would have been less brittle as I don't know if these random suffixes will 
     flex-wrap: wrap; /* Bizarrely, this did not flex wrap by default */
 }
 
+@media screen and (min-width: 640px) {
+    ._linkDialogPopoverContent_uazmk_600 {
+        max-width: 100%;
+    }
+}
+
 ._linkDialogPreviewAnchor_uazmk_653 {
     color: var(--foreground);
 }
@@ -118,6 +124,12 @@ This would have been less brittle as I don't know if these random suffixes will 
     max-width: 100%;
 }
 
+._formField_uazmk_1200 input {
+    background-color: var(--background);
+    border: none;
+    color: var(--foreground);
+}
+
 ._multiFieldForm_uazmk_1194 {
     max-width: 100%;
 }
@@ -145,6 +157,50 @@ This would have been less brittle as I don't know if these random suffixes will 
 ._secondaryButton_uazmk_507:hover {
     opacity: 90%;
 }
+
+/* ---------- */
+/* Other dialog content (e.g. image upload) */
+/* ---------- */
+._dialogContent_uazmk_602 {
+    background-color: var(--background-2);
+    color: var(--foreground);
+    border: none;
+    max-width: 80%;
+}
+
+@media screen and (min-width: 640px) {
+    ._dialogContent_uazmk_602 {
+        max-width: 100%;
+    }
+}
+
+._dialogContent_uazmk_602 h2 {
+    display: none;
+}
+
+._downshiftAutocompleteContainer_uazmk_1140 button {
+    background-color: var(--background);
+    color: var(--foreground);
+}
+
+._downshiftAutocompleteContainer_uazmk_1140 ._downshiftInputWrapper_uazmk_1109 {
+    border: none;
+    overflow: hidden;
+    background-color: var(--background);
+    color: var(--foreground);
+}
+
+._downshiftAutocompleteContainer_uazmk_1140 ul {
+    background-color: var(--muted);
+    color: var(--foreground);
+    border: none;
+}
+
+._downshiftAutocompleteContainer_uazmk_1140 ul li:hover {
+    background-color: var(--muted-2);
+}
+
+
 
 /* ---------- */
 /* Anchors styling */
