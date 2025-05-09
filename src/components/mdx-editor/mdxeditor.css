@@ -53,6 +53,40 @@
     color: var(--baseText);
 }
 
+/* ---------- */
+/* Link dialog popup styling */
+/* ---------- */
+._linkDialogPopoverContent_uazmk_600 {
+    background-color: var(--background-2);
+    color: var(--foreground);
+    border: none;
+    padding: 0.5rem;
+}
+
+._linkDialogPreviewAnchor_uazmk_653 {
+    color: var(--foreground);
+}
+
+._linkDialogPreviewAnchor_uazmk_653:hover,
+._linkDialogPreviewAnchor_uazmk_653 [data-highlighted="true"],
+._linkDialogPreviewAnchor_uazmk_653 [data-radix-select-item]:hover {
+    color: var(--link);
+}
+
+._actionButton_uazmk_694 {
+    color: var(--foreground);
+    background-color: var(--background-2);
+}
+
+._actionButton_uazmk_694:hover,
+._actionButton_uazmk_694 [data-highlighted="true"],
+._actionButton_uazmk_694 [data-radix-select-item]:hover {
+    background-color: var(--muted);
+}
+
+/* ---------- */
+/* Code mirror block styling */
+/* ---------- */
 .mdxeditor .cm-editor {
     background-color: var(--background-2);
     color: var(--foreground);
@@ -78,15 +112,15 @@
     color: var(--foreground);
 }
 
-/* Select item hover state - enhanced selectors */
-.mdxeditor-select-content [role="option"]:hover,
+/* Select item hover state */
+.mdxeditor-select-content:hover,
 .mdxeditor-select-content [data-highlighted="true"],
 .mdxeditor-select-content [data-radix-select-item]:hover {
     background-color: var(--muted-2);
     color: var(--muted-2-foreground);
 }
 
-/* Select item active/selected state - enhanced selectors */
+/* Select item active/selected state */
 .mdxeditor-select-content [role="option"][data-state="checked"],
 .mdxeditor-select-content [role="option"][aria-selected="true"],
 .mdxeditor-select-content [data-radix-select-item][data-state="checked"] {

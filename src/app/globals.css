@@ -30,6 +30,7 @@
         --muted-2-foreground: #f8efef;
         --accent: #f7db9e;
         --accent-foreground: #1a1a1a;
+        --link: #2a5677;
         --destructive: #e63946;
         --destructive-foreground: #ffffff;
         --border: #e5e5e5;
@@ -80,6 +81,7 @@
         --muted-2-foreground: #a39f9f;
         --accent: #f0c66b;
         --accent-foreground: #1a1a1a;
+        --link: #7ca9cc;
         --destructive: #993333;
         --destructive-foreground: #f5f5f5;
         --border: #262626;
