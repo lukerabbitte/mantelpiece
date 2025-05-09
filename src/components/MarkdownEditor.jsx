@@ -10,11 +10,7 @@ const MarkdownEditor = ({ initialMarkdown }) => {
         console.log(editorRef.current?.getMarkdown());
     };
 
-    return (
-        <div className="max-w-[75ch]">
-            <ForwardRefEditor ref={editorRef} markdown={initialMarkdown} onChange={printMarkdown} />
-        </div>
-    );
+    return <ForwardRefEditor ref={editorRef} markdown={initialMarkdown} onChange={printMarkdown} />;
 };
 
 export default MarkdownEditor;

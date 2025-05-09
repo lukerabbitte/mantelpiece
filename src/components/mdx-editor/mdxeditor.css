@@ -2,7 +2,11 @@
 Trying to override a bunch of random classes
 just to style the MDXEditor */
 
-/* There is definitely a better way */
+/* I used the exact private _ class names with suffixes such as "_formField_uazmk_1200".
+Should have just used the mappings in the file
+editor/dist/styles/ui.module.css.js,
+and then injected the class overrides using js.
+This would have been less brittle as I don't know if these random suffixes will change. */
 .mdxeditor {
     --accentBase: var(--accent);
     --accentBgSubtle: var(--accent);
@@ -59,6 +63,17 @@ just to style the MDXEditor */
 }
 
 /* ---------- */
+/* Custom toolbar styling */
+/* ---------- */
+.mdxeditor-toolbar {
+    position: sticky;
+    top: 3.5rem; /* The height of the navbar */
+    background: none;
+    backdrop-filter: blur(8px); /* Same as tailwind backdrop-blur-sm */
+    flex-wrap: wrap;
+}
+
+/* ---------- */
 /* Link dialog popup styling */
 /* ---------- */
 ._linkDialogPopoverContent_uazmk_600 {
@@ -66,6 +81,8 @@ just to style the MDXEditor */
     color: var(--foreground);
     border: none;
     padding: 0.5rem;
+    max-width: 80%;
+    flex-wrap: wrap; /* Bizarrely, this did not flex wrap by default */
 }
 
 ._linkDialogPreviewAnchor_uazmk_653 {
@@ -90,6 +107,46 @@ just to style the MDXEditor */
 }
 
 /* ---------- */
+/* Form popup */
+/* ---------- */
+
+._formField_uazmk_1200 ._textInput_uazmk_1186 {
+    background-color: var(--background);
+    border-color: var(--muted);
+    color: var(--foreground);
+    min-width: none;
+    max-width: 100%;
+}
+
+._multiFieldForm_uazmk_1194 {
+    max-width: 100%;
+}
+
+._linkDialogEditForm_uazmk_540 {
+    max-width: 100%;
+}
+
+._primaryButton_uazmk_506 {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+    border: none;
+}
+
+._primaryButton_uazmk_506:hover {
+    opacity: 90%;
+}
+
+._secondaryButton_uazmk_507 {
+    background-color: var(--muted);
+    color: var(--foreground);
+    border: none;
+}
+
+._secondaryButton_uazmk_507:hover {
+    opacity: 90%;
+}
+
+/* ---------- */
 /* Anchors styling */
 /* ---------- */
 
@@ -103,7 +160,13 @@ just to style the MDXEditor */
 /* ---------- */
 
 .mdxeditor-root-contenteditable blockquote,
-.mdxeditor-root-contenteditable strong {
+.mdxeditor-root-contenteditable strong,
+.mdxeditor-root-contenteditable h1,
+.mdxeditor-root-contenteditable h2,
+.mdxeditor-root-contenteditable h3,
+.mdxeditor-root-contenteditable h4,
+.mdxeditor-root-contenteditable h5,
+.mdxeditor-root-contenteditable h6 {
     color: var(--foreground);
 }
 
@@ -151,33 +214,16 @@ just to style the MDXEditor */
     color: var(--foreground);
 }
 
-/* Select item hover state */
-.mdxeditor-select-content:hover,
-.mdxeditor-select-content [data-highlighted="true"],
+.mdxeditor-select-content [role="option"]:hover,
 .mdxeditor-select-content [data-radix-select-item]:hover {
-    background-color: var(--muted-2);
-    color: var(--muted-2-foreground);
-}
-
-/* Select item active/selected state */
-.mdxeditor-select-content [role="option"][data-state="checked"],
-.mdxeditor-select-content [role="option"][aria-selected="true"],
-.mdxeditor-select-content [data-radix-select-item][data-state="checked"] {
-    background-color: var(--muted-2);
-    color: var(--muted-2-foreground);
-    font-weight: 500;
-}
-
-/* First child specific override - sometimes needed */
-.mdxeditor-select-content [role="option"]:first-child,
-.mdxeditor-select-content [data-radix-select-item]:first-child {
-    background-color: var(--background-2);
+    background-color: var(--muted);
     color: var(--foreground);
 }
 
-.mdxeditor-select-content [role="option"]:first-child:hover,
-.mdxeditor-select-content [data-radix-select-item]:first-child:hover,
-.mdxeditor-select-content [role="option"]:first-child[data-highlighted="true"] {
-    background-color: var(--muted-2);
-    color: var(--muted-2-foreground);
+.mdxeditor-select-content [role="option"][data-state="checked"],
+.mdxeditor-select-content [role="option"][aria-selected="true"],
+.mdxeditor-select-content [data-radix-select-item][data-state="checked"] {
+    background-color: var(--muted);
+    color: var(--foreground);
+    font-weight: 500;
 }

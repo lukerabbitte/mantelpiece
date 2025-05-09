@@ -32,61 +32,57 @@ const uploadImageToSupabase = () => null;
 
 const InitializedMDXEditor = ({ editorRef, ...props }) => {
     return (
-        <div className="relative">
-            <MDXEditor
-                contentEditableClassName="prose"
-                spellCheck
-                plugins={[
-                    headingsPlugin(),
-                    listsPlugin(),
-                    quotePlugin(),
-                    thematicBreakPlugin(),
-                    markdownShortcutPlugin(),
-                    codeBlockPlugin({ defaultCodeBlockLanguage: "js" }),
-                    codeMirrorPlugin({
-                        codeBlockLanguages: {
-                            js: "JavaScript",
-                            css: "CSS",
-                            html: "HTML",
-                            typescript: "TypeScript",
-                            jsx: "React JSX",
-                            tsx: "React TSX",
-                            json: "JSON",
-                            markdown: "Markdown",
-                            python: "Python",
-                        },
-                    }),
-                    diffSourcePlugin(),
-                    linkPlugin(),
-                    linkDialogPlugin(),
-                    tablePlugin(),
-                    imagePlugin({
-                        imageUploadHandler: uploadImageToSupabase,
-                        imageAutocompleteSuggestions: ["https://picsum.photos/200/300"],
-                    }),
-                    toolbarPlugin({
-                        toolbarClassName: "",
-                        toolbarContents: () => (
-                            <>
-                                <UndoRedo />
-                                <BoldItalicUnderlineToggles />
-                                <BlockTypeSelect />
-                                <InsertImage />
-                                <InsertCodeBlock />
-                                <CreateLink />
-                                <InsertTable />
-                                <ListsToggle />
-                            </>
-                        ),
-                    }),
-                ]}
-                {...props}
-                ref={editorRef}
-            />
-        </div>
+        <MDXEditor
+            contentEditableClassName="prose"
+            spellCheck
+            plugins={[
+                headingsPlugin(),
+                listsPlugin(),
+                quotePlugin(),
+                thematicBreakPlugin(),
+                markdownShortcutPlugin(),
+                codeBlockPlugin({ defaultCodeBlockLanguage: "js" }),
+                codeMirrorPlugin({
+                    codeBlockLanguages: {
+                        js: "JavaScript",
+                        css: "CSS",
+                        html: "HTML",
+                        typescript: "TypeScript",
+                        jsx: "React JSX",
+                        tsx: "React TSX",
+                        json: "JSON",
+                        markdown: "Markdown",
+                        python: "Python",
+                    },
+                }),
+                diffSourcePlugin(),
+                linkPlugin(),
+                linkDialogPlugin(),
+                tablePlugin(),
+                imagePlugin({
+                    imageUploadHandler: uploadImageToSupabase,
+                    imageAutocompleteSuggestions: ["https://picsum.photos/200/300"],
+                }),
+                toolbarPlugin({
+                    toolbarClassName: "",
+                    toolbarContents: () => (
+                        <>
+                            <UndoRedo />
+                            <BoldItalicUnderlineToggles />
+                            <BlockTypeSelect />
+                            <InsertImage />
+                            <InsertCodeBlock />
+                            <CreateLink />
+                            <InsertTable />
+                            <ListsToggle />
+                        </>
+                    ),
+                }),
+            ]}
+            {...props}
+            ref={editorRef}
+        />
     );
 };
 
 export default InitializedMDXEditor;
-
-/* Why is it so hard to override Radix MDXEditor themes? Very confusing */

@@ -116,7 +116,7 @@ const UserArticles = ({ articles = [], isOwnProfile }) => {
                         <AlertDialogAction
                             onClick={handleDeleteConfirm}
                             disabled={isDeleting}
-                            className="bg-destructive hover:opacity-90"
+                            className="bg-destructive text-destructive-foreground hover:opacity-90"
                         >
                             {isDeleting ? "Deleting..." : "Delete"}
                         </AlertDialogAction>
