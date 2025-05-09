@@ -1,3 +1,8 @@
+/* This file is stupid.
+Trying to override a bunch of random classes
+just to style the MDXEditor */
+
+/* There is definitely a better way */
 .mdxeditor {
     --accentBase: var(--accent);
     --accentBgSubtle: var(--accent);
@@ -85,20 +90,54 @@
 }
 
 /* ---------- */
-/* Code mirror block styling */
+/* Anchors styling */
 /* ---------- */
-.mdxeditor .cm-editor {
-    background-color: var(--background-2);
+
+.mdxeditor-root-contenteditable a {
+    color: var(--link);
+    text-decoration: underline;
+}
+
+/* ---------- */
+/* Forcing themed colors on certain blocks */
+/* ---------- */
+
+.mdxeditor-root-contenteditable blockquote,
+.mdxeditor-root-contenteditable strong {
     color: var(--foreground);
 }
 
-.cm-editor .cm-activeLineGutter {
-    background-color: var(--muted);
-}
+/* ---------- */
+/* Code mirror block styling */
+/* ---------- */
 
-.mdxeditor-source-editor {
+._codeMirrorWrapper_uazmk_391 {
     border: none;
 }
+
+.mdxeditor .cm-editor {
+    background-color: var(--background-2);
+    color: var(--foreground);
+    border-radius: 0.5rem;
+}
+
+/* How are we supposed to override ugly ctrl+a behaviour? */
+/* Following does not work */
+/* .mdxeditor .cm-line::selection {
+    background-color: var(--background);
+} */
+
+.cm-editor .cm-activeLineGutter {
+    background: none;
+}
+
+.cm-gutterElement {
+    color: var(--foreground);
+}
+
+/* ---------- */
+/* Select menu styling */
+/* ---------- */
 
 .mdxeditor-select-content {
     background-color: var(--background-2);
