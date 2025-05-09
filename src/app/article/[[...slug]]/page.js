@@ -35,10 +35,10 @@ const ArticlePage = async ({ params }) => {
     const { data: profile, error: profileError, profileStatus } = await getProfileByUserId(userId);
 
     // The article path that we expect based on its current slug
-    const canonicalPath = `/articles/${article.hash_id}/${article.slug}`;
+    const canonicalPath = `/article/${article.hash_id}/${article.slug}`;
 
     // The article path that we have attempted to access via wildcard slug
-    const attemptedPath = `/articles/${attemptedHashId}${wildcardSlug ? `/${wildcardSlug}` : ""}`;
+    const attemptedPath = `/article/${attemptedHashId}${wildcardSlug ? `/${wildcardSlug}` : ""}`;
 
     // If we have clicked through to this page based on an old slug, then this will help point us back towards the latest slug
     if (attemptedPath !== canonicalPath) {

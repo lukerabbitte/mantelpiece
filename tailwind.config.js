@@ -7,7 +7,6 @@ module.exports = {
             fontFamily: {
                 sans: [
                     "Rosario",
-                    "Inter",
                     "system-ui",
                     "-apple-system",
                     "BlinkMacSystemFont",
@@ -127,5 +126,5 @@ module.exports = {
             },
         },
     },
-    plugins: [require("tailwindcss-animate")],
+    plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 };

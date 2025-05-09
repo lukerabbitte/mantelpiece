@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { ForwardRefEditor } from "@/components/mdx-editor/ForwardRefEditor";
 
-const MarkdownEditor = ({initialMarkdown}) => {
+const MarkdownEditor = ({ initialMarkdown }) => {
     const editorRef = useRef(null);
 
     const printMarkdown = () => {
@@ -11,7 +11,7 @@ const MarkdownEditor = ({initialMarkdown}) => {
     };
 
     return (
-        <div className="w-full">
+        <div className="max-w-[75ch]">
             <ForwardRefEditor ref={editorRef} markdown={initialMarkdown} onChange={printMarkdown} />
         </div>
     );

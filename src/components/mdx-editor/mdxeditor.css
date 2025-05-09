@@ -1,0 +1,110 @@
+.mdxeditor {
+    --accentBase: var(--accent);
+    --accentBgSubtle: var(--accent);
+    --accentBg: var(--accent);
+    --accentBgHover: var(--accent);
+    --accentBgActive: var(--accent);
+    --accentLine: var(--accent);
+    --accentBorder: var(--accent);
+    --accentBorderHover: var(--accent);
+    --accentSolid: var(--accent);
+    --accentSolidHover: var(--accent);
+    --accentText: var(--accent);
+    --accentTextContrast: var(--accent);
+
+    --basePageBg: var(--background);
+    --baseBase: var(--background);
+    --baseBgSubtle: var(--muted);
+    --baseBg: var(--muted);
+    --baseBgHover: var(--muted-2);
+    --baseBgActive: var(--muted-2);
+    --baseLine: var(--primary);
+    --baseBorder: var(--primary);
+    --baseBorderHover: var(--secondary);
+    --baseSolid: var(--card);
+    --baseSolidHover: var(--card);
+    --baseText: var(--foreground);
+    --baseTextContrast: var(--foreground);
+
+    /* Removed admonition vars as not needed for now */
+
+    --error-color: var(--destructive);
+
+    /* Removed spacing vars as we don't need to overwrite those */
+
+    --radius-none: 0px;
+    --radius-small: var(--spacing-0_5);
+    --radius-base: var(--spacing-1);
+    --radius-medium: var(--spacing-1_5);
+    --radius-large: var(--spacing-2);
+    --radius-extra-large: var(--spacing-3);
+    --radius-full: 9999px;
+
+    --font-body: "Rosario", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+        "Segoe UI Symbol", "Noto Color Emoji";
+
+    --text-base: 1rem;
+    --text-sm: 0.875rem;
+    --text-xs: 0.75rem;
+    --text-xxs: 0.6rem;
+
+    font-family: var(--font-body);
+    color: var(--baseText);
+}
+
+.mdxeditor .cm-editor {
+    background-color: var(--background-2);
+    color: var(--foreground);
+}
+
+.cm-editor .cm-activeLineGutter {
+    background-color: var(--muted);
+}
+
+.mdxeditor-source-editor {
+    border: none;
+}
+
+.mdxeditor-select-content {
+    background-color: var(--background-2);
+    color: var(--foreground);
+}
+
+/* Target ALL select items, including the first one */
+.mdxeditor-select-content [role="option"],
+.mdxeditor-select-content [data-radix-select-item] {
+    background-color: var(--background-2);
+    color: var(--foreground);
+}
+
+/* Select item hover state - enhanced selectors */
+.mdxeditor-select-content [role="option"]:hover,
+.mdxeditor-select-content [data-highlighted="true"],
+.mdxeditor-select-content [data-radix-select-item]:hover {
+    background-color: var(--muted-2);
+    color: var(--muted-2-foreground);
+}
+
+/* Select item active/selected state - enhanced selectors */
+.mdxeditor-select-content [role="option"][data-state="checked"],
+.mdxeditor-select-content [role="option"][aria-selected="true"],
+.mdxeditor-select-content [data-radix-select-item][data-state="checked"] {
+    background-color: var(--muted-2);
+    color: var(--muted-2-foreground);
+    font-weight: 500;
+}
+
+/* First child specific override - sometimes needed */
+.mdxeditor-select-content [role="option"]:first-child,
+.mdxeditor-select-content [data-radix-select-item]:first-child {
+    background-color: var(--background-2);
+    color: var(--foreground);
+}
+
+.mdxeditor-select-content [role="option"]:first-child:hover,
+.mdxeditor-select-content [data-radix-select-item]:first-child:hover,
+.mdxeditor-select-content [role="option"]:first-child[data-highlighted="true"] {
+    background-color: var(--muted-2);
+    color: var(--muted-2-foreground);
+}
